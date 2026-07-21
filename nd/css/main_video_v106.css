@@ -1,0 +1,18 @@
+.main_video{position:relative;overflow:hidden;background:#fff}
+.main_video > p{display:none}
+.main_video .video_bg{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;background:#fff}
+.main_video .video_bg iframe{position:absolute;top:50%;left:50%;width:231.12vh;height:130vh;min-width:130%;min-height:73.13vw;transform:translate(-50%,-50%);pointer-events:none}
+.main_video .video_id{display:none}
+
+/* 모바일 ver */
+@media all and (max-width:1060px) {
+
+	.main_video,
+	#fullpage .main_video,
+	.nd#main .main_video,
+	.main_video .fp-tableCell{height:100vh!important;height:100dvh!important;min-height:100vh!important;min-height:100dvh!important}
+	.main_video .video_bg{height:100vh!important;height:100dvh!important}
+	/* 모바일 세로(9:16) 영상 — 높이를 화면에 맞춰 상하 잘림 방지(min-height 제거). 화면이 9:16보다 넓으면 좌우 미세 여백 */
+	.main_video .video_bg iframe{top:50%;left:50%;width:56.25vh;width:56.25dvh;min-width:100vw;height:100vh;height:100dvh;transform:translate(-50%,-50%)}
+	    
+	}

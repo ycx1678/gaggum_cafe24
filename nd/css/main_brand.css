@@ -1,0 +1,43 @@
+/* main_brand.css */
+.main_brand{position:relative;background:#111}
+.main_brand .brand_swiper,
+.main_brand .swiper-wrapper,
+.main_brand .swiper-slide{width:100%;height:100vh}
+.main_brand .swiper-slide > a{position:relative;display:block;width:100%;height:100%;background:#111 no-repeat center/cover}
+.main_brand .swiper-slide > a:after{content:'';position:absolute;left:0;top:0;z-index:2;width:100%;height:100%;background:rgba(0,0,0,.28)}
+.main_brand .swiper-slide img{width:100%;height:100%;object-fit:cover;visibility:hidden}
+.main_brand .swiper-slide .m_ver{display:none}
+.main_brand .txt_box{position:absolute;left:50%;top:50%;z-index:5;width:100%;max-width:1290px;height:100%;padding:0 30px;box-sizing:border-box;transform:translate(-50%,-50%);text-align:center;color:#fff}
+.main_brand .txt_box .inner{position:absolute;left:50%;top:50%;width:100%;transform:translate(-50%,-50%);opacity:0;transition:opacity .8s, top .8s}
+.main_brand .swiper-slide-active .txt_box .inner{opacity:1;top:50%}
+.main_brand .txt_box .tit_sub{font-size:16px;margin-bottom:25px;color:#fff}
+.main_brand .txt_box .tit{font-size:42px;line-height:1.3;margin-bottom:20px;font-weight:600;letter-spacing:-1px;color:#fff}
+.main_brand .txt_box .txt{font-size:18px;line-height:1.5;margin-bottom:50px;letter-spacing:-1px;color:#fff}
+.nd#main .main_brand .btn_link{border-color:#fff;color:#fff;text-align:left}
+.nd#main .main_brand .btn_link:before{background:#fff}
+.nd#main .main_brand .btn_link:hover{color:#000}
+.main_brand .brand_controls{position:absolute;left:50%;bottom:30px;z-index:10;display:flex;align-items:center;transform:translateX(-50%)}
+.main_brand .brand_controls .swiper-pagination,
+.main_brand .brand_controls div[class*="swiper-button"]{position:static;background:none;height:auto;margin:0 2px;color:#fff;transition:color .5s}
+.main_brand .brand_controls div[class*="swiper-button"]{width:16px;height:16px;text-align:center;font-size:12px}
+.main_brand .brand_controls div[class*="swiper-button"] > i{position:relative;line-height:16px}
+.main_brand .brand_controls .swiper-button-prev > i{left:-1px}
+.main_brand .brand_controls .swiper-button-next > i{right:-1px}
+.main_brand .brand_controls .swiper-button-play{display:none}
+.main_brand .brand_controls .swiper-button-pause,
+.main_brand .brand_controls .swiper-button-play{font-size:14px}
+.main_brand .brand_controls .swiper-pagination{width:auto;color:rgba(255,255,255,.7);margin-right:10px}
+.main_brand .brand_controls .swiper-pagination-current{color:#fff}
+
+@media all and (max-width:1024px) {
+    .main_brand .swiper-slide .pc_ver{display:none}
+    .main_brand .swiper-slide .m_ver{display:block}
+    .main_brand .txt_box{padding:0 20px}
+    .main_brand .txt_box .tit_sub{font-size:14px;margin-bottom:20px}
+    .main_brand .txt_box .tit{font-size:30px;margin-bottom:20px}
+    .main_brand .txt_box .txt{font-size:14px;margin-bottom:30px}
+    .main_brand .brand_controls{bottom:20px}
+    /* [추가 2026-06-11] 모바일: 텍스트를 메인롤링이미지 텍스트 위치(하단부)와 동일하게(피드백 slide9). PC 유지 */
+    .main_brand .txt_box .inner{top:auto;bottom:12%;transform:translateX(-50%)}
+    .main_brand .swiper-slide-active .txt_box .inner{top:auto}
+}

@@ -1,0 +1,46 @@
+.main_event{padding:0;box-sizing:border-box;background:#111}
+.main_event .event_wrap{width:100%;height:100%;position:relative}
+.main_event .galleryList{height:100%}
+.nd#main .main_event.active .galleryList{opacity:1;top:0}
+.main_event .event_wrap .event_top{position:absolute;left:0;right:0;bottom:34px;z-index:5;margin:0;padding:0 50px;box-sizing:border-box}
+.nd#main .main_event.active .event_top{opacity:1;left:0}
+.main_event .event_wrap .event_top .main_tit,
+.main_event .event_wrap .event_top .main_txt{display:none}
+.main_event .event_wrap .event_top .main_txt{padding-right:70px}
+.main_event .event_wrap .event_top .nav_box{position:absolute !important;right:50px;bottom:0;display:flex}
+.nd#main .main_event.active .event_wrap .event_top .nav_box{opacity:1;right:0}
+.main_event .event_wrap .event_top .nav_box .swiper-button-next,
+.main_event .event_wrap .event_top .nav_box .swiper-button-prev{position:initial;margin-top:0;background:none;font-size:28px;height:auto}
+.main_event .event_wrap .event_top .nav_box .swiper-button-prev{margin-right:8px}
+.main_event .swiper-container{width:100%;height:100vh;overflow:hidden}
+.main_event .swiper-wrapper,
+.main_event .swiper-slide{height:100%}
+.main_event .swiper-container{position:relative}
+.nd#main .main_event .swiper-container,
+.nd#main .main_event .swiper-wrapper,
+.nd#main .main_event .swiper-slide{touch-action:pan-y}
+.nd#main .main_event .swiper-scrollbar{position:absolute;left:50px;right:170px;bottom:34px;z-index:6;width:auto;height:3px;margin:0;background:rgba(255,255,255,.35);touch-action:pan-x}
+.nd#main .main_event .swiper-scrollbar-drag{background:#fff}
+.main_event .event_wrap .event_top .nav_box .swiper-button-next,
+.main_event .event_wrap .event_top .nav_box .swiper-button-prev{color:#fff}
+.main_event .event_wrap .thumb{display:block;height:100vh;margin:0;position:relative;background:#111 no-repeat center/cover}
+.main_event .event_wrap .thumb:after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.28)}
+.main_event .event_wrap .thumb img{width:100%;height:100%;object-fit:cover;visibility:hidden}
+.main_event .event_wrap .description{position:absolute;left:50%;top:50%;z-index:3;width:min(720px,86vw);transform:translate(-50%,-50%);text-align:center;color:#fff}
+.main_event .event_wrap .description .gall_tit{font-size:42px;font-weight:600;line-height:1.25;margin-bottom:18px;display:block;color:#fff}
+.main_event .event_wrap .description .gall_txt{font-size:16px;color:#fff;line-height:1.6;padding-right:0;word-break:keep-all;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.main_event .event_wrap .description .gall_more{display:inline-block;width:auto;height:46px;line-height:44px;margin-top:34px;padding:0 24px;font-size:14px;color:#fff;border:1px solid rgba(255,255,255,.85);text-align:center;position:static;transition:all .5s;box-sizing:border-box}
+.main_event .event_wrap .description .gall_more:hover{border-color:#fff;color:#000;background:#fff}
+.nd#main .main_event.active .swiper-container{top:0;opacity:1}
+
+/* 모바일 ver */
+@media all and (max-width:1024px) {
+
+    .main_event{padding:0}
+    .main_event .event_wrap .event_top{bottom:20px;padding:0 15px}
+    .main_event .event_wrap .event_top .nav_box{display:none}
+    .nd#main .main_event .swiper-scrollbar{left:15px;right:15px;bottom:18px}
+    .main_event .event_wrap .description .gall_tit{font-size:30px}
+    .main_event .event_wrap .description .gall_txt{font-size:14px}
+
+}

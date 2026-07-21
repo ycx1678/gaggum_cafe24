@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- PG크로스브라우징필수내용 -->
+        <meta http-equiv="Cache-Control" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <!-- // PG크로스브라우징필수내용 -->
+
+        <title>기본 레이아웃</title>
+        <link rel="preconnect" href="https://img.echosting.cafe24.com">
+
+        <!--@css(/layout/basic/css/common.css)--><!-- 해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요. -->
+        <!--@css(/layout/basic/css/layout.css)-->
+        <!--@css(/layout/basic/css/ec-base-ui.css)-->
+        <!--@css(/layout/basic/css/ec-base-button.css)-->
+        <!--@css(/layout/basic/css/ec-base-tab.css)-->
+        <!--@css(/layout/basic/css/ec-base-table.css)-->
+        <!--@css(/layout/basic/css/ec-base-tooltip.css)-->
+        <!--@css(/layout/basic/css/ec-base-help.css)-->
+        <!--@css(/layout/basic/css/ec-base-fold.css)-->
+        <!--@css(/layout/basic/css/ec-base-box.css)-->
+        <!--@css(/layout/basic/css/ec-base-layer.css)-->
+        <!--@css(/layout/basic/css/ec-base-desc.css)-->
+        <!--@css(/layout/basic/css/ec-base-product.css)-->
+        <!--@css(/layout/basic/css/ec-base-prdInfo.css)-->
+        <!--@css(/layout/basic/css/ec-base-paginate.css)-->
+        <!--@css(/layout/basic/css/sub_style.css)-->
+        <!--@js(/layout/basic/js/basic.js)-->
+        <!--@js(/layout/basic/js/layout.js)-->
+        <!--@js(/js/common.js)-->
+        <!--@css(/nd/css/xeicon.min.css)-->
+        <script>
+            (function(){
+                var skinMatch = location.pathname.match(/^\/(skin-skin\d+)(?:\/|$)/);
+                var prefix = skinMatch ? '/' + skinMatch[1] : '';
+                var version = '20260721v177';
+                var cssFiles = [
+                    '/layout/basic/css/common.css',
+                    '/layout/basic/css/layout.css',
+                    '/layout/basic/css/ec-base-ui.css',
+                    '/layout/basic/css/ec-base-button.css',
+                    '/layout/basic/css/ec-base-tab.css',
+                    '/layout/basic/css/ec-base-table.css',
+                    '/layout/basic/css/ec-base-tooltip.css',
+                    '/layout/basic/css/ec-base-help.css',
+                    '/layout/basic/css/ec-base-fold.css',
+                    '/layout/basic/css/ec-base-box.css',
+                    '/layout/basic/css/ec-base-layer.css',
+                    '/layout/basic/css/ec-base-desc.css',
+                    '/layout/basic/css/ec-base-product.css',
+                    '/layout/basic/css/ec-base-prdInfo.css',
+                    '/layout/basic/css/ec-base-paginate.css',
+                    '/layout/basic/css/sub_style.css',
+                    '/nd/css/xeicon.min.css',
+                    '/nd/css/reset.css',
+                    '/nd/css/swiper.min.css',
+                    '/nd/css/bootstrap-icons.min.css',
+                    '/nd/css/side.css',
+                    '/nd/css/header.css',
+                    '/nd/css/rightQuick.css',
+                    '/nd/css/main.css',
+                    '/nd/css/fullpage.css',
+                    '/nd/css/main_visual.css',
+                    '/nd/css/main_video_v106.css',
+                    '/nd/css/main_prd_v108.css',
+                    '/nd/css/main_prd_slide_v111.css',
+                    '/nd/css/main_portfolio_v106.css',
+                    '/nd/css/prd_bnn.css',
+                    '/nd/css/main_brand.css',
+                    '/nd/css/main_event.css',
+                    '/nd/css/review.css',
+                    '/nd/css/sns_bnn.css',
+                    '/nd/css/footer_v106.css',
+                    '/nd/css/nd_common.css',
+                    '/nd/css/nd_common_m.css',
+                    '/nd/css/board.css',
+                    '/nd/css/background_white_v80.css',
+                    '/nd/css/main_prd_mobile_lock_v121.css'
+                ];
+                for(var i = 0; i < cssFiles.length; i++){
+                    document.write('<link rel="stylesheet" href="' + prefix + cssFiles[i] + '?v=' + version + '">');
+                }
+            })();
+        </script>
+
+    </head>
+    <body id="main" class="nd">
+        
+        <div module="Popup_MultiPopup">
+        <!--
+            $banner_popup_no =
+            ※ 노출시킬 팝업의 ID를 숫자로 넣어주세요.
+        -->
+        {$popup}
+        </div>
+        <div module="Popup_MultiBanner">
+            <!--
+                $banner_popup_no =
+                ※ 노출시킬 배너의 ID를 숫자로 넣어주세요.
+            -->
+            {$banner}
+        </div>
+
+        <!-- 햄버거 메뉴(모바일) -->
+        <!--@import(/nd/layout/side.html)-->
+        
+        <!-- 공통 상단 (header) -->
+        <!--@import(/nd/layout/header.html)-->
+        
+        <!-- 우측 퀵메뉴 -->
+        <!--@import(/nd/layout/rightQuick.html)-->
+
+        <div id="wrap">
+            <div id="container">
+                <div id="contents">
+                    <div module="Layout_footer" data-name="{$president_name}" class="idx_pop" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(0,0,0,0.6);color:#fff;line-height:1.5;padding:25px 20px 20px;z-index:30;box-sizing:border-box;width:90%;text-align:center">
+                        <div class="close_btn" style="position:absolute;top:8px;right:10px;color:#fff"><i class="xi-close"></i></div>
+                        카페24 디자인센터 미리보기 화면에서는<br/>모바일 버전이 정상적으로 출력되지 않을 수 있습니다.<br/>
+                        정상적인 확인이 필요하신 경우 아래의 버튼을<br/>클릭해주세요!<br/>
+                        <a href="javascript:;" onclick="var skinPath = location.pathname.match(/^\/skin-skin\d+/); popWin = window.open(location.origin + (skinPath ? skinPath[0] : ''),'windows','width=400,height=670,scrollbars=yes'); popWin.focus(); return false;" style="display:block;background:#fff;padding:10px 0;margin-top:10px"><i class="xi-mobile"></i>모바일 버전 보기</a>
+                    </div>
+                    <!--@contents-->
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

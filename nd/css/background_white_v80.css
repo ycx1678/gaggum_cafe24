@@ -1,0 +1,77 @@
+/* Site-wide background normalization */
+html,
+body,
+body.nd,
+.nd #wrap,
+.nd #container,
+.nd #container #contents,
+.nd#main #wrap,
+.nd#main #container,
+.nd#main #container #contents,
+.nd#wide #wrap,
+.nd#wide #container,
+.nd#wide #container #contents{background:#fff!important;background-color:#fff!important}
+
+/* Main page sections that previously used warm/gray page backgrounds */
+.nd#main .main_visual .swiper-slide a,
+.nd#main .main_prd_wrap,
+.nd#main .main_prd_wrap .main_prd_slide,
+.nd#main .main_prd_wrap .main_prd_slide .tit_left,
+.nd#main .main_prd_wrap .main_prd_slide .tit_left .inner,
+.nd#main .main_portfolio,
+.nd#main .main_review{background-color:#fff!important}
+
+/* Portfolio/review cards: remove beige panels while preserving borders/text */
+.nd#main .main_portfolio .portfolio_list .swiper-slide,
+.nd#main .main_portfolio .portfolio_list .cont_wrap,
+.nd .portfolioBoard .portfolioFallbackList li,
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li,
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{background:#fff!important;background-color:#fff!important}
+
+/* Product detail, simulator, floating option area */
+.nd .xans-product-detail,
+.nd .xans-product-detail .productAction,
+.nd .xans-product-detail #orderFixArea,
+.nd .xans-product-detail #orderFixArea > .ec-base-button,
+.nd .xans-product-detail .infoArea.nd-detail-floating,
+.nd .ndSimulatorPreview,
+.nd .ndSimulatorPreview__caption{background:#fff!important;background-color:#fff!important}
+
+/* Product/recent-view and option support panels */
+.nd .xans-product-recentlist .ec-base-prdInfo,
+.nd .xans-product-recentlist .recentOptionBox,
+.nd .productSet.additional .addBoxTitle,
+.nd .ndOrderShippingSummary{background:#fff!important;background-color:#fff!important}
+
+/* Cart, order, myshop and board neutral panels */
+.nd .titleArea--middle,
+.nd .ec-base-tab.typeNav .menu li,
+.nd .ec-base-tab.typeNav .menu li a,
+.nd .xans-order-form .orderListArea .title,
+.nd .xans-order-form .shippingArea th,
+.nd .xans-order-form .totalArea .ec-base-table.total th,
+.nd .xans-order-form .totalArea .ec-base-table tr.sum td,
+.nd .xans-order-form .payArea .total,
+.nd .xans-order-form .payArea .total .price input#total_price,
+.nd .xans-order-form .termArea .check,
+.nd .xans-order-result .totalArea .ec-base-table.total th,
+.nd .xans-order-result .totalArea .ec-base-table tr.sum td,
+.nd .xans-order-basketpackage .ec-base-prdInfo .optionGroup,
+.nd .xans-myshop-orderoldhistorylist .order h3,
+.nd .xans-myshop-orderregularmanagelist .order h3,
+.nd .xans-myshop-historylist h3,
+.nd .xans-myshop-couponmemberlist h3,
+.nd .xans-board-listsgroup h4,
+.nd .xans-board-commentlist .boardComment li.replyArea,
+.nd .xans-board-commentwrite,
+.nd .xans-board-commentreply,
+.nd .xans-board-commentform,
+.nd .xans-product-additional .view,
+.nd .xans-product-additional .boardComment,
+.nd .xans-product-additional .boardComment .replyArea,
+.nd .xans-product-additional .memoCont{background:#fff!important;background-color:#fff!important}
+
+@media all and (max-width:1024px){
+    .nd .sideCate > ul > li > ul > li > ul,
+    .nd .xans-board-commentwrite{background:#fff!important;background-color:#fff!important}
+}

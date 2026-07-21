@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="format-detection" content="telephone=no"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes">
+
+    <!-- PG크로스브라우징필수내용 -->
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <!-- // PG크로스브라우징필수내용 -->
+
+    <title></title>
+    <!--@css(/layout/basic/css/common.css)--><!-- 해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요. -->
+    <!--@css(/layout/basic/css/layout.css)-->
+    <!--@css(/layout/basic/css/ec-base-ui.css)-->
+    <!--@css(/layout/basic/css/ec-base-button.css)-->
+    <!--@css(/layout/basic/css/ec-base-tab.css)-->
+    <!--@css(/layout/basic/css/ec-base-table.css)-->
+    <!--@css(/layout/basic/css/ec-base-tooltip.css)-->
+    <!--@css(/layout/basic/css/ec-base-help.css)-->
+    <!--@css(/layout/basic/css/ec-base-fold.css)-->
+    <!--@css(/layout/basic/css/ec-base-box.css)-->
+    <!--@css(/layout/basic/css/ec-base-layer.css)-->
+    <!--@css(/layout/basic/css/ec-base-desc.css)-->
+    <!--@css(/layout/basic/css/ec-base-product.css)-->
+    <!--@css(/layout/basic/css/ec-base-prdInfo.css)-->
+    <!--@css(/layout/basic/css/ec-base-paginate.css)-->
+    <!--@css(/layout/basic/css/sub_style.css)-->
+
+     
+    
+    <!--@js(/layout/basic/js/basic.js)-->
+    <!--@js(/layout/basic/js/layout.js)-->
+    <!--@js(/js/common.js)-->
+    <!--@css(/nd/css/quote_order_v180.css)-->
+    <!--@js(/nd/js/quote_order_v180.js)-->
+    <!--@css(/nd/css/xeicon.min.css)-->
+
+</head>
+<body class="nd">
+
+    <!-- 햄버거 메뉴(모바일) -->
+    <!--@import(/nd/layout/side.html)-->
+
+    <!-- 공통 상단 (header) -->
+    <!--@import(/nd/layout/header.html)-->
+    
+    <!-- 우측 퀵메뉴 -->
+    <!--@import(/nd/layout/rightQuick.html)-->
+
+    <div id="wrap">
+        <div id="container">
+            <div id="contents">
+                <!--@contents-->
+            </div>
+        </div>
+    </div>
+
+    <!-- 공통 하단 (footer) -->
+    <!--@import(/nd/layout/footer.html)-->
+
+	<div id="progressPaybar" style="display:none;">
+		<div id="progressPaybarBackground" class="layerProgress"></div>
+		<div id="progressPaybarView">
+			<div class="box">
+				<h3>현재 결제가 진행중입니다.</h3>
+				<p class="txt">
+					본 결제 창은 결제완료 후 자동으로 닫히며,결제 진행 중에 본 결제 창을 닫으시면<br>
+					주문이 되지 않으니 결제 완료 될 때 까지 닫지 마시기 바랍니다.
+				</p>
+				<div class="progressbar"><img src="//img.echosting.cafe24.com/skin/skin/common/img_loading.gif" alt="loading" loading="lazy"></div>
+			</div>
+		</div>
+	</div>
+
+	<div module="Layout_multishopShipping">
+		<!--@css(/layout/basic/css/ec-base-layer.css)-->
+		<!--@css(/css/module/layout/multishopShipping.css)-->
+		<!--@js(/js/module/layout/multishopShipping.js)-->
+		<div class="worldshipLayer ec-base-layer typeModal">
+			<div class="header">
+				<h3>WORLD SHIPPING</h3>
+			</div>
+			<div class="content">
+				<p class="desc">PLEASE SELECT THE DESTINATION COUNTRY AND LANGUAGE :</p>
+				<select module="Layout_multishopShippingCountrylist">
+					<option value="{$country_code}" {$country_default_selected}>SHIPPING TO : {$country_name}</option>
+					<option value="{$country_code}" {$country_default_selected}>SHIPPING TO : {$country_name}</option>
+				</select>
+				<select module="Layout_multishopShippingLanguagelist">
+					<option value="{$shop_domain}" {$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+					<option value="{$shop_domain}" {$shop_default_selected}>LANGUAGE : {$shop_language_name}</option>
+				</select>
+			</div>
+			<div class="ec-base-button">
+				<a href="#none" class="btnSubmitFix sizeM">GO</a>
+			</div>
+			<a href="#none" class="btnClose">닫기</a>
+		</div>
+	</div>
+
+	<div class="layer_shadow" id="layer_shadow"></div>
+	<div id="layoutDimmed" class="dimmed"></div>
+
+</body>
+</html>

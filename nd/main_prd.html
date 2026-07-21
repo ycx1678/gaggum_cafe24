@@ -1,0 +1,45 @@
+<div class="main_prd_wrap section section_3" module="product_listmain_1">
+<!--@css(/nd/css/main_prd_v108.css)-->
+<!--@js(/nd/js/main_prd_v97.js)-->
+    <div class="ec-base-product main_prd_slide">
+        <!--
+        $count = 8
+        ※ 상품진열갯수를 설정하는 변수입니다. 설정하지 않을 경우, 최대 200개의 상품이 진열 됩니다.
+        ※ 진열된 상품이 많으면, 쇼핑몰에 부하가 발생할 수 있습니다.
+        $basket_result = /product/add_basket.html
+        $basket_option = /product/basket_option.html
+        -->
+        <div class="tit_left">
+            <div class="inner">
+                <div class="circle_txt fade top">
+                    <svg viewBox="0 0 100 100" width="100" height="100">
+                        <defs>
+                            <path id="circle"d="M 50, 50
+                                     m -37, 0
+                                     a 37,37 0 1,1 74,0
+                                     a 37,37 0 1,1 -74,0"/>
+                        </defs>
+                        <text font-size="9.4">
+                            <textPath xlink:href="#circle">
+
+                                <!-- 원형으로 돌아가는 텍스트 -->
+                                BEST PRODUCT - BEST PRODUCT - BEST PRODUCT - 
+
+                            </textPath>
+                        </text>
+                    </svg>
+                </div>
+                <p class="tit fade left">
+                    {$category_title_text}
+                </p>
+                <p class="txt fade left">
+                    
+                    <!-- 서브 타이틀 -->
+                	지금 가장 사랑받는 인기 상품들을 만나보세요.
+                    
+                </p>
+            </div>
+        </div>
+        <!--@import(/nd/main_prd_slide.html)-->
+    </div>
+</div><!--// main_prd_wrap END -->

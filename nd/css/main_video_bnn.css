@@ -1,0 +1,45 @@
+.nd#main .main_video_bnn .tit_common{margin-bottom:60px}
+.nd#main .main_video_bnn .tit_common .txt{color:#333}
+
+.main_video_bnn{margin-top:100px}
+.main_video_bnn .main_wrap{width:100%;display:flex;flex-wrap:wrap}
+.main_video_bnn .video_box{width:74%;background:#000}
+.main_video_bnn .video_box > div{position:relative;width:100%;padding-top:56.25%;overflow:hidden}
+.main_video_bnn .video_box > div > iframe{position:absolute;left:0;top:0;aspect-ratio: 16 / 9;width:100%;height:100%;width:120%;height:111.25%;margin:-5.625% 0 0 -10%}
+.main_video_bnn .video_box.full{width:100%}
+.main_video_bnn .video_box.full > div{position:relative;padding-top:56.25%;height:auto}
+.main_video_bnn .video_box.full > div > iframe{position:absolute;top:0;left:0;width:100%}
+.main_video_bnn .bnn_box{width:26%;position:relative;background:#f4f2ec;padding:2% 4.5%;box-sizing:border-box;display:flex;justify-content:center;align-items:center}
+.nd#main .main_video_bnn .bnn_box .ec-base-product{max-width:none;padding:0}
+.main_video_bnn .bnn_box .ec-base-product .prdList{min-width:auto}
+.main_video_bnn .bnn_box .ec-base-product .prdList > li{width:100%;margin-bottom:0}
+.main_video_bnn .bnn_box .ec-base-product .prdList .description{margin:0}
+
+@media all and (max-width:1420px) {
+
+	.main_video_bnn .bnn_box{padding:3%}
+    
+}
+
+
+@media all and (max-width:1024px) {
+
+    .nd#main #contents .section.main_video_bnn{padding:50px 0;margin-top:50px}
+    .nd#main #contents .section.main_video_bnn .tit_common{margin-bottom:30px}
+
+    .main_video_bnn{margin-top:50px}
+    .main_video_bnn .video_box{width:100%;background:none}
+    .main_video_bnn .video_box > div{position:relative;padding-top:56.25%;height:auto}
+	.main_video_bnn .video_box > div > iframe{width:101%;height:100%;margin:0 0 0 -0.5%}
+    
+    .main_video_bnn .bnn_box{width:100%;margin:0;padding:15px}
+	.main_video_bnn .bnn_box .ec-base-product .prdList > li{display:flex;flex-wrap:wrap;align-items:center}
+    .main_video_bnn .bnn_box .ec-base-product .prdList > li > div{flex:1}
+    .main_video_bnn .bnn_box .ec-base-product .prdList .description{padding-left:20px}
+    .main_video_bnn .bnn_box .ec-base-product .prdList .description,
+    .main_video_bnn .bnn_box .ec-base-product .prdList .description .name{}
+    .nd#main .main_video_bnn .ec-base-product .prdList.typ2 .thumbnail{margin:0}
+    .nd#main .main_video_bnn .ec-base-product .prdList.typ2 .btn_wrap{display:none}
+    .nd#main .main_video_bnn .ec-base-product .prdList.typ2 .btn_wrap .btn_buy + .ico_box{margin-left:5px}
+    
+}

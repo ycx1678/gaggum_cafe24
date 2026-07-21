@@ -1,0 +1,248 @@
+/* borad.css */
+
+/* 일반-목록 */
+.nd .xans-board-listpackage .ec-base-table table{border-top:1px solid #e5e5e5}
+.nd .xans-board-listpackage .ec-base-table.typeList td{padding:15px;line-height:1.5}
+.nd .xans-board-listpackage .ec-base-table table td.subject a,
+.nd .xans-board-listpackage .ec-base-table table td .comment{color:#000 !important}
+.nd .xans-board-listpackage .ec-base-table.typeList table td.subject .badge{padding-right:10px}
+.nd .xans-board-catemove{margin-top:30px}
+.nd .xans-board-title p.imgArea{margin:0;padding:0}
+.nd .xans-board-title p.imgArea img{margin-bottom:20px}
+.nd .xans-board-function{margin-top:30px;width:100%;max-width:100%}
+.nd .xans-board-search{max-width:100%}
+
+/* 상품형-목록 */
+.nd .xans-board-listpackage .ec-base-table.typeList td.thumb{line-height:1}
+.nd .xans-board-listpackage .ec-base-table table td.subject .product{display:block;font-size:12px;color:#777 !important;margin:0 0 5px}
+.nd .ec-base-table.typeList.gThumb td > img{vertical-align:middle}
+
+/* 갤러리-목록 */
+.nd .xans-board-listpackage-8 .boardSort{padding:0;border:0}
+.nd .xans-board-listpackage-8 .boardList{padding:0}
+.nd .xans-board-listpackage-8 .xans-board-list-8 li{width:calc(33.3% - 15px);padding:0;margin:0 20px 50px 0;position:relative}
+.nd .xans-board-listpackage-8 .xans-board-list-8 li:nth-child(3n){margin-right:0}
+.nd .xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{margin:15px 0 10px}
+.nd .xans-board-listpackage-8 .xans-board-list-8 li .boardChk{position:absolute;top:5px;left:5px}
+.nd .xans-board-listpackage-8 .boardListEmpty{margin:56px 0;color:#6d6d6d}
+
+/* 상세보기 */
+.nd .xans-board-read .ec-base-table{border-top:1px solid #e5e5e5}
+.nd .xans-board-read .ec-base-table .head{border-color:#e5e5e5}
+.nd .xans-board-read .ec-base-table .head h3{font-size:16px}
+.nd .xans-board-read .ec-base-table .description .name > a:first-child{vertical-align:middle}
+.nd .xans-board-read .ec-base-table .detail{padding:30px 0}
+.nd .xans-board-read .ec-base-table .description .name > a > img{vertical-align:middle}
+.nd .xans-board-readpackage-8 .ec-base-table .detail .ndPortfolioReadImages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:0 0 24px;align-items:start}
+.nd .xans-board-readpackage-8 .ec-base-table .detail .ndPortfolioReadImages img{display:block;width:100%;max-width:100%;height:auto;margin:0}
+.nd .xans-board-readpackage-8 .ec-base-table .detail .ndPortfolioReadImages:has(img:nth-child(3)){grid-template-columns:repeat(3,minmax(0,1fr))}
+.nd .xans-board-read .ec-base-button.gBreak{margin-left:-5px}
+.nd .xans-board-readpackage .ec-base-button.gBottom [class^='btn'],
+.nd .xans-board-readpackage .ec-base-button.gBottom [class^='btn'] + [class^='btn']{margin-left:5px}
+.nd .xans-board-listsgroup .ec-base-table.typeList td{line-height:1;box-sizing:border-box}
+.nd .xans-board-listsgroup .ec-base-table.typeList td > a{vertical-align:top}
+.nd .ec-base-table.typeList th{background:none;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5}
+.nd .ec-base-table.typeList th, 
+.nd .ec-base-table.typeList td{padding:10px}
+
+/* 상품형-상세보기 */
+.nd .xans-board-product .information h3{margin-bottom:8px;font-size:13px}
+.nd .xans-board-product .information .button{margin-top:10px}
+.nd .ec-base-box.typeProduct{padding:15px;border:1px solid #e5e5e5}
+.nd .ec-base-box.typeProduct .thumbnail img{max-width:80px}
+.nd .ec-base-box.typeProduct .information{padding-left:10px}
+.nd .xans-board-write .ec-base-box.typeProduct{margin:0 0 30px}
+
+/* 댓글 */
+.nd .xans-board-commentlist,
+.nd .xans-board-commentwrite textarea,
+.nd .xans-board-commentwrite .input{border-color:#e5e5e5}
+
+/* 글쓰기 */
+.nd .xans-board-write .information h3{padding:0;font-size:13px}
+.nd .xans-board-write .information p.price{margin:10px 0}
+
+
+/*------ 모바일 버전(1024 이하) ------*/
+@media screen and (max-width: 1024px){
+    
+    /* 일반-목록 */
+    .nd .xans-board-listpackage .ec-base-table.typeList{border:0}
+    .nd .xans-board-listpackage .ec-base-table.typeList table{border-top:1px solid #e5e5e5}
+    .nd .xans-board-listpackage .ec-base-table.typeList tr{padding:10px 0}
+    .nd .xans-board-listpackage .ec-base-table.typeList th, 
+    .nd .xans-board-listpackage .ec-base-table.typeList td{padding:10px 10px 0}
+    .nd .xans-board-listpackage .ec-base-table.typeList td.chk{padding:0;line-height:0}
+    .nd .xans-board-listpackage .ec-base-table.typeList td.subject{padding-top:0}
+    .nd .xans-board-listpackage .boardSort{margin:0}
+    .nd .xans-board-listpackage .boardSort > span{padding:0}
+    .nd .xans-board-listpackage .ec-base-table.typeList table td.subject .badge{vertical-align:middle}
+    .nd .ec-base-table.typeList td.chk .boardChk{margin-top:3px}
+    .nd .xans-board-catemove{padding:15px 0}
+    .nd .xans-board-catemove .gColumn{margin:0}
+    .nd .xans-board-function{padding:10px 0 0}
+    .nd .xans-board-search{margin:0 0 0 -10px}
+    .nd .xans-board-listpackage .ec-base-button.gBottom{margin:20px 0 0}
+    .nd #afile_5{display:none}
+    
+    /* 상품형-목록 */
+    .nd .ec-base-table.typeList.gThumb tr{padding:15px 0}
+    .nd .ec-base-table.typeList.gThumb td{font-size:11px;padding:5px 5px 0}
+    .nd .ec-base-table.typeList.gThumb td.subject{font-size:13px}
+    .nd .ec-base-table.typeList.gThumb td.subject > a{padding-left:6px}
+    .nd .ec-base-table.typeList.gThumb td.thumb{width:50px;padding:0;position:relative;top:0;left:0;padding-right:5px}
+    .nd .ec-base-table.typeList.gThumb td > img{vertical-align:-5px}
+    .nd .xans-board-listpackage .ec-base-table table td.subject .product{display:none}
+    .nd .xans-board-listpackage .ec-base-table.typeList table td.thumb img{vertical-align:middle}
+    
+    /* 갤러리-목록 */
+    .nd .xans-board-listpackage-8 .xans-board-list-8 ul{padding:0}
+    .nd .xans-board-listpackage-8 .xans-board-list-8 li{width:calc(50% - 5px);margin:0 10px 30px 0}
+    .nd .xans-board-listpackage-8 .xans-board-list-8 li:nth-child(3n){margin-right:10px}
+    .nd .xans-board-listpackage-8 .xans-board-list-8 li:nth-child(2n){margin-right:0}
+    .nd .xans-board-listpackage-8 .xans-board-list-8 li a .summary span.date{margin:0}
+    .nd .xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{margin:10px 0}
+    .nd .xans-board-listpackage-8 .xans-board-buttonlist-8.ec-base-button.gBottom{margin:20px 0 0}
+    
+    /* 상세보기 */
+    .nd .xans-board-movement{margin:0}
+    .nd .xans-board-listsgroup{margin:30px 0}
+    .nd .xans-board-listsgroup h4{font-size:14px;padding:0 0 20px;background:none}
+    .nd .xans-board-listsgroup .ec-base-table.typeList{border-top:1px solid #e5e5e5}
+    .nd .xans-board-listsgroup .ec-base-table.typeList tr{padding:10px 0;display:flex;flex-wrap:wrap;}
+    .nd .xans-board-listsgroup .ec-base-table.typeList tr:after{content:none}
+    .nd .xans-board-listsgroup .ec-base-table.typeList td{padding:5px 10px;float:none}
+    .nd .xans-board-listsgroup .ec-base-table.typeList td:first-child{align-self:center}
+    .nd .xans-board-listsgroup .ec-base-table.typeList td.prd_n{width:calc(100% - 4em);flex-grow:1;float:none}
+    .nd .xans-board-listsgroup .ec-base-table.typeList td.subject{width:100%}
+    .nd .xans-board-read .ec-base-table .description .name{margin-bottom:10px}
+    .nd .xans-board-readpackage-8 .ec-base-table .detail .ndPortfolioReadImages,
+    .nd .xans-board-readpackage-8 .ec-base-table .detail .ndPortfolioReadImages:has(img:nth-child(3)){grid-template-columns:1fr;gap:10px}
+    .nd .xans-board-read .ec-base-button.gBreak .gLeft + .gRight{margin:0}
+    
+    /* 댓글 */
+    .nd .xans-board-commentwrite{margin:30px 0}
+    .nd .xans-board-commentwrite .inside{border-color:#e5e5e5}
+    .nd .xans-board-commentwrite{padding:0;background:none}
+    
+}
+
+/* 포트폴리오 게시판 목록: 메인 포트폴리오 카드형과 동일하게 고정 */
+.nd .portfolioBoard.xans-board-listpackage-8 .boardList{max-width:1920px!important;margin:0 auto!important;padding:0 70px 80px!important;border-bottom:0!important;box-sizing:border-box}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8{clear:both;overflow:visible!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 ul{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;margin:0!important;padding:0!important;overflow:visible!important;font-size:0;line-height:0}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li{display:flex!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;background:#e9e6df;font-size:13px;line-height:1.5;box-sizing:border-box;position:relative}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li:nth-child(2n),
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li:nth-child(3n){margin-right:0!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li > a{display:flex!important;width:100%;min-height:0;flex-direction:column;color:#111;text-decoration:none}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li > a:hover,
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li > a:hover .subject{text-decoration:none!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail{display:block!important;position:relative;width:100%!important;aspect-ratio:1/1;overflow:hidden;background:#eee}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail img{position:absolute;left:0;top:0;display:block;width:100%!important;height:100%!important;min-width:0!important;margin:0!important;object-fit:cover}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{display:flex!important;min-height:0;flex:1 1 auto;flex-direction:column;padding:24px 28px 28px!important;background:#e9e6df;color:#111;box-sizing:border-box}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{display:block!important;margin:0!important;font-size:21px;font-weight:600;line-height:1.35;color:#111;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject .comment{display:none!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{display:-webkit-box!important;margin:14px 0 0!important;font-size:14px;color:#555;line-height:1.55;min-height:0;overflow:hidden;text-overflow:unset;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{display:none;align-items:center;margin:24px 0 0!important;padding-top:24px!important;border-top:1px solid rgba(0,0,0,.22)}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct.is-active{display:flex!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__param{display:none!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{display:block;position:relative;width:92px;height:92px;flex:0 0 92px;overflow:hidden;background:#eee}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{display:block;min-width:0;padding-left:20px;box-sizing:border-box}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_name{display:-webkit-box;font-size:15px;color:#222;line-height:1.45;overflow:hidden;text-overflow:unset;white-space:normal;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_desc{display:-webkit-box;margin-top:8px;font-size:12px;color:#777;line-height:1.45;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_custom{display:block;margin-top:8px;font-size:13px;color:#777;line-height:1.3;text-decoration:line-through}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_price{display:block;margin-top:3px;font-size:15px;font-weight:600;color:#111;line-height:1.35}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li .boardChk{position:absolute;left:8px;top:8px;z-index:2;margin:0}
+
+@media screen and (max-width:1024px){
+    .nd .portfolioBoard.xans-board-listpackage-8 .boardList{padding:0 12px 50px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 ul{grid-template-columns:1fr!important;gap:16px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{padding:18px 18px 22px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{font-size:15px}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{font-size:12px;margin-top:10px!important;min-height:38px}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{margin-top:16px!important;padding-top:14px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{width:64px;height:64px;flex-basis:64px}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{padding-left:12px}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_name{font-size:13px}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_desc{display:none!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_custom{font-size:12px}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_price{font-size:13px}
+}
+
+/* 포트폴리오 목록 최종 형태: 사진 - 제목 - 본문 - 상품 */
+.nd .portfolioBoard.xans-board-listpackage-8 .boardList{max-width:1920px!important;margin:0 auto!important;padding:0 70px 80px!important;border-bottom:0!important;box-sizing:border-box}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 ul{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;margin:0!important;padding:0!important;font-size:0!important;line-height:0!important;overflow:visible!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li{display:flex!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;background:#e9e6df!important;font-size:13px!important;line-height:1.5!important;box-sizing:border-box!important;position:relative!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li > a{display:flex!important;flex-direction:column!important;width:100%!important;min-height:100%!important;color:#111!important;text-decoration:none!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail{display:block!important;position:relative!important;width:100%!important;aspect-ratio:1/1!important;overflow:hidden!important;background:#eee!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail img{position:absolute!important;left:0!important;top:0!important;width:100%!important;height:100%!important;min-width:0!important;margin:0!important;object-fit:cover!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{display:flex!important;flex:1 1 auto!important;flex-direction:column!important;min-height:255px!important;padding:24px 28px 28px!important;background:#e9e6df!important;color:#111!important;box-sizing:border-box!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{display:block!important;margin:0!important;font-size:21px!important;font-weight:600!important;line-height:1.35!important;color:#111!important;overflow:hidden!important;white-space:nowrap!important;text-overflow:ellipsis!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject .comment{display:none!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{display:-webkit-box!important;margin:14px 0 22px!important;font-size:14px!important;color:#555!important;line-height:1.55!important;min-height:43px!important;overflow:hidden!important;white-space:normal!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{display:none!important;align-items:center!important;margin-top:auto!important;padding-top:18px!important;border-top:1px solid rgba(0,0,0,.22)!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct.is-active{display:flex!important;cursor:pointer}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__param{display:none!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{display:block!important;position:relative!important;width:74px!important;height:74px!important;flex:0 0 74px!important;overflow:hidden!important;background:#eee!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb img{position:absolute!important;left:0!important;top:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{display:block!important;min-width:0!important;padding-left:16px!important;box-sizing:border-box!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_name{display:-webkit-box!important;font-size:14px!important;color:#222!important;line-height:1.45!important;overflow:hidden!important;white-space:normal!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_desc{display:none!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_custom{display:block!important;margin-top:7px!important;font-size:12px!important;color:#888!important;line-height:1.3!important;text-decoration:line-through!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_price{display:block!important;margin-top:2px!important;font-size:15px!important;font-weight:700!important;color:#111!important;line-height:1.35!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 .portfolioProduct.is-active{display:flex!important;align-items:center!important;cursor:pointer}
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 .portfolioProduct__param{display:none!important}
+
+@media screen and (max-width:1024px){
+    .nd .portfolioBoard.xans-board-listpackage-8 .boardList{padding:0 12px 50px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 ul{grid-template-columns:1fr!important;gap:16px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{min-height:220px!important;padding:18px 18px 22px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{font-size:15px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{font-size:12px!important;margin-top:10px!important;min-height:38px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{width:64px!important;height:64px!important;flex-basis:64px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{padding-left:12px!important}
+}
+
+/* 포트폴리오 목록 4열 / 3:4 세로형 최종 반영 */
+@media screen and (min-width:1025px){
+    .nd .portfolioBoard.xans-board-listpackage-8 .boardList{max-width:1920px!important;padding:0 44px 80px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 ul{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail{aspect-ratio:3/4!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{min-height:220px!important;padding:20px 22px 24px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{font-size:18px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{margin:12px 0 18px!important;font-size:13px!important;min-height:40px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{padding-top:16px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{width:64px!important;height:64px!important;flex:0 0 64px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{padding-left:14px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_name{font-size:13px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_price{font-size:14px!important}
+}
+
+/* 포트폴리오 목록 타이틀: 고정 헤더/띠배너와 겹치지 않도록 보정 */
+.nd .portfolioBoard.xans-board-listpackage-8 .path{display:none!important}
+.nd .portfolioBoard.xans-board-listpackage-8 .titleArea{margin:128px 0 52px!important;padding:0!important;text-align:center!important;position:relative;z-index:1}
+.nd .portfolioBoard.xans-board-listpackage-8 .titleArea h2{display:block!important;margin:0!important;padding:0!important;background:none!important;border:0!important;font-family:Georgia,'Times New Roman',serif!important;font-size:48px!important;font-weight:700!important;line-height:1.1!important;color:#000!important}
+
+@media screen and (max-width:1024px){
+    .nd .portfolioBoard.xans-board-listpackage-8 .titleArea{margin:92px 0 32px!important;padding:0!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .titleArea h2{font-size:34px!important;line-height:1.15!important}
+}
+
+/* 포트폴리오 카드 하단 정렬: 구분선 위치와 선 위/아래 간격 고정 */
+@media screen and (min-width:1025px){
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{height:24px!important;line-height:24px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{height:40px!important;min-height:40px!important;margin:10px 0 0!important;line-height:20px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{margin-top:16px!important;padding-top:16px!important}
+}
+
+@media screen and (max-width:1024px){
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{height:21px!important;line-height:21px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{height:38px!important;min-height:38px!important;margin:9px 0 0!important;line-height:19px!important}
+    .nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{margin-top:14px!important;padding-top:14px!important}
+}
+
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_desc,
+.nd .portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_desc.is-active,
+.nd .portfolioBoard .portfolioFallbackList .portfolioProduct .p_desc,
+.nd .portfolioBoard .portfolioFallbackList .portfolioProduct .p_desc.is-active{display:none!important}

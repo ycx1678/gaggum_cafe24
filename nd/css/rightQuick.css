@@ -1,0 +1,88 @@
+.rightQuick{display:none;position:fixed;right:20px;bottom:50px;z-index:30}
+.rightQuick > ul > li{position:relative;margin:5px 0 0}
+.rightQuick > ul > li > a {position:relative;display:block;text-align:center;border:1px solid #e9e9e9;background:#fff;border-radius:100%;transition:all 0.5s}
+.rightQuick > ul > li:hover > a{border-color:#666}
+.rightQuick > ul > li > a.on{background:#f9f9f9}
+.rightQuick > ul > li > a > i{font-size:20px;width:40px;height:40px;box-sizing:border-box;line-height:40px;color:#555;transition:all 0.5s}
+.rightQuick > ul > li > a > .count{position:absolute;top:7px;right:7px;width:16px;height:16px;line-height:14px;text-align:center;background:#555;color:#fff;border-radius:100%;font-size:10px}
+
+.rightQuick > ul > li dl{font-size:0;padding:5px 0;box-sizing:border-box}
+.rightQuick > ul > li dl:nth-child(n+4){display:none}
+.rightQuick > ul > li dt{display:inline-block;width:20%;vertical-align:middle}
+.rightQuick > ul > li dt img{width:100%;height:auto;border-radius:3px}
+.rightQuick > ul > li dd{display:inline-block;width:80%;padding-left:5%;box-sizing:border-box;vertical-align:middle;line-height:1.6;font-size:11px}
+.rightQuick > ul > li dd a{color:#555}
+.rightQuick > ul > li dd .strike{color:#999}
+.rightQuick > ul > li .number{position:relative;font-size:12px}
+.rightQuick > ul > li .number p a{color:#aaa}
+.rightQuick > ul > li .number .txtEm{color:#fff}
+.rightQuick > ul > li .number .state{background:#aaa;position:absolute;right:10px;top:50%;padding:3px;border-radius:3px;transform:translateY(-50%);}
+
+.rightQuick > ul > li .tit{margin:0 0 10px 0;background:none;border:0;border-bottom:1px solid #ddd;text-align:left}
+.rightQuick > ul > li .tit i{float:right;font-size:20px;padding:7px 0;color:#ccc;position:relative;top:-8px;right:-10px;cursor:pointer}
+.rightQuick > ul > li .tit h3{display:inline-block;padding:10px 0 5px;margin-top:-1px;color:#000;font-size:14px}
+.rightQuick > ul > li .btn{position:absolute;bottom:25px;display:block;width:88%;border-radius:5px;color:#fff;background:#000;text-align:center;line-height:35px;margin:10px 0 0;transition:all 0.5s ease;}
+.rightQuick > ul > li .btn:hover{background:#555}
+.rightQuick > ul > li .empty{text-align:center}
+.rightQuick > ul > li .empty i{font-size:20px;margin:85px 0 20px;}
+.rightQuick > ul > li .message{border:0}
+.rightQuick > ul > li .message i{font-size:20px;margin:30px 0 20px}
+.rightQuick > ul > li strong{font-weight:400;color:#555}
+.rightQuick > ul > li .option{color:#999}
+
+.rightQuick > ul > li .quick_cart,
+.rightQuick > ul > li .quick_wish,
+.rightQuick > ul > li .quick_recent,
+.rightQuick > ul > li .quick_list{display:none;position:absolute;right:60px;bottom:-50px;width:330px;min-height:330px;background:rgba(255,255,255,0.9);border:1px solid #ddd;padding:15px 20px 70px;box-sizing:border-box}
+.rightQuick > ul > li .quick_search{display:none;position:absolute;right:60px;top:0;width:330px;background:rgba(255,255,255,0.85);border:1px solid #ddd;padding:10px 20px 20px;box-sizing:border-box}
+
+/* 공통 버튼 스타일 */
+.rightQuick > ul > li.kakao_ch_icon > a,
+.rightQuick > ul > li.navertalk_icon > a {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border: none;
+    overflow: hidden;
+}
+
+/* PNG 아이콘 크기 조절 */
+.rightQuick > ul > li.kakao_ch_icon img,
+.rightQuick > ul > li.navertalk_icon img {
+    width: 22px;
+    object-fit: contain;
+    display: block;
+}
+
+/* 카카오 컬러 */
+.rightQuick > ul > li.kakao_ch_icon > a {
+    background-color: #FEE500;
+}
+
+/* 네이버 톡톡 컬러 */
+.rightQuick > ul > li.navertalk_icon > a {
+    background-color: #03C75A;
+}
+
+/* hover 효과 */
+.rightQuick > ul > li.kakao_ch_icon:hover > a,
+.rightQuick > ul > li.navertalk_icon:hover > a {
+    filter: brightness(0.9);
+}
+
+/* 풀페이지 메인 display */
+.nd#main .rightQuick{display:block}
+.nd#main .rightQuick .goTop_btn{display:none}
+
+
+/* 모바일 ver */
+@media all and (max-width:1024px) {
+
+    .rightQuick{bottom:20px;right:10px}
+    .rightQuick > ul > li .quick_recent{right:0;bottom:0}
+
+}

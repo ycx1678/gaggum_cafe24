@@ -1,0 +1,62 @@
+.nd#main .main_prd_slide{max-width:none;padding:0 0 10px;margin-top:120px;background:#fff}
+.nd#main .main_prd_slide .tit_left{width:25%;display:flex;justify-content:center;align-items:center;padding:0 20px;box-sizing:border-box;background:#fff;position:relative;z-index:1}
+.nd#main .main_prd_slide .tit_left .inner{text-align:left;background:#fff}
+.nd#main .main_prd_slide .tit_left p{line-height:1.3}
+.nd#main .main_prd_slide .tit_left b{display:inline-block;vertical-align:middle;font-weight:600;font-size:46px}
+.nd#main .main_prd_slide .tit_left .tit_sub{font-size:18px;margin-bottom:20px;font-weight:500}
+.nd#main .main_prd_slide .tit_left .tit{font-size:40px;letter-spacing:-0.5px;word-break:keep-all}
+.nd#main .main_prd_slide .tit_left .btn_link{margin-top:60px}
+.nd#main .main_prd_slide .prdList{width:91%;margin:0 auto;overflow:hidden;padding:0;}
+.nd#main .main_prd_slide .prdList .swiper-container{width:100%;overflow:visible}
+.nd#main .main_prd_slide .prdList .swiper-wrapper > li{padding-bottom:30px;box-sizing:border-box;position:relative;transition:border 0.4s ease}
+.nd#main .main_prd_slide .prdList .swiper-wrapper > li:hover{transform:none;-ms-transform:none}
+.nd#main .main_prd_slide .prdList .thumbnail{position:relative;overflow:hidden}
+.nd#main .main_prd_slide .prdList .prdImg{position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:#f6f6f6}
+.nd#main .main_prd_slide .prdList .prdImg > a{display:block;position:relative;width:100%;height:100%}
+.nd#main .main_prd_slide .prdList .prdImg > a > img{position:absolute;inset:0;width:100% !important;height:100% !important;max-width:none;border:0;object-fit:cover;transition:opacity .35s ease}
+.nd#main .main_prd_slide .prdList .prdImg > a > img.on{opacity:0}
+.nd#main .main_prd_slide .prdList .prdImg > a.nd-has-hover-image:hover > img.on{opacity:1}
+.nd#main .main_prd_slide .prdList .prdImg > a.nd-has-hover-image:hover > img:not(.on){opacity:0}
+
+@media all and (max-width:1730px) {
+    .nd#main .main_prd_slide .prdList.typ2 .btn_wrap .btn_buy + .ico_box{margin-left:5px}
+}
+
+/* 모바일 ver */
+@media all and (max-width:1024px) {
+
+    .nd#main .main_prd_slide{min-height:100%;display:flex;flex-direction:column;justify-content:flex-start;padding:112px 22px 34px!important;margin-top:0;box-sizing:border-box;overflow:hidden}
+    .nd#main .main_prd_slide .tit_left{width:100%;display:block;padding:0 0 14px!important}
+    .nd#main .main_prd_slide .tit_left b{font-size:26px;vertical-align:top}
+    .nd#main .main_prd_slide .tit_left .tit_sub{font-size:16px}
+    .nd#main .main_prd_slide .tit_left .tit{font-size:32px;line-height:1.04;margin:0 0 8px!important}
+    .nd#main .main_prd_slide .tit_left .txt{font-size:15px!important;line-height:1.35!important;margin:0 auto!important}
+    .nd#main .main_prd_slide .tit_left .btn_link{margin-top:20px}
+    .nd#main .main_prd_slide .prdList{width:100%;max-width:none;margin:0 auto;padding:0;overflow:hidden}
+    .nd#main .main_prd_slide .prdList .swiper-wrapper > li{padding-bottom:8px;box-sizing:border-box}
+    .nd#main .main_prd_slide .prdList .thumbnail{margin-bottom:8px}
+    .nd#main .main_prd_slide .prdList .prdImg{aspect-ratio:1/1.02}
+    .nd#main .main_prd_slide .prdList .description{margin:10px 0 0 !important;line-height:1.35}
+    .nd#main .main_prd_slide .prdList .description .name{margin:0 0 8px}
+    .nd#main .main_prd_slide .prdList .description .name a{display:block;font-size:19px !important;line-height:1.25 !important;font-weight:600;letter-spacing:0;word-break:keep-all;overflow-wrap:anywhere}
+    .nd#main .main_prd_slide .prdList .spec{margin:8px 0 0}
+    .nd#main .main_prd_slide .prdList .spec > li{margin:0 0 5px;line-height:1.35;font-size:14px}
+    .nd#main .main_prd_slide .prdList .icon{margin-top:8px}
+    .nd#main .main_prd_slide .prdList .icon img{max-height:18px}
+    .nd#main .main_prd_slide .prdList.typ2 .btn_wrap .btn_buy{display:none}
+    
+}
+
+@media all and (max-width:420px) {
+    .nd#main .main_prd_slide{padding:106px 22px 32px!important}
+    .nd#main .main_prd_slide .prdList{max-width:none}
+    .nd#main .main_prd_slide .prdList .description .name a{font-size:18px !important}
+}
+
+@media all and (max-width:1024px) {
+    .nd#main .main_prd_wrap.section_3,
+    .nd#main .main_prd_wrap.section_3 .fp-tableCell{overflow:hidden!important}
+    .nd#main .section_3 .fp-tableCell{align-items:stretch!important;justify-content:flex-start!important}
+    .nd#main .main_prd_wrap .main_prd_slide{height:100%!important;min-height:100%!important;max-height:100%!important;box-sizing:border-box}
+    .nd#main .main_prd_wrap .swiper-scrollbar{margin:8px auto 0!important}
+}

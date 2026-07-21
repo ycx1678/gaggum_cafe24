@@ -1,0 +1,4 @@
+#popup { width:600px; }
+.ec-base-layer .inputTypeText { width:200px; }
+.ec-base-layer select { min-width:85px; }
+.ec-base-layer textarea { min-width:277px; min-height:90px; }

@@ -1,0 +1,7 @@
+/* 무료배송 게이지 */
+.freeShip_gauge{display:none;margin-bottom:12px;margin-top: 30px}
+.freeShip_gauge .tit_gauge.free{color:#000}
+.freeShip_gauge .gauge_wrap{height:5px;border-radius:2px;background:#eee;margin-top:10px}
+.freeShip_gauge .gauge_bar{width:0;height:5px;border-radius:2px;background:#ff6600}
+.freeShip_gauge .price_range{display:flex;justify-content:space-between;margin-top:5px}
+.freeShip_gauge .pricePay{display:inline-block;margin-left:10px;font-size:15px;font-weight:500;color:#ff6600}

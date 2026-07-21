@@ -1,0 +1,31 @@
+<!--@css(/nd/css/prd_bnn.css)-->
+<!--@js(/nd/js/prd_bnn.js)-->
+<div class="prd_bnn section section_5" module="product_listmain_2">
+    <div class="prd_bnn_wrap">
+        <!--- 상품 --->
+        <div class="prd_area">
+            <div class="ec-base-product main_prd_slide2">
+                <!--
+                    $count = 8
+                    ※ 상품진열갯수를 설정하는 변수입니다. 설정하지 않을 경우, 최대 200개의 상품이 진열 됩니다.
+                    ※ 진열된 상품이 많으면, 쇼핑몰에 부하가 발생할 수 있습니다.
+                    $basket_result = /product/add_basket.html
+                    $basket_option = /product/basket_option.html
+				-->
+                <p class="main_tit fade left">{$category_title_text}</p>
+                <p class="main_txt fade left">
+                    MD가 픽한 추천상품을 만나보세요.
+                </p>
+                <div class="swiper-container prdList fade top">
+                    <ul class="swiper-wrapper">
+                        <!--@import(/nd/prd_list_slide.html)-->
+                    </ul>
+                    <div class="swiper-scrollbar"></div>
+                </div>
+            </div>
+        </div>
+        <!--- 배너 --->
+        <div class="bnn_area img_box"></div>
+        
+    </div><!--// prd_bnn_wrap END -->
+</div><!--// prd_bnn END -->

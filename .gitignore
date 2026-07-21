@@ -1,0 +1,15 @@
+.DS_Store
+tmp/
+tmp_video_check/
+outputs/
+.playwright-mcp/
+.codex_compare/
+*.zip
+*.log
+/*.png
+/*.jpg
+/*.jpeg
+/*.mp4
+/*.mov
+/console-*-errors.txt
+/deployed-*-errors.json

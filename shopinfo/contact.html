@@ -1,0 +1,41 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@css(/nd/css/brand.css)-->
+
+<div class="titleArea">
+    <h2>위치안내</h2>
+</div>
+
+<ul class="brand_tab">
+	<li><a href="/shopinfo/company.html">브랜드</a></li>
+    <li><a href="/nd/product.html">사업소개</a></li>
+    <li class="on"><a href="/shopinfo/contact.html">위치안내</a></li>
+</ul>
+
+<div module="mall_company">
+    <div class="contact_box" module="Layout_footer">
+    	
+        <!----- 지도 ----->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3158.811513890148!2d127.0487426155902!3d37.653635126892375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cb945899e0a19%3A0x9f30e83796b08458!2z7ISc7Jq47Yq567OE7IucIOuPhOu0ieq1rCDssL3rj5kgMTQ!5e0!3m2!1sko!2skr!4v1608097642908!5m2!1sko!2skr" width="100%" height="540" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <!----- 지도 end ----->
+        
+        <p class="cont_tit">CONTACT US<span>오시는 길 및 문의 안내</span></p>
+        
+        <ul class="cont_inner">
+            <li>
+            	<p class="inner_tit"><i class="xi-microphone"></i>고객센터</p>
+                <p class="tel">{$phone}</p>
+                <p class="runtime">{$runtime}</p>
+            </li>
+            <li>
+            	<p class="inner_tit"><i class="xi-maker"></i>오시는 길</p>
+                <p class="address">{$mall_addr1}<br />{$mall_addr2}</p>
+            </li>
+            <li>
+            	<p class="inner_tit"><i class="xi-mail-o"></i>메일문의</p>
+                <p class="mail">{$cpo_email}</p>
+                <p class="mail_ment">메일문의는 위 주소로 보내주세요.</p>
+            </li>
+        </ul>
+        
+    </div>
+</div>

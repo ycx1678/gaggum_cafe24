@@ -1,0 +1,24 @@
+/* BEST mobile layout lock loaded after shared product CSS. */
+@media all and (max-width:1024px){
+    .nd#main .main_prd_wrap.section_3,
+    .nd#main .main_prd_wrap.section_3 .fp-tableCell{overflow:hidden!important}
+    .nd#main .main_prd_wrap .main_prd_slide{height:100dvh!important;min-height:100dvh!important;max-height:100dvh!important;display:flex!important;flex-direction:column!important;justify-content:flex-start!important;padding:96px 18px 32px!important;box-sizing:border-box!important;overflow:hidden!important}
+    .nd#main .main_prd_wrap .main_prd_slide .tit_left{width:100%!important;padding:0 0 12px!important;text-align:center!important;box-sizing:border-box!important}
+    .nd#main .main_prd_wrap .main_prd_slide .tit_left .tit{font-size:32px!important;line-height:1.04!important;margin:0 0 8px!important}
+    .nd#main .main_prd_wrap .main_prd_slide .tit_left .txt{font-size:15px!important;line-height:1.35!important;margin:0 auto!important}
+    .nd#main .main_prd_wrap .main_prd_slide .prdList,
+    .nd#main .main_prd_wrap .main_prd_slide .swiper-container{width:100%!important;max-width:none!important;margin:0 auto!important;padding:0!important;overflow:hidden!important}
+    .nd#main .main_prd_wrap .main_prd_slide .swiper-wrapper{align-items:flex-start!important;height:auto!important;min-height:0!important}
+    .nd#main .main_prd_wrap .main_prd_slide .swiper-slide{display:block!important;width:calc((100% - 12px)/2)!important;max-width:none!important;flex:0 0 calc((100% - 12px)/2)!important;margin-right:12px!important;padding-bottom:0!important;box-sizing:border-box!important;overflow:hidden!important;visibility:visible!important}
+    .nd#main .main_prd_wrap .main_prd_slide .prdList .thumbnail{margin-bottom:8px!important;overflow:hidden!important}
+    .nd#main .main_prd_wrap .main_prd_slide .prdList .thumbnail > .prdImg,
+    .nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg{display:block!important;position:relative!important;width:100%!important;height:300px!important;height:clamp(260px,39vh,330px)!important;height:clamp(260px,39svh,330px)!important;aspect-ratio:auto!important;overflow:hidden!important;background:#f6f6f6!important}
+    .nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg > a{display:block!important;position:relative!important;width:100%!important;height:100%!important}
+    .nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg > a > img{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:none!important;object-fit:cover!important;object-position:center center!important}
+    .nd#main .main_prd_wrap .main_prd_slide .description{display:block!important;width:100%!important;margin:8px 0 0!important;transform:none!important;line-height:1.35!important}
+    .nd#main .main_prd_wrap .main_prd_slide .description .name{display:block!important;margin:0 0 6px!important}
+    .nd#main .main_prd_wrap .main_prd_slide .description .name a{display:block!important;font-size:13px!important;line-height:1.35!important;font-weight:600!important;letter-spacing:0!important;word-break:keep-all!important;overflow-wrap:anywhere!important}
+    .nd#main .main_prd_wrap .main_prd_slide .spec{display:block!important;margin:6px 0 0!important}
+    .nd#main .main_prd_wrap .main_prd_slide .spec > li{font-size:13px!important;line-height:1.3!important;margin:0 0 4px!important}
+    .nd#main .main_prd_wrap .swiper-scrollbar{display:none!important}
+}

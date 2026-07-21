@@ -1,0 +1,18 @@
+/* board_tab.css */
+
+.nd .board_tab{margin-bottom:40px;text-align:center}
+.nd .board_tab ul > li{display:inline-block;vertical-align:top;margin:0 10px 10px 0}
+.nd .board_tab ul > li:last-child{margin-right:0}
+.nd .board_tab ul > li > a{display:block;border:1px solid #e5e5e5;color:#666;font-size:14px;border-radius:3px;transition:all 0.5s;min-width:150px;padding:12px 10px;box-sizing:border-box;cursor:pointer}
+.nd .board_tab ul > li > a:hover{border-color:#000;color:#000}
+.nd .board_tab ul > li.on > a{background:#000;color:#fff;border-color:#000}
+.nd .board_tab ul > li.on > a:hover{background:#aaa;border-color:#aaa}
+
+/*------ 모바일 버전(1024 이하) ------*/
+@media screen and (max-width: 1024px){
+
+    .nd .board_tab ul{display:grid;gap:6px;grid-template-columns:repeat(4, 1fr)}
+    .nd .board_tab ul > li{width:auto;display:block;margin:0}
+    .nd .board_tab ul > li > a{font-size:12px;min-width:auto;padding:10px;white-space:nowrap}
+    
+}

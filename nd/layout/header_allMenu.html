@@ -1,0 +1,86 @@
+<!--@css(/nd/css/header_allMenu.css)-->
+
+<div class="header_allMenu" module="Layout_footer">
+	<a href="javascript:void(0)" class="btn_close"><i class="xi-close"></i></a>
+    <div class="inwrap">
+        <div class="allMenu_top">
+            
+            <!-- 로고 -->
+        	<h1 class="logo" module="Layout_LogoTop"><a href="/">{$mall_name}</a></h1>
+            
+            <div class="search_wrap">
+                <div module="Layout_SearchHeader">
+                    <!--
+                        $product_page=/product/detail.html
+                        $category_page=/product/list.html
+                    -->
+                    <div class="search_input">{$form.keyword}<i class="xi-search btn_search" onclick="{$action_search_submit}"></i></div>
+                </div>
+			</div>
+        </div>
+        <ul class="allMenu_cont">
+        	<li>
+                <p class="tit">SHOP</p>
+                <ul class="link" module="Layout_category">
+                    <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+                    <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+                    <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+                </ul>
+			</li>
+            <li>
+                <p class="tit">COMMUNITY </p>
+                <ul class="link">
+                    <li><a href="/board/free/list.html?board_no=1">공지사항</a></li>
+                    <li><a href="/board/event/list.html?board_no=2">EVENT</a></li>
+                    <li><a href="/board/product/list.html?board_no=6">상품 Q&amp;A</a></li>
+                    <li module="Layout_Myshop" class="{$consult_display|display}"><a href="/board/consult/list.html">1:1 Q&amp;A</a></li>
+                </ul>
+			</li>
+            <li>
+                <p class="tit">ACCOUNT</p>
+                <ul class="link" module="myshop_main">
+                    <li module="Layout_statelogoff"><a href="/member/login.html">로그인</a></li>
+                    <li module="Layout_statelogoff"><a href="/member/join.html">회원가입</a></li>
+                    <li module="Layout_stateLogon"><a href="{$action_logout}">로그아웃</a></li>
+                    <li><a href="/myshop/order/list.html">주문조회</a></li>
+					<li><a href="/myshop/index.html">마이페이지</a></li>
+                    <li><a href="/order/basket.html">장바구니({$basket_count})</a></li>
+				</ul>
+			</li>
+            <li>
+                <p class="tit">C/S CENTER</p>
+                <div class="cont">
+                	<p class="phone">{$phone}</p>
+					<p class="runtime">{$runtime}</p>
+                </div>
+                
+                <div class="cont">
+                	<p class="bank">은행명 000-000-0000</p>
+                    <p class="bank">은행명 000-000-0000</p>
+                    <p class="bank">은행명 000-000-0000</p>
+                    <p class="name">예금주명: 어썸디</p>
+                </div>
+                
+                <ul class="cont sns_wrap">
+                    <!--@import(/nd/layout/sns_link.html)-->
+                </ul>
+			</li>
+        </ul>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

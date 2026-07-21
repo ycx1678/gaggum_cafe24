@@ -1,0 +1,35 @@
+<div module="product_recentlist" class="quick_recent">    
+    <div class="tit Cardo">
+        <h3>Recent list</h3>
+        <i class="xi-close-thin"></i>
+    </div>
+    
+    <!-- 상품 비어있을 때 -->
+    <div class="empty {$empty_display|display}">
+        <i class="xi-search"></i>
+        <p class="message">최근본 상품 내역이 없습니다.</p>
+    </div>
+
+    <div module="product_listitem">
+        <dl>
+            <dt class="image"><a href="{$link_product_detail}"><img src="{$image_medium}" alt="" /></a></dt>
+            <dd class="product">
+                <a href="{$link_product_detail}">{$product_name}</a>
+				<p class="{$strike_custom_price} {$custom_price_display|display} price_custom"><strong>{$product_custom}</strong></p>
+                <p class="{$discount} price_normal"><strong class="txtEm">{$price}</strong></p>
+                <p class="{$product_sale_price_display|display} txtEm price_sale"><strong>{$product_sale_price}</strong></p>
+            </dd>
+        </dl>
+        <dl>
+            <dt class="image"><a href="{$link_product_detail}"><img src="{$image_medium}" alt="" /></a></dt>
+            <dd class="product">
+                <a href="{$link_product_detail}">{$product_name}</a>
+				<p class="{$strike_custom_price} {$custom_price_display|display} price_custom"><strong>{$product_custom}</strong></p>
+                <p class="{$discount} price_normal"><strong class="txtEm">{$price}</strong></p>
+                <p class="{$product_sale_price_display|display} txtEm price_sale"><strong>{$product_sale_price}</strong></p>
+            </dd>
+        </dl>
+        <a class="btn" href="/product/recent_view_product.html">최근 본 상품 목록 전체보기</a>
+    </div>
+
+</div>

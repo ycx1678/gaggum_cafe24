@@ -1,0 +1,29 @@
+/* Product detail option simulator */
+.nd .ndOptionSimulator[hidden],
+.nd .ndSimulatorPreview[hidden]{display:none!important}
+
+.nd .prd_img_wrap > .ndOptionSimulator{display:none!important}
+
+.nd .ndSimulatorPreview{position:absolute;inset:0;z-index:22;display:flex;align-items:center;justify-content:center;background:#fdfcf8;overflow:hidden}
+.nd .ndSimulatorPreview__close{position:absolute;top:16px;right:16px;z-index:3;display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(0,0,0,.12);background:rgba(255,255,255,.88);color:#111;font-size:16px;line-height:1;cursor:pointer;box-sizing:border-box}
+.nd .ndSimulatorPreview__stage{position:relative;width:min(100%,720px);height:100%;min-height:420px;overflow:hidden;contain:layout paint}
+.nd .ndSimulatorPreview__caption{position:absolute;left:18px;right:18px;bottom:18px;z-index:3;margin:0;padding:10px 14px;background:rgba(255,255,255,.82);color:#333;font-size:12px;line-height:1.5;text-align:center;box-sizing:border-box}
+.nd .ndSimulatorLayer{position:absolute;inset:0;display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center center;pointer-events:none;box-sizing:border-box}
+.nd .ndSimulatorLayer--base{z-index:0}
+.nd .ndSimulatorLayer--image{z-index:1}
+.nd .ndSimulatorLayer--demo{z-index:1}
+.nd .ndSimulatorLayer--demo[data-layer="top"]{left:50%;top:24%;width:62%;height:22%;border-radius:50%;background:var(--nd-simulator-color,#d7c1a1);box-shadow:0 18px 35px rgba(0,0,0,.16);transform:translateX(-50%) rotate(-2deg)}
+.nd .ndSimulatorLayer--demo[data-layer="edge"]{left:22%;top:42%;width:56%;height:5%;border-radius:999px;background:var(--nd-simulator-color,#9c7a55);box-shadow:0 5px 12px rgba(0,0,0,.12)}
+.nd .ndSimulatorLayer--demo[data-layer="frame"]{inset:auto;left:29%;top:43%;width:42%;height:37%;background:transparent}
+.nd .ndSimulatorLayer--demo[data-layer="frame"]:before,
+.nd .ndSimulatorLayer--demo[data-layer="frame"]:after{content:"";position:absolute;top:0;width:8%;height:100%;border-radius:999px;background:var(--nd-simulator-color,#333);box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.nd .ndSimulatorLayer--demo[data-layer="frame"]:before{left:8%;transform:skewX(-9deg)}
+.nd .ndSimulatorLayer--demo[data-layer="frame"]:after{right:8%;transform:skewX(9deg)}
+.nd .ndSimulatorLayer--demo[data-layer="chair"]{left:63%;top:50%;width:19%;height:24%;border-radius:16px 16px 8px 8px;background:var(--nd-simulator-color,#496777);box-shadow:0 14px 24px rgba(0,0,0,.16)}
+.nd .ndSimulatorLayer--demo[data-layer="chair"]:before{content:"";position:absolute;left:18%;right:18%;top:-36%;height:42%;border-radius:16px 16px 8px 8px;background:var(--nd-simulator-color,#496777)}
+
+@media all and (max-width:1024px){
+    .nd .ndSimulatorPreview__stage{min-height:0}
+    .nd .ndSimulatorPreview__close{top:12px;right:12px;width:34px;height:34px}
+    .nd .ndSimulatorPreview__caption{left:12px;right:12px;bottom:12px;font-size:11px}
+}

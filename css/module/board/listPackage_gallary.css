@@ -1,0 +1,234 @@
+/* 게시판 전체 공통 */
+.xans-board-title .title { min-height:30px; margin:10px 0 20px; border-bottom:1px solid #e8e8e8; }
+.xans-board-title .title h2 { display:inline-block; padding:0 0 0 12px; color:#2e2e2e; font-size:16px; background:url("//img.echosting.cafe24.com/skin/base/layout/ico_heading.gif") 0 50% no-repeat; }
+.xans-board-title .title p { display:inline-block; margin:0 0 0 6px; padding:0 0 0 10px; color:#939393; vertical-align:bottom; background:url("//img.echosting.cafe24.com/skin/base/common/ico_bar.gif") no-repeat 0 0; }
+.xans-board-title p.imgArea { margin:0 0 20px; }
+.portfolioBoard .path{display:none;}
+.portfolioBoard .titleArea{margin:128px 0 52px!important;padding:0!important;text-align:center;}
+.portfolioBoard .titleArea h2{font-size:48px;font-weight:700;line-height:1.1;color:#000;background:none;padding:0;font-family:Georgia,'Times New Roman',serif;}
+.portfolioBoard .xans-board-listheader-8,
+.portfolioBoard .boardSort{display:none;}
+
+/* 리스트 정렬 */
+.xans-board-listpackage-8 .boardList { padding:0 0 60px;margin:-10px 0 0;overflow:hidden;border-bottom:1px solid #e5e5e5 }
+.xans-board-listpackage-8 .boardSort { display:flex;margin:0 11px 0; }
+.xans-board-listpackage-8 .boardSort .xans-board-category-8{flex:1;display: inline-block; padding: 0 5px; box-sizing: border-box;}
+.xans-board-listpackage-8 .boardSort .xans-board-category-8 > select{ width: 100%; }
+.xans-board-listpackage-8 .xans-board-buttonlist-8.ec-base-button.gBottom{margin:20px 16px 0;}
+
+/* 갤러리형 탭메뉴 */
+.xans-board-listheader-8 {  margin:0 0 40px; }
+.xans-board-listheader-8 ul {overflow:hidden}
+.xans-board-listheader-8 ul li {width:50%;float:left;text-align:center;}
+.xans-board-listheader-8 li a{ display:block;font-size:14px;color:#6d6d6d;border-bottom:1px solid #e0e0e0;padding:20px 15px; }
+.xans-board-listheader-8 li a svg.icon{ display:inline-block;margin-right:4px; }
+.xans-board-listheader-8 li.selected a{ color:#000000;border-bottom:1px solid #000000; }
+
+/* list 공통 */
+.xans-board-listpackage-8 { margin:0 0 20px; }
+.xans-board-listpackage-8 .summary .subject span.comment{ display:inline-block;float:none;color:#ef441f; margin: 0 0 0 8px; }
+
+/* 공지글, 고정글 */
+.xans-board-listpackage-8 .xans-board-notice-8,
+.xans-board-listpackage-8 .xans-board-fixed-8 { clear:both; overflow:hidden; }
+.xans-board-listpackage-8 .xans-board-notice-8 ul,
+.xans-board-listpackage-8 .xans-board-fixed-8 ul{ font-size:0; line-height:0; padding:0 11px; }
+.xans-board-listpackage-8 .xans-board-notice-8 li,
+.xans-board-listpackage-8 .xans-board-fixed-8 li  {font-size:13px; line-height:1.5;vertical-align:top; box-sizing:border-box;margin:30px 0 0;padding:0 5px; }
+.xans-board-listpackage-8 .xans-board-notice-8 li a .thumbnail,
+.xans-board-listpackage-8 .xans-board-fixed-8 li a .thumbnail{display:block; }
+.xans-board-listpackage-8 .xans-board-notice-8 li a .thumbnail img,
+.xans-board-listpackage-8 .xans-board-fixed-8 li a .thumbnail img  { display:block;width: 100%;min-width: 88px; margin:0 auto; }
+.xans-board-listpackage-8 .xans-board-notice-8 li a .summary,
+.xans-board-listpackage-8 .xans-board-fixed-8 li a .summary  { display: block;color:#6d6d6d;}
+.xans-board-listpackage-8 .xans-board-notice-8 li a .summary .subject,
+.xans-board-listpackage-8 .xans-board-fixed-8 li a .summary .subject{display:block;margin:16px 0 8px;font-weight:bold;color:#000000;}
+.xans-board-listpackage-8 .xans-board-notice-8 li a .summary span,
+.xans-board-listpackage-8 .xans-board-fixed-8 li a .summary span { display:inline-block;}
+
+.xans-board-listpackage-8 .xans-board-notice-8 li a .summary span.date,
+.xans-board-listpackage-8 .xans-board-fixed-8 li a .summary span.date { display:inline-block;margin-left:8px; }
+.xans-board-listpackage-8 .xans-board-notice-8 li a .summary em,
+.xans-board-listpackage-8 .xans-board-fixed-8 li a .summary em { display:inline-block;color:#6d6d6d;font-style: normal;margin-right:6px;vertical-align:top;}
+
+/* 일반글 */
+.xans-board-listpackage-8 .xans-board-list-8 { clear:both; overflow:hidden; }
+.xans-board-listpackage-8 .xans-board-list-8 ul { font-size:0; line-height:0; padding:0 11px; }
+.xans-board-listpackage-8 .xans-board-list-8 li { display:inline-block; font-size:13px; line-height:1.5;width:50%;vertical-align:top; box-sizing:border-box;margin:30px 0 0;padding:0 5px; }
+.xans-board-listpackage-8 .xans-board-list-8 li .boardChk{ display:block;margin:0 auto; }
+.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail{display:block; }
+.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail img { display:block;width: 100%;min-width: 88px; margin:0 auto; }
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary { display:block; color:#6d6d6d; }
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{display:block;margin:15px 0 8px;font-weight:normal;color:#000000;}
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{display:block;margin:0 0 14px;color:#777;line-height:1.5;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{display:flex;align-items:center;margin:16px 0 12px;padding-top:16px;border-top:1px solid #e5e5e5;}
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__param{display:none;}
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{display:block;position:relative;width:54px;height:54px;flex:0 0 54px;overflow:hidden;background:#f4f4f4;}
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb img{width:100%;height:100%;object-fit:cover;}
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{display:block;min-width:0;padding-left:12px;}
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_name{display:block;color:#555;line-height:1.4;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary span {display:inline-block;}
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary span.date {display:inline-block;margin-left:8px; }
+.xans-board-listpackage-8 .xans-board-list-8 li a .summary em {color:#6d6d6d;font-style: normal;}
+
+/* 게시글 없음, 검색결과없음 */
+.xans-board-listpackage-8 .boardListEmpty { margin:0 0 20px; text-align:center; }
+.portfolioBoard .boardList{border-bottom:0;}
+.portfolioBoard .portfolioFallbackList{display:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:0;padding:0;list-style:none;}
+.portfolioBoard .portfolioFallbackList li{min-width:0;background:#e9e6df;}
+.portfolioBoard .portfolioFallbackList a{display:block;color:#111;text-decoration:none;}
+.portfolioBoard .portfolioFallbackList .thumbnail{display:block;position:relative;width:100%;padding-bottom:100%;overflow:hidden;background:#eee;}
+.portfolioBoard .portfolioFallbackList .thumbnail img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;}
+.portfolioBoard .portfolioFallbackList .summary{display:block;padding:28px 32px 32px;box-sizing:border-box;}
+.portfolioBoard .portfolioFallbackList .subject{display:block;font-size:21px;font-weight:600;line-height:1.35;color:#111;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.portfolioBoard .portfolioFallbackList .portfolio_cont{display:block;margin-top:18px;font-size:14px;color:#555;line-height:1.55;min-height:44px;}
+.portfolioBoard .portfolioFallbackList .portfolioProduct{display:flex;align-items:center;margin-top:24px;padding-top:24px;border-top:1px solid rgba(0,0,0,.22);}
+.portfolioBoard .portfolioFallbackList .portfolioProduct__thumb{position:relative;width:92px;height:92px;flex:0 0 92px;overflow:hidden;background:#eee;}
+.portfolioBoard .portfolioFallbackList .portfolioProduct__thumb img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;}
+.portfolioBoard .portfolioFallbackList .portfolioProduct__info{display:block;min-width:0;padding-left:20px;box-sizing:border-box;}
+.portfolioBoard .portfolioFallbackList .p_name{display:block;font-size:15px;color:#222;line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.portfolioBoard .portfolioFallbackList .p_desc{display:block;margin-top:8px;font-size:12px;color:#777;line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.portfolioBoard .portfolioFallbackList .p_custom{display:block;margin-top:8px;font-size:13px;color:#777;text-decoration:line-through;}
+.portfolioBoard .portfolioFallbackList .p_price{display:block;margin-top:3px;font-size:15px;font-weight:600;color:#111;}
+
+
+
+/********************* PC *********************/
+@media all and (min-width:1025px) {
+	/* 리스트 정렬 */
+	.xans-board-listpackage-8 .boardList { margin:0;padding:0 0 60px;border-bottom:1px solid #e5e5e5 }
+	.xans-board-listpackage-8 .boardSort{ display:block;margin: 0;border-bottom:1px solid #e5e5e5;padding:0 0 20px;}
+	.xans-board-listpackage-8 .boardSort .xans-board-category-8{width:auto;min-width:152px;padding:0;}
+	.xans-board-listpackage-8 .boardSort .xans-board-category-8 + .xans-board-category-8 {padding:0 0 0 10px;}
+	.xans-board-listpackage-8 .xans-board-buttonlist-8.ec-base-button.gBottom{margin:20px 0 0;}
+	
+	/* 갤러리형 탭메뉴 */
+	.xans-board-listheader-8{margin:13px 0 0;float:right;}
+	.xans-board-listheader-8 ul li{width:auto;}
+	.xans-board-listheader-8 li a{padding: 3px 2px 3px;white-space:nowrap;border-bottom:0;}
+	.xans-board-listheader-8 li + li{margin:0 0 0 50px;}
+	
+	/* list 공통 */
+	.xans-board-listpackage-8 .xans-board-notice-8 li,
+	.xans-board-listpackage-8 .xans-board-fixed-8 li{border-bottom:1px solid #ddd;margin:40px 0 0;padding:0 0 40px;}
+	.xans-board-listpackage-8 .xans-board-notice-8 li a:hover,
+	.xans-board-listpackage-8 .xans-board-fixed-8 li a:hover,
+	.xans-board-listpackage-8 .xans-board-list-8 li a:hover{text-decoration: none;}
+	.xans-board-listpackage-8 .xans-board-notice-8 li a:hover .subject,
+	.xans-board-listpackage-8 .xans-board-fixed-8 li a:hover .subject,
+	.xans-board-listpackage-8 .xans-board-list-8 li a:hover .subject{text-decoration: underline;}
+	
+	/* 공지글, 고정글 */
+	.xans-board-listpackage-8 .xans-board-notice-8 li a .thumbnail ,
+	.xans-board-listpackage-8 .xans-board-fixed-8 li a .thumbnail {flex:none;width:295px;margin-right:20px;}
+	.xans-board-listpackage-8 .xans-board-notice-8 li a,
+	.xans-board-listpackage-8 .xans-board-fixed-8 li a {display:flex;align-items: center;}
+	.xans-board-listpackage-8 .xans-board-notice-8 li a .thumbnail img,
+	.xans-board-listpackage-8 .xans-board-fixed-8 li a .thumbnail img {max-width: 295px;margin:0;}
+	.xans-board-listpackage-8 .xans-board-notice-8 li a .summary,
+	.xans-board-listpackage-8 .xans-board-fixed-8 li a .summary{flex:1;display: inline-block;}
+	.xans-board-listpackage-8 .xans-board-notice-8 li a .summary .subject,
+	.xans-board-listpackage-8 .xans-board-fixed-8 li a .summary .subject {margin:0 0 8px;}
+	.xans-board-listpackage-8 .xans-board-notice-8 ul,
+	.xans-board-listpackage-8 .xans-board-fixed-8 ul{padding:0;margin:0;overflow:hidden;}
+	.xans-board-listpackage-8 .xans-board-notice-8 li a .summary span.date,
+	.xans-board-listpackage-8 .xans-board-fixed-8 li a .summary span.date{float:none;display:inline-block;margin:0 0 0 12px;}
+	
+	/* 일반글 */
+	.xans-board-listpackage-8 .xans-board-list-8 ul{padding:0;margin:0;overflow:hidden;}
+	.xans-board-listpackage-8 .xans-board-list-8 li{width:25%;margin:50px 0 0;padding:0 10px;}
+	.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{margin: 25px 0 8px;}
+	.xans-board-listpackage-8 .xans-board-list-8 li a .summary span.date{float:none;display:inline-block;margin:0 0 0 12px;}
+}
+
+@media all and (max-width:1024px) {
+	.portfolioBoard .titleArea{margin:92px 0 32px!important;padding:0!important;}
+	.portfolioBoard .titleArea h2{font-size:34px;}
+	.portfolioBoard .portfolioFallbackList{grid-template-columns:1fr;gap:16px;}
+	.portfolioBoard .portfolioFallbackList .summary{padding:18px 18px 22px;}
+	.portfolioBoard .portfolioFallbackList .subject{font-size:15px;}
+	.portfolioBoard .portfolioFallbackList .portfolio_cont{font-size:12px;margin-top:10px;min-height:38px;}
+	.portfolioBoard .portfolioFallbackList .portfolioProduct{margin-top:16px;padding-top:14px;}
+	.portfolioBoard .portfolioFallbackList .portfolioProduct__thumb{width:64px;height:64px;flex-basis:64px;}
+	.portfolioBoard .portfolioFallbackList .portfolioProduct__info{padding-left:12px;}
+	.portfolioBoard .portfolioFallbackList .p_name{font-size:13px;}
+	.portfolioBoard .portfolioFallbackList .p_desc{display:none;}
+	.portfolioBoard .portfolioFallbackList .p_custom{font-size:12px;}
+	.portfolioBoard .portfolioFallbackList .p_price{font-size:13px;}
+}
+
+/* 포트폴리오 게시판: 메인 포트폴리오 카드형과 동일한 출력 */
+.portfolioBoard.xans-board-listpackage-8 .boardList{max-width:1920px;margin:0 auto;padding:0 70px 80px;border-bottom:0;box-sizing:border-box;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8{clear:both;overflow:visible;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 ul{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding:0;margin:0;overflow:visible;font-size:0;line-height:0;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li{display:flex;width:auto;margin:0;padding:0;min-width:0;background:#e9e6df;font-size:13px;line-height:1.5;vertical-align:top;box-sizing:border-box;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li > a{display:flex;width:100%;min-height:0;flex-direction:column;color:#111;text-decoration:none;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li > a:hover,
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li > a:hover .subject{text-decoration:none;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail{display:block;position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#eee;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail img{position:absolute;left:0;top:0;display:block;width:100%;height:100%;min-width:0;margin:0;object-fit:cover;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{display:flex;min-height:0;flex:1 1 auto;flex-direction:column;padding:24px 28px 28px;background:#e9e6df;color:#111;box-sizing:border-box;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{display:block;margin:0;font-size:21px;font-weight:600;line-height:1.35;color:#111;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject .comment{display:none;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{display:block;margin:14px 0 0;font-size:14px;color:#555;line-height:1.55;min-height:0;overflow:hidden;text-overflow:unset;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{display:none;align-items:center;margin:24px 0 0;padding-top:24px;border-top:1px solid rgba(0,0,0,.22);}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct.is-active{display:flex;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__param{display:none;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{display:block;position:relative;width:92px;height:92px;flex:0 0 92px;overflow:hidden;background:#eee;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb img{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{display:block;min-width:0;padding-left:20px;box-sizing:border-box;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_name{display:block;font-size:15px;color:#222;line-height:1.45;overflow:hidden;text-overflow:unset;white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_desc{display:block;margin-top:8px;font-size:12px;color:#777;line-height:1.45;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_custom{display:block;margin-top:8px;font-size:13px;color:#777;line-height:1.3;text-decoration:line-through;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_price{display:block;margin-top:3px;font-size:15px;font-weight:600;color:#111;line-height:1.35;}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li .boardChk{position:absolute;left:8px;top:8px;z-index:2;margin:0;}
+
+@media all and (max-width:1024px) {
+	.portfolioBoard.xans-board-listpackage-8 .boardList{padding:0 12px 50px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 ul{grid-template-columns:1fr;gap:16px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{padding:18px 18px 22px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{font-size:15px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{font-size:12px;margin-top:10px;min-height:38px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{margin-top:16px;padding-top:14px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{width:64px;height:64px;flex-basis:64px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{padding-left:12px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_name{font-size:13px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_desc{display:none;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_custom{font-size:12px;}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_price{font-size:13px;}
+}
+
+/* 포트폴리오 목록 최종 형태: 사진 - 제목 - 본문 - 상품 */
+.portfolioBoard.xans-board-listpackage-8 .boardList{max-width:1920px!important;margin:0 auto!important;padding:0 70px 80px!important;border-bottom:0!important;box-sizing:border-box}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 ul{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important;margin:0!important;padding:0!important;font-size:0!important;line-height:0!important;overflow:visible!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li{display:flex!important;width:auto!important;min-width:0!important;margin:0!important;padding:0!important;background:#e9e6df!important;font-size:13px!important;line-height:1.5!important;box-sizing:border-box!important;position:relative!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li > a{display:flex!important;flex-direction:column!important;width:100%!important;min-height:100%!important;color:#111!important;text-decoration:none!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail{display:block!important;position:relative!important;width:100%!important;aspect-ratio:1/1!important;overflow:hidden!important;background:#eee!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .thumbnail img{position:absolute!important;left:0!important;top:0!important;width:100%!important;height:100%!important;min-width:0!important;margin:0!important;object-fit:cover!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{display:flex!important;flex:1 1 auto!important;flex-direction:column!important;min-height:255px!important;padding:24px 28px 28px!important;background:#e9e6df!important;color:#111!important;box-sizing:border-box!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{display:block!important;margin:0!important;font-size:21px!important;font-weight:600!important;line-height:1.35!important;color:#111!important;overflow:hidden!important;white-space:nowrap!important;text-overflow:ellipsis!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject .comment{display:none!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{display:-webkit-box!important;margin:14px 0 22px!important;font-size:14px!important;color:#555!important;line-height:1.55!important;min-height:43px!important;overflow:hidden!important;white-space:normal!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct{display:none!important;align-items:center!important;margin-top:auto!important;padding-top:18px!important;border-top:1px solid rgba(0,0,0,.22)!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct.is-active{display:flex!important;cursor:pointer}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__param{display:none!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{display:block!important;position:relative!important;width:74px!important;height:74px!important;flex:0 0 74px!important;overflow:hidden!important;background:#eee!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb img{position:absolute!important;left:0!important;top:0!important;width:100%!important;height:100%!important;object-fit:cover!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{display:block!important;min-width:0!important;padding-left:16px!important;box-sizing:border-box!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_name{display:-webkit-box!important;font-size:14px!important;color:#222!important;line-height:1.45!important;overflow:hidden!important;white-space:normal!important;-webkit-line-clamp:2!important;-webkit-box-orient:vertical!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_desc{display:none!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_custom{display:block!important;margin-top:7px!important;font-size:12px!important;color:#888!important;line-height:1.3!important;text-decoration:line-through!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct .p_price{display:block!important;margin-top:2px!important;font-size:15px!important;font-weight:700!important;color:#111!important;line-height:1.35!important}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 .portfolioProduct.is-active{display:flex!important;align-items:center!important;cursor:pointer}
+.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 .portfolioProduct__param{display:none!important}
+
+@media all and (max-width:1024px) {
+	.portfolioBoard.xans-board-listpackage-8 .boardList{padding:0 12px 50px!important}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 ul{grid-template-columns:1fr!important;gap:16px!important}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary{min-height:220px!important;padding:18px 18px 22px!important}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .subject{font-size:15px!important}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolio_cont{font-size:12px!important;margin-top:10px!important;min-height:38px!important}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__thumb{width:64px!important;height:64px!important;flex-basis:64px!important}
+	.portfolioBoard.xans-board-listpackage-8 .xans-board-list-8 li a .summary .portfolioProduct__info{padding-left:12px!important}
+}

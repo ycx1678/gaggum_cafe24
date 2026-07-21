@@ -1,0 +1,367 @@
+
+/*=====================================================================================================
+
+	◆ 어썸디 디자인 공통 CSS ◆
+
+	※해당 파일 수정시 반드시 원본 파일을 백업 후 진행해주세요.
+	※해당 파일을 직접 수정하시는 과정에서 오류 발생시 책임지지 않습니다.
+	※CSS의 상세한 수정방법 및 각 위치에 대한 가이드는 제공되지 않습니다.
+
+=====================================================================================================*/
+
+/*--- 🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽 포인트 컬러 🔽🔽🔽🔽🔽🔽🔽🔽🔽🔽 ---*/
+
+/* common */
+.f_color,
+.nd .ec-base-product .prdList .description .spec .price_discount,
+.nd .today_view span,
+.nd .xans-product-detail .headingArea .detail_top_price > p.price_discount,
+#todayShipping_countdown .timer,
+#todayShipping_countdown .date,
+.freeShip_gauge .pricePay{color:#a9102d !important}
+
+/* layout */
+.header_top .head_right .swiper-slide .num,
+.header_wrap .gnb_wrap > li > a:after,
+header .member_wrap > li > a > i > .join_point,
+header .member_wrap > li > a > i > .join_point:after,
+header .search_wrap .xans-search-hotkeyword > span,
+header .search_wrap .xans-search-recentkeyword .tit span,
+#todayShipping_countdown .shipping_tit,
+.freeShip_gauge .gauge_bar{background:#a9102d !important}
+
+/*---  🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼🔼 ---*/
+
+
+
+
+/* main */
+.nd#main .btn_link{border-color:#000}
+.main_brand .brand_grid > li:hover{border-color:#a9102d}
+.main_brand .brand_grid > li:hover .txt_box .tit{color:#a9102d}
+.nd#main .main_prd_slide .prdList .swiper-wrapper > li:hover{border-color:#a9102d}
+.nd#main .btn_link:hover{color:#fff}
+.nd#main .swiper-scrollbar-drag{background:#000}
+
+/* view more */
+.nd .typeMoreview > a{color:#a9102d;border-color:#a9102d !important}
+
+/* product list_top */
+.nd .list_top .ec-base-product .thumbnail .list_top_lable{background:#a9102d}
+
+/* product detail */
+.nd .xans-product-detail .buy,
+.nd .detail_section .board .ec-base-button a.black,
+.nd .xans-product-detail .xans-product-action .action_button .btnSubmit,
+.nd .xans-product-detail .xans-product-action.ec-base-button.gFixed .btnSubmit,
+.nd .detail_section .board_wrap .ec-base-button .write{background:#222;border-color:#222}
+.nd .detail_section .detail_tab > li > a > .count,
+.nd .xans-product-detail .infoArea .detail_top_price .p_discount{background:#a9102d}
+
+
+/*------------------------------------------- 공통 적용 -------------------------------------------*/
+
+/* 공통 레이아웃 */
+.nd #wrap{min-height:auto}
+.nd #container #contents{max-width:1795px;margin:0 auto 60px;padding:0 30px;box-sizing:border-box;min-height:500px}
+.nd#main #container #contents,
+.nd#wide #container #contents{max-width:100%;padding:0;margin:0}
+
+/* 버튼 */
+.nd [class^='btn']{transition:border .5s;border-color:#e5e5e5;border-radius:3px;color:#555}
+.nd [class^='btn'].sizeM,
+.nd [class^='btn'].sizeS{height:38px;padding:11px 15px;min-width:80px;font-size:13px}
+.nd [class^='btn'].sizeM{line-height:inherit}
+.nd [class^='btnSubmit'], 
+.nd a[class^='btnSubmit']{font-weight:400;background:#000;color:#fff}
+
+/* select & input */
+.nd select,
+.nd ipunt{color:#555}
+.nd select,
+.nd input[type=text],
+.nd input[type=password],
+.nd input[type=number]{border-radius:3px;color:#555}
+
+/* 타이틀 */
+.nd .titleArea,
+.nd .xans-product-headcategory.titleArea.section{margin:80px 0 60px;padding:0}
+.nd#main .titleArea{margin:0 0 45px}
+.nd .titleArea h2,
+.nd .titleArea h2 > font,
+.nd .xans-project-package .title h2,
+.nd .xans-product-menupackage .title h2{display:block;font-size:26px;color:#000;font-weight:500;border:0}
+.nd .titleArea p{font-size:14px;color:#aaa;padding:0;margin:10px 0 0;line-height:1.5}
+.nd .titleArea p:before{display:none}
+.nd .titleArea p > strong{color:#000}
+.nd .path{display:none}
+
+/* 페이징버튼 */
+.nd .ec-base-paginate.typeList li a{border:0}
+.nd .ec-base-paginate.typeList a.this{font-weight:600}
+
+/* 더보기버튼 */
+.nd .typeMoreview{display:none}
+
+/* 기타 info */
+.nd div.ec-base-help{margin:30px 0}
+
+/* 상품목록 */
+.nd .product_top_image img{margin-bottom:80px}
+.nd .listpage_title{font-size:18px;font-weight:600}
+.nd .ec-base-product{max-width:1795px;margin:0 auto;padding:0 30px;box-sizing:border-box}
+.nd .ec-base-product .title{margin:0 0 70px}
+.nd .ec-base-product .title h2{font-size:34px;color:#555;font-weight:600;display:block;margin-bottom:20px}
+.nd .ec-base-product .title p{font-size:12px;color:#999}
+.nd .ec-base-product .prdList > li{margin-bottom:50px}
+.nd .ec-base-product .prdList .thumbnail{margin:0 0 24px;background:none}
+.nd .ec-base-product .prdList .thumbnail > .prdImg > a{position:relative;overflow:hidden;display:block}
+.nd .ec-base-product .prdList .thumbnail > .prdImg > a > img{transition:all .5s;border:0}
+.nd .ec-base-product .prdList .thumbnail > .prdImg > a > img.on{position:absolute;left:0;top:0;opacity:0;transition:all .5s}
+
+.nd .ec-base-product .prdList .thumbnail .time_box{display:none;position:absolute;top:22px;width:100%;font-size:14px;font-weight:400;align-items:center;justify-content:center;flex-wrap:nowrap;z-index:9}
+.nd .ec-base-product .prdList .thumbnail .time_box > span{position:relative;top:-1px;display:inline-block;margin-right:10px}
+.nd .ec-base-product .prdList .thumbnail .time_box > span i{position:relative;top:1px;margin-right:3px}
+.nd .ec-base-product .prdList .thumbnail .time_box #timer{display:flex;}
+.nd .ec-base-product .prdList .thumbnail .time_box #timer .timer{position:relative;display:inline-block;height:20px;min-width:24px;line-height:20px;padding:0 4px;box-sizing:border-box;text-align:center;background:rgba(0,0,0,0.4);border-radius:3px;}
+.nd .ec-base-product .prdList .thumbnail .time_box #timer .timer span{font-size:13px;font-weight:400;color:#fff}
+.nd .ec-base-product .prdList .thumbnail .time_box #timer .timer.dd,
+.nd .ec-base-product .prdList .thumbnail .time_box #timer .timer.hh,
+.nd .ec-base-product .prdList .thumbnail .time_box #timer .timer.mm{margin-right:5px}
+.nd .ec-base-product .prdList .thumbnail .time_box #timer .timer.hh:after,
+.nd .ec-base-product .prdList .thumbnail .time_box #timer .timer.mm:after{content:":";display:inline-block;position:absolute;right:-4px;top:50%;transform:translateY(-50%)}
+
+.nd .ec-base-product .prdList .thumbnail .section_icon {
+    left: auto !important;
+    right: 0 !important; 
+    transform: none !important;
+}
+.nd .ec-base-product .prdList .thumbnail:hover .section_icon {
+    opacity: 0.7 !important;
+    visibility: visible;
+    bottom: 0;
+    border-radius: 3px !important;
+    overflow: hidden;
+}
+.nd .ec-base-product .prdList .thumbnail .section_icon > a,
+.nd .ec-base-product .prdList .thumbnail .section_icon > span,
+.nd .ec-base-product .prdList .thumbnail .section_icon > img,
+.nd .ec-base-product .prdList .thumbnail .section_icon button {
+    opacity: 0.7;
+    transition: opacity .2s ease;
+}
+.nd .ec-base-product .prdList .thumbnail .section_icon > a:hover,
+.nd .ec-base-product .prdList .thumbnail .section_icon > span:hover,
+.nd .ec-base-product .prdList .thumbnail .section_icon > img:hover,
+.nd .ec-base-product .prdList .thumbnail .section_icon button:hover {
+    opacity: 1 !important;
+}
+.nd .ec-base-product .prdList .thumbnail .section_icon {
+    margin: 6px 6px;
+}
+.nd .ec-base-product .prdList .thumbnail:hover .section_icon {
+    bottom: 6px;
+}
+
+.nd .ec-base-product .prdList .thumbnail .section_icon{cursor:pointer;position:absolute;left:50%;bottom:-5px;transform:translateX(-50%);-ms-transform:translateX(-50%);background:#fff;border-left:0;visibility:hidden;opacity:0;transition:all 0.3s ease;z-index:1}
+.nd .ec-base-product .prdList .thumbnail .section_icon img{margin:0}
+.nd .ec-base-product .prdList .thumbnail .section_icon > a,
+.nd .ec-base-product .prdList .thumbnail .section_icon > img,
+.nd .ec-base-product .prdList .thumbnail .section_icon > span{min-width:30px;display:inline-block;vertical-align:middle;text-align:center}
+.nd .ec-base-product .prdList .thumbnail .section_icon .likePrd button{background:#fff}
+.nd .ec-base-product .prdList .thumbnail .section_icon .likePrd .likePrdCount{display:inline-block;vertical-align:middle;font-size:12px;padding-right:2px}
+.nd .ec-base-product .prdList .thumbnail .section_icon .prdOption{left:50%;transform:translateX(-50%);-ms-transform:translateX(-50%);margin:0}
+.nd .ec-base-product .prdList .thumbnail .section_icon .prdOption .ico{display:none}
+.nd .ec-base-product .prdList .thumbnail:hover .section_icon{visibility:visible;opacity:1;bottom:0}
+/* 썸네일 호버 장바구니 버튼 숨김 (가꿈 요청 2026-06-10) — 모바일(nd_common_m.css)은 이미 display:none */
+.nd .ec-base-product .prdList .thumbnail .section_icon,
+.nd .ec-base-product .prdList .thumbnail:hover .section_icon{display:none !important}
+/* MUST HAVE 아이콘(icon_global_14.gif)은 '오늘발송' 타이머 트리거 전용 — 화면엔 비노출(가꿈 요청 2026-06-11).
+   display:none 이어도 DOM엔 남아 todayShipping JS의 트리거 감지(getAttribute)에는 영향 없음. detail은 todayShipping_v2.css에서 별도 숨김. */
+.nd img[src*="icon_global_14"]{display:none !important}
+.nd .ec-base-product .prdList .discount_rate{display:none;width:50px;height:50px;line-height:50px;position:absolute;right:0;top:0;background:#000;font-size:18px;font-weight:600;color:#fff;text-align:center;letter-spacing:-0.5px;z-index:1}
+.nd .ec-base-product .prdList .description{margin:0 8px;padding:0}
+.nd .ec-base-product .prdList .description .prd_top{margin-bottom:14px;overflow:hidden;position:relative}
+.nd .ec-base-product .prdList .description .prd_top .name{display:block;}
+.nd .ec-base-product .prdList .description .icon{display:block}
+.nd .ec-base-product .prdList .description .icon img{display:inline-block;vertical-align:middle;margin:5px 2px 5px 0}
+.nd .ec-base-product .prdList .description .spec > li{margin-bottom:10px;}
+.nd .ec-base-product .prdList .description .spec .small_price span{font-size:14px !important;color:#999 !important;font-weight:normal !important}
+.nd .ec-base-product .prdList .description .spec .price_discount{display:inline-block !important;font-size:20px;font-weight:800}
+.nd .ec-base-product .prdList .description .color{font-size:0;margin-top:5px;max-width:none;text-align:center}
+.nd .ec-base-product .prdList .description .color .chips{width:10px;height:10px;display:inline-block;vertical-align:top;margin:1px 2px;border-radius:100%}
+
+.nd .ec-base-product .description .color .chips {
+    border: none !important;
+    border-radius: 100% !important; 
+}
+.nd .ec-base-product .description .color .chips[style*="background-color:#FFFFFF"] {
+    box-shadow: inset 0 0 0 1px #ddd !important;
+    border-radius: 100% !important;
+}
+
+.nd .ec-base-product .prdList .prdList__item{margin:0}
+.nd .ec-base-product ul[class*="grid"] > li{margin-right:1.4%}
+.nd .ec-base-product ul.grid1 > li{width:100%}
+.nd .ec-base-product ul.grid2 > li{width:calc(50% - 1.1%)}
+.nd .ec-base-product ul.grid2 > li:nth-child(2n){margin-right:0}
+.nd .ec-base-product ul.grid3 > li{width:calc(33.33% - 1.5%)}
+.nd .ec-base-product ul.grid3 > li:nth-child(3n){margin-right:0}
+.nd .ec-base-product ul.grid4 > li{width:calc(25% - 1.1%)}
+.nd .ec-base-product ul.grid4 > li:nth-child(4n){margin-right:0}
+.nd .ec-base-product ul.grid5 > li{width:calc(20% - 1.8%)}
+.nd .ec-base-product ul.grid5 > li:nth-child(5n){margin-right:0}
+
+/* 상품 썸네일 hover 이미지 전환 */
+.nd .ec-base-product .prdList .thumbnail > .prdImg > a.nd-has-hover-image:hover > img.on{opacity:1}
+.nd .ec-base-product .prdList .thumbnail > .prdImg > a.nd-has-hover-image:hover > img:not(.on){opacity:0}
+
+/* menupackage & normalmenu & menupackage */
+.nd .xans-product-menupackage,
+.nd .xans-project-package{margin-top:80px}
+.nd .xans-project-package .title,
+.nd .xans-product-menupackage .title{text-align:center;margin:0 0 60px}
+.nd .xans-product-menupackage .title{min-height:auto}
+.nd .xans-product-menupackage .title .banner{font-size:0;line-height:0;margin:0;padding:0}
+.nd .xans-project-package .menuCategory,
+.nd .xans-product-menupackage .menuCategory{border:0;text-align:center;margin:-40px 0 80px}
+.nd .xans-project-package .menuCategory > li,
+.nd .xans-product-menupackage .menuCategory > li{position:relative;width:auto;padding:0;margin:0 3px}
+.nd .xans-project-package .menuCategory > li > a,
+.nd .xans-product-menupackage .menuCategory > li > a{display:block;height:36px;line-height:36px;font-size:14px;font-weight:normal;color:#999;padding:0 10px;background:none;transition:all .5s}
+.nd .xans-project-package .menuCategory > li > a:hover,
+.nd .xans-product-menupackage .menuCategory > li > a:hover{color:#000}
+.nd .xans-project-package .menuCategory > li > a:before,
+.nd .xans-product-menupackage .menuCategory > li > a:before{content:"#";margin-right:5px}
+.nd .xans-product-menupackage .menuCategory li > a > i{position:absolute;right:10px;top:50%;margin-top:-7px;font-size:14px;color:#999;transition:all .5s}
+.nd .xans-product-menupackage .menuCategory > li.selected > a{border-color:#000;color:#000}
+.nd .xans-product-menupackage .menuCategory > li.selected > a > i{color:#000}
+.nd .xans-product-menupackage .menuCategory > li.typeChild a{min-width:80px;padding-right:30px}
+.nd .xans-product-menupackage .menuCategory > li > ul{display:none;position:absolute;border:1px solid #e5e5e5;padding-top:0;z-index:10}
+.nd .xans-product-menupackage .menuCategory > li:hover > ul{display:block;background:#fff}
+.nd .xans-product-menupackage .menuCategory > li > ul > li{position:relative;margin:0}
+.nd .xans-product-menupackage .menuCategory > li > ul > li > a{display:block;height:35px;line-height:35px;padding:0 14px;font-size:12px;color:#999;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}
+.nd .xans-product-menupackage .menuCategory > li > ul > li > a:hover{color:#555;background:#f3f3f3}
+.nd .xans-product-menupackage .menuCategory > li > ul > li > ul{display:none;position:absolute;top:0;right:auto;left:100%;width:auto;margin:0;padding:0;border:1px solid #e5e5e5;background:#fff}
+.nd .xans-product-menupackage .menuCategory > li > ul > li:hover > ul{display:block}
+.nd .xans-product-menupackage .menuCategory > li > ul > li > ul > li{display:block;width:auto;padding:0;margin:0}
+.nd .xans-product-menupackage .menuCategory > li > ul > li > ul > li > a{display:block;height:30px;line-height:30px;padding:0 14px;white-space:nowrap;font-size:11px;color:#999;text-align:left}
+.nd .xans-product-menupackage .menuCategory > li > ul > li > ul > li:hover > a,
+.nd .xans-product-menupackage .menuCategory > li.typeChild > ul > li > ul > li:hover > a{background:#f3f3f3;color:#555}
+.nd .xans-product-menupackage .menuCategory > li.typeChild > ul > li > ul > li > a{min-width:auto;padding-right:14px;color:#999}
+.nd .xans-product-menupackage .banner{padding:0;text-align:center}
+.nd .xans-product-menupackage .banner img{display:block;max-width:100%;width:auto;height:auto;margin:0 auto 80px}
+.nd .xans-product-normalmenu{max-width:1795px;padding:0 30px;box-sizing:border-box;margin:0 auto 30px;border:0}
+.nd .xans-product-normalmenu .prdCount strong{margin-left:5px}
+
+/* 상품목록 추천상품 & 신상품 */
+.nd .list_top{padding:80px 0 50px}
+.nd .list_top +  .list_top{padding-top:0}
+.nd .list_top .titleArea{margin:0 0 50px}
+.nd .list_top .swiper-scrollbar{position:relative;width:100%;left:0;bottom:0;height:3px}
+.nd .list_top .swiper-scrollbar .swiper-scrollbar-drag{background:#000}
+.nd .list_top .ec-base-product .prdList{margin-top:0}
+.nd .list_top .ec-base-product .prdList > li{margin-bottom:20px}
+.nd .list_top .ec-base-product .prdList .description > .inner{width:100%}
+.nd .list_top .ec-base-product .prdList .color > ul > li{display:inline-block}
+.nd .list_top .ec-base-product .prdList > li:hover .description{opacity:1}
+.nd .list_top .ec-base-product .prdList .thumbnail .time_box{justify-content:normal;padding-left:20px}
+.nd .list_top .ec-base-product .thumbnail .list_top_lable{position:absolute;right:10px;top:10px;display:block;width:46px;height:46px;line-height:1.4;border-radius:3px;text-align:center;white-space:nowrap;font-size:12px;color:#fff;transition:all 0.5s;z-index:3;display:flex;align-items:center;flex-direction:column;justify-content:center}
+.nd .list_top .ec-base-product .thumbnail .list_top_lable strong{display:block;font-size:12px;font-weight:500}
+
+
+/* 장바구니 담기창 */
+.nd #capp-shop-new-product-optionselect-layer,
+.nd .xans-order-layerbasketpackage.ec-base-layer-area{height:auto !important;max-height:78vh !important;left:auto !important;right:40px !important;top:50% !important;transform:translateY(-50%)}
+.nd .xans-order-layerbasketpackage .ec-base-layer.typeSide{position:relative}
+.nd#popup .ec-base-layer .btnClose{font-size:0}
+.nd .ec-base-layer.typeSide .header{padding-top:30px}
+.nd .ec-base-layer.typeSide .header h2{font-size:16px}
+.nd .xans-product-optionselectlayer .inner .name{font-size:14px}
+.nd .xans-product-optionselectlayer .xans-product-option .ec-product-button.ec-product-preview li a{width:15px;height:15px}
+.nd .xans-product-optionselectlayer .xans-product-option .ec-product-button li a{min-width:auto;height:auto}
+.nd .xans-product-optionselectlayer .xans-product-option .ec-product-button li a span{padding:6px 10px;line-height:1}
+.nd .xans-product-optionselectlayer .xans-product-option .ec-product-button .ec-product-disabled a span:before{background:rgba(0,0,0,0.1)}
+.nd .xans-product-optionselectlayer .xans-product-option .value{font-size:12px}
+
+@media all and (min-width:1025px){
+    .nd #capp-shop-new-product-optionselect-layer,
+    .nd .xans-order-layerbasketpackage.ec-base-layer-area{width:560px !important;max-width:calc(100vw - 80px) !important}
+}
+
+@media all and (max-width:1024px){
+    .nd #capp-shop-new-product-optionselect-layer,
+    .nd .xans-order-layerbasketpackage.ec-base-layer-area{left:16px !important;right:16px !important;max-height:82vh !important;transform:translateY(-50%)}
+}
+
+
+/*----------------------------------------------- 서브페이지 -----------------------------------------------*/
+
+/* 로그인 */
+.nd .xans-member-login .login__security{align-items:center}
+.nd .xans-member-login .login__util div:nth-child(2){line-height:1.5}
+.nd .xans-member-login .login__util div:nth-child(3){transition:border .5s;height:50px}
+.nd .xans-member-login .login__util div:nth-child(3):hover{border-color:#000}
+.nd .xans-member-login .login__util div:nth-child(3) > a{line-height:50px}
+.nd .xans-member-login .login__button [class^='btn'].sizeL{height:50px;padding:16px 26px}
+.nd .xans-member-login .login__security .secret{height:auto}
+
+.nd .xans-member-login .sns_login{margin:30px auto;max-width:400px}
+.nd .xans-member-login .sns_login a{display:block;width:100%;height:45px;line-height:45px;color:#fff;overflow:hidden;font-size:14px;margin-left:0}
+.nd .xans-member-login .sns_login a.btnKakao{background:#ffd130;color:#321909}
+.nd .xans-member-login .sns_login a.btnNaver,
+.nd .xans-member-login .sns_login a.btnLine{background:#26c826}
+.nd .xans-member-login .sns_login a.btnFacebook{background:#536fac}
+.nd .xans-member-login .sns_login a.btnGoogle{background:#d94830}
+.nd .xans-member-login .sns_login a.btnApple{background:#000}
+.nd .xans-member-login .sns_login a.yahoojp{border:1px solid #000;color:#000}
+.nd .xans-member-login .sns_login a.yahoojp > i{border-color:#000}
+.nd .xans-member-login .sns_login a > i{line-height:45px;min-width:50px;font-size:24px;vertical-align:top;float:left;border-right:1px solid rgba(255,255,255,0.5)}
+.nd .xans-member-login .sns_login a > span{display:inline-block;vertical-align:top;margin-left:-50px}
+.nd .xans-member-login .sns_login a + a{margin-top:10px}
+.nd .xans-myshop-orderhistorynologin .txt_nonmem_check{font-size:18px}
+.nd .xans-myshop-orderhistorynologin .btnSubmit{height:56px;font-size:16px}
+
+
+/* 기획전 */
+.nd .xans-project-list{border:0;margin:0 0 50px}
+.nd .xans-project-list h3{font-size:18px;color:#000;margin:0 auto;padding:0 30px 30px;max-width:1795px;box-sizing:border-box}
+
+/* 마이쇼핑 */
+.nd .myshopArea{width:calc(100% - 220px);max-width:100% !important}
+
+/* 비밀번호 변경 */
+.nd .xans-member-changepasswd .ec-base-help{margin-top:-30px}
+
+/* 검색결과 */
+.nd .xans-search.ec-base-product{padding:20px 0 0}
+
+/* 스마트 팝업 style */
+.nd .app-smart-popup{left:50%;top:50%;transform:translate(-50%, -50%);border:0;border-radius:16px;overflow:hidden;margin:0 !important;z-index:99 !important}
+.nd .app-smart-popup .smart-popup-img img{width:100% !important;max-width:400px !important}
+.nd .app-smart-popup [id^=app-smart-popup]{max-width:400px}
+.nd .app-smart-popup-slider-dots{width:auto;bottom:16px;background:rgba(255,255,255,0.5);border-radius:25rem;line-height:0;padding:5px;left:50%;transform:translateX(-50%)}
+.nd .app-smart-popup-slider-dots li{margin:0 5px}
+.nd .app-smart-popup-slider-dots li button{width:6px;height:6px;background:#000}
+.nd .app-smart-popup .smart-popup-btns{border:0}
+.nd .app-smart-popup .smart-popup-btns button{font-size:14px;font-weight:500;font-family:'Noto Sans KR',sans-serif}
+.nd .app-smart-popup .smart-popup-btns button.smart-popup-close{border-left:0}
+
+/* BEST 상품 hover 최종 고정: 상품명 hover 영향 제거 + 이미지 박스 크기 고정 */
+.nd#main .main_prd_wrap .main_prd_slide .prdList .swiper-wrapper > li,
+.nd#main .main_prd_wrap .main_prd_slide .prdList .swiper-wrapper > li:hover{transform:none!important;-ms-transform:none!important}
+.nd#main .main_prd_wrap .main_prd_slide .prdList .thumbnail{display:block!important;position:relative!important;width:100%!important;overflow:hidden!important;background:none!important}
+.nd#main .main_prd_wrap .main_prd_slide .prdList .thumbnail > .prdImg,
+.nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg{display:block!important;position:relative!important;width:100%!important;height:auto!important;aspect-ratio:1/1!important;overflow:hidden!important;background:#f6f6f6!important}
+.nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg > a{display:block!important;position:relative!important;width:100%!important;height:100%!important;overflow:hidden!important}
+.nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg > a > img{position:absolute!important;left:0!important;top:0!important;right:auto!important;bottom:auto!important;width:100%!important;height:100%!important;max-width:none!important;min-width:0!important;object-fit:cover!important;border:0!important;box-sizing:border-box!important;transform:none!important;-ms-transform:none!important;transition:opacity .35s ease!important}
+.nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg > a > img:not(.on){opacity:1!important}
+.nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg > a > img.on{opacity:0!important}
+.nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg > a:hover > img.on{opacity:1!important}
+.nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg > a:hover > img:not(.on){opacity:0!important}
+
+@media all and (max-width:1024px){
+    .nd#main .main_prd_wrap .main_prd_slide .prdList .thumbnail > .prdImg,
+    .nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg{height:auto!important;aspect-ratio:1/1!important}
+    .nd#main .main_prd_wrap .main_prd_slide .prdList .prdImg > a > img{object-fit:cover!important;object-position:center center!important}
+}

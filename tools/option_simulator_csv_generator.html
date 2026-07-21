@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>옵션 시뮬레이터 CSV 생성기</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --panel: #f7f7f4;
+      --text: #161616;
+      --muted: #707070;
+      --line: #deded8;
+      --strong: #000000;
+      --accent: #b12235;
+      --good: #0f7b49;
+      --warn: #9b6200;
+      --error: #b12235;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 1px solid var(--strong);
+      background: var(--strong);
+      color: #fff;
+      min-height: 42px;
+      padding: 0 16px;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    button.danger {
+      background: #fff;
+      color: var(--error);
+      border-color: #e0b7bd;
+    }
+
+    button.small {
+      min-height: 34px;
+      padding: 0 10px;
+      font-size: 13px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+      padding: 11px 12px;
+      outline: 0;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--strong);
+    }
+
+    textarea {
+      min-height: 230px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 12px;
+      white-space: pre;
+    }
+
+    .wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 40px 28px 56px;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: flex-end;
+      padding-bottom: 24px;
+      border-bottom: 2px solid var(--strong);
+    }
+
+    h1,
+    h2 {
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      font-size: 34px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .hero p,
+    .hint,
+    .path,
+    .status {
+      color: var(--muted);
+      margin: 8px 0 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 420px) minmax(0, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+      align-items: start;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 22px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .field span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .path {
+      padding: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+      word-break: break-all;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 13px;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option-item {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      background: #fff;
+      max-height: 640px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 1180px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      padding: 8px;
+      vertical-align: top;
+      background: #fff;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #efefeb;
+      text-align: left;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    td input {
+      min-width: 150px;
+      padding: 9px 10px;
+      font-size: 13px;
+    }
+
+    .check-cell {
+      text-align: center;
+      min-width: 72px;
+    }
+
+    .check-cell input {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 8px;
+    }
+
+    .row-tools {
+      min-width: 68px;
+      text-align: center;
+    }
+
+    .status {
+      display: grid;
+      gap: 6px;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+      margin-bottom: 12px;
+    }
+
+    .status strong {
+      color: var(--good);
+    }
+
+    .status .warn {
+      color: var(--warn);
+    }
+
+    .status .error {
+      color: var(--error);
+    }
+
+    .file-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .note-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .note-list strong {
+      color: var(--text);
+    }
+
+    @media (max-width: 980px) {
+      .wrap {
+        padding: 28px 16px 40px;
+      }
+
+      .hero,
+      .grid {
+        display: block;
+      }
+
+      .panel {
+        margin-top: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <h1>옵션 시뮬레이터 CSV 생성기</h1>
+        <p>카페24 기존 옵션 버튼은 그대로 두고, 옵션값과 이미지 레이어 매칭만 CSV로 관리합니다.</p>
+      </div>
+      <button type="button" id="downloadCsv">simulator.csv 다운로드</button>
+    </header>
+
+    <div class="grid">
+      <aside class="stack">
+        <section class="panel">
+          <h2>1. 상품번호</h2>
+          <label class="field">
+            상품번호
+            <input id="productNo" type="text" value="1034" inputmode="numeric">
+            <span>카페24 상품 상세 URL의 product_no 값입니다.</span>
+          </label>
+          <p class="hint">추천 파일업로더 업로드 위치</p>
+          <div class="path" id="pathPreview"></div>
+        </section>
+
+        <section class="panel">
+          <h2>2. 옵션 컬럼</h2>
+          <p class="hint">사이트 옵션명과 CSV 컬럼명을 맞춥니다. 이름이 여러 방식으로 보일 수 있으면 `|`로 별칭을 추가합니다.</p>
+          <div class="option-list" id="optionList"></div>
+          <div class="actions" style="margin-top: 12px; margin-bottom: 0;">
+            <button type="button" class="secondary" id="addOption">옵션 컬럼 추가</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>운영 규칙</h2>
+          <ul class="note-list">
+            <li><strong>버튼 추가는 카페24 상품 옵션에서</strong> 합니다.</li>
+            <li><strong>이미지 변경은 이 CSV에서</strong> 합니다.</li>
+            <li>옵션값이 늘어나면 카페24 옵션값을 먼저 추가하고, CSV 행을 추가합니다.</li>
+            <li>새 옵션군이 생기면 카페24 옵션군을 먼저 추가하고, 이 생성기에서 옵션 컬럼을 추가합니다.</li>
+            <li>추천 방식은 이미지와 CSV를 `/web/upload/simulator/상품번호/` 아래에서 함께 관리하는 것입니다.</li>
+            <li>이미지는 상품번호 폴더 안의 상대경로로 입력합니다. 예: `top/plus-edge-maple.png`</li>
+            <li>다른 곳에 올린 이미지는 전체 URL 또는 `/web/...` 경로를 입력해도 됩니다.</li>
+          </ul>
+        </section>
+      </aside>
+
+      <main class="stack">
+        <section class="panel">
+          <h2>3. 이미지 매핑</h2>
+          <div class="actions">
+            <button type="button" class="secondary" id="addRow">행 추가</button>
+            <button type="button" class="secondary" id="loadSample">샘플 불러오기</button>
+            <label class="file-button">
+              CSV 가져오기
+              <input id="importCsv" type="file" accept=".csv,text/csv" hidden>
+            </label>
+            <button type="button" class="danger" id="clearRows">전체 비우기</button>
+          </div>
+          <div class="table-wrap">
+            <table id="mappingTable"></table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>4. 미리보기 / 내보내기</h2>
+          <div class="status" id="statusBox"></div>
+          <textarea id="csvPreview" readonly spellcheck="false"></textarea>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      var fixedHeaders = ["layer", "order", "image", "default"];
+      var optionHeaders = [
+        "상판 크기|책상 사이즈|상판사이즈|사이즈",
+        "상판 형태|상판 타입|상판 모서리|상판 쉐입|상판 엣지",
+        "상판 컬러|책상 상판 컬러|상판색상|상판컬러",
+        "프레임 컬러|프레임색상|프레임컬러",
+        "좌판 컬러|ALO체어 컬러|의자 컬러|의자 색상|좌판색상"
+      ];
+
+      var sampleRows = [
+        row("frame", "1", "frame/basic-plus-white.png", "Y", ["650 x 450", "", "", "화이트", ""]),
+        row("top", "2", "top/plus-edge-matte-white.png", "Y", ["650 x 450", "엣지 상판", "매트 화이트", "", ""]),
+        row("seat", "3", "seat/black.png", "Y", ["", "", "", "", "블랙"]),
+        row("top", "2", "top/wide-round-maple.png", "", ["700 x 500", "라운드 상판", "메이플", "", ""]),
+        row("seat", "3", "seat/deep-green.png", "", ["", "", "", "", "딥그린"])
+      ];
+
+      var rows = sampleRows.map(cloneRow);
+
+      function row(layer, order, image, isDefault, options) {
+        return {
+          layer: layer || "",
+          order: order || "",
+          image: image || "",
+          default: normalizeDefault(isDefault),
+          options: options || []
+        };
+      }
+
+      function cloneRow(source) {
+        var options = [];
+        for (var i = 0; i < optionHeaders.length; i += 1) {
+          options[i] = source.options && source.options[i] ? source.options[i] : "";
+        }
+        return row(source.layer, source.order, source.image, source.default, options);
+      }
+
+      function byId(id) {
+        return document.getElementById(id);
+      }
+
+      function escapeHtml(value) {
+        return String(value == null ? "" : value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function normalizeDefault(value) {
+        return String(value || "").trim().toUpperCase() === "Y" ? "Y" : "";
+      }
+
+      function updatePath() {
+        var productNo = byId("productNo").value.trim() || "상품번호";
+        byId("pathPreview").textContent = "/web/upload/simulator/" + productNo + "/simulator.csv";
+      }
+
+      function renderOptions() {
+        byId("optionList").innerHTML = optionHeaders.map(function (header, index) {
+          return [
+            '<div class="option-item">',
+            '<input type="text" value="' + escapeHtml(header) + '" data-option-header="' + index + '" aria-label="옵션 컬럼명">',
+            '<button type="button" class="small danger" data-remove-option="' + index + '">삭제</button>',
+            '</div>'
+          ].join("");
+        }).join("");
+      }
+
+      function renderTable() {
+        var html = [
+          "<thead><tr>",
+          "<th>layer</th>",
+          "<th>order</th>",
+          "<th>image</th>",
+          "<th>default</th>"
+        ];
+
+        optionHeaders.forEach(function (header) {
+          html.push("<th>" + escapeHtml(header) + "</th>");
+        });
+        html.push("<th>관리</th></tr></thead><tbody>");
+
+        rows.forEach(function (item, rowIndex) {
+          html.push("<tr>");
+          html.push(cellInput(rowIndex, "layer", item.layer, "top"));
+          html.push(cellInput(rowIndex, "order", item.order, "2"));
+          html.push(cellInput(rowIndex, "image", item.image, "top/example.png"));
+          html.push([
+            '<td class="check-cell">',
+            '<input type="checkbox" data-row="' + rowIndex + '" data-field="default" ' + (item.default === "Y" ? "checked" : "") + '>',
+            '</td>'
+          ].join(""));
+          optionHeaders.forEach(function (_header, optionIndex) {
+            var value = item.options && item.options[optionIndex] ? item.options[optionIndex] : "";
+            html.push([
+              "<td>",
+              '<input type="text" value="' + escapeHtml(value) + '" data-row="' + rowIndex + '" data-option="' + optionIndex + '" placeholder="옵션값">',
+              "</td>"
+            ].join(""));
+          });
+          html.push([
+            '<td class="row-tools">',
+            '<button type="button" class="small danger" data-remove-row="' + rowIndex + '">삭제</button>',
+            "</td>"
+          ].join(""));
+          html.push("</tr>");
+        });
+
+        if (!rows.length) {
+          html.push('<tr><td colspan="' + (fixedHeaders.length + optionHeaders.length + 1) + '">매핑 행이 없습니다. `행 추가` 또는 `CSV 가져오기`를 사용하세요.</td></tr>');
+        }
+
+        html.push("</tbody>");
+        byId("mappingTable").innerHTML = html.join("");
+      }
+
+      function cellInput(rowIndex, field, value, placeholder) {
+        return [
+          "<td>",
+          '<input type="text" value="' + escapeHtml(value) + '" data-row="' + rowIndex + '" data-field="' + field + '" placeholder="' + escapeHtml(placeholder) + '">',
+          "</td>"
+        ].join("");
+      }
+
+      function makeCsv() {
+        var headers = fixedHeaders.concat(optionHeaders);
+        var lines = [headers.map(escapeCsv).join(",")];
+
+        rows.forEach(function (item) {
+          var line = [
+            item.layer,
+            item.order,
+            item.image,
+            item.default
+          ];
+          optionHeaders.forEach(function (_header, index) {
+            line.push(item.options && item.options[index] ? item.options[index] : "");
+          });
+          lines.push(line.map(escapeCsv).join(","));
+        });
+
+        return lines.join("\r\n");
+      }
+
+      function escapeCsv(value) {
+        var text = String(value == null ? "" : value);
+        if (/[",\r\n]/.test(text)) {
+          return '"' + text.replace(/"/g, '""') + '"';
+        }
+        return text;
+      }
+
+      function parseCsv(text) {
+        var source = String(text || "").replace(/^\uFEFF/, "");
+        var table = [[]];
+        var rowIndex = 0;
+        var field = "";
+        var inQuotes = false;
+
+        for (var i = 0; i < source.length; i += 1) {
+          var char = source.charAt(i);
+
+          if (inQuotes) {
+            if (char === '"') {
+              if (source.charAt(i + 1) === '"') {
+                field += '"';
+                i += 1;
+              } else {
+                inQuotes = false;
+              }
+            } else {
+              field += char;
+            }
+          } else if (char === '"') {
+            inQuotes = true;
+          } else if (char === ",") {
+            table[rowIndex].push(field);
+            field = "";
+          } else if (char === "\n") {
+            table[rowIndex].push(field);
+            rowIndex += 1;
+            table[rowIndex] = [];
+            field = "";
+          } else if (char !== "\r") {
+            field += char;
+          }
+        }
+
+        table[rowIndex].push(field);
+        return table.filter(function (line) {
+          return line.some(function (cell) {
+            return String(cell || "").trim() !== "";
+          });
+        });
+      }
+
+      function importCsvText(text) {
+        var table = parseCsv(text);
+        if (!table.length) {
+          alert("CSV 내용이 비어 있습니다.");
+          return;
+        }
+
+        var headers = table[0].map(function (header) {
+          return String(header || "").trim();
+        });
+        var lowerHeaders = headers.map(function (header) {
+          return header.toLowerCase();
+        });
+        var fixedIndex = {};
+
+        fixedHeaders.forEach(function (name) {
+          fixedIndex[name] = lowerHeaders.indexOf(name);
+        });
+
+        if (fixedIndex.layer < 0 || fixedIndex.image < 0) {
+          alert("CSV에는 최소한 layer, image 컬럼이 있어야 합니다.");
+          return;
+        }
+
+        var optionIndexes = headers.map(function (header, index) {
+          if (!header) {
+            return null;
+          }
+          return fixedHeaders.indexOf(header.toLowerCase()) >= 0 ? null : index;
+        }).filter(function (index) {
+          return index !== null;
+        });
+
+        optionHeaders = optionIndexes.map(function (index) {
+          return headers[index];
+        });
+
+        rows = table.slice(1).map(function (cells) {
+          return row(
+            getCell(cells, fixedIndex.layer),
+            getCell(cells, fixedIndex.order),
+            getCell(cells, fixedIndex.image),
+            getCell(cells, fixedIndex.default),
+            optionIndexes.map(function (index) {
+              return getCell(cells, index);
+            })
+          );
+        });
+
+        renderAll();
+      }
+
+      function getCell(cells, index) {
+        return index >= 0 && index < cells.length ? String(cells[index] || "").trim() : "";
+      }
+
+      function validate() {
+        var messages = [];
+
+        if (!rows.length) {
+          messages.push({ type: "error", text: "매핑 행이 없습니다." });
+        }
+
+        optionHeaders.forEach(function (header, index) {
+          if (!String(header || "").trim()) {
+            messages.push({ type: "error", text: (index + 1) + "번째 옵션 컬럼명이 비어 있습니다." });
+          }
+        });
+
+        rows.forEach(function (item, index) {
+          if (!String(item.layer || "").trim()) {
+            messages.push({ type: "error", text: (index + 1) + "행의 layer가 비어 있습니다." });
+          }
+          if (!String(item.image || "").trim()) {
+            messages.push({ type: "error", text: (index + 1) + "행의 image가 비어 있습니다." });
+          }
+          if (/[ㄱ-ㅎㅏ-ㅣ가-힣\s()]/.test(item.image || "")) {
+            messages.push({ type: "warn", text: (index + 1) + "행 image에 한글/공백/괄호가 있습니다. 영문 파일명을 권장합니다." });
+          }
+        });
+
+        if (rows.length && !rows.some(function (item) { return item.default === "Y"; })) {
+          messages.push({ type: "warn", text: "default=Y 행이 없습니다. 처음 진입 시 기본 조합을 안정적으로 보여주려면 기본 행을 지정하세요." });
+        }
+
+        return messages;
+      }
+
+      function updateOutput() {
+        var messages = validate();
+        var statusBox = byId("statusBox");
+        var summary = messages.length ? "확인 필요" : "정상";
+
+        statusBox.innerHTML = [
+          '<strong>' + summary + '</strong>',
+          messages.length ? messages.map(function (message) {
+            return '<span class="' + message.type + '">- ' + escapeHtml(message.text) + '</span>';
+          }).join("") : '<span>현재 CSV 구조로 다운로드할 수 있습니다.</span>'
+        ].join("");
+
+        byId("csvPreview").value = makeCsv();
+      }
+
+      function renderAll() {
+        updatePath();
+        renderOptions();
+        renderTable();
+        updateOutput();
+      }
+
+      byId("productNo").addEventListener("input", updatePath);
+
+      byId("optionList").addEventListener("input", function (event) {
+        var index = event.target.getAttribute("data-option-header");
+        if (index === null) {
+          return;
+        }
+        optionHeaders[Number(index)] = event.target.value;
+        renderTable();
+        updateOutput();
+      });
+
+      byId("optionList").addEventListener("click", function (event) {
+        var index = event.target.getAttribute("data-remove-option");
+        if (index === null) {
+          return;
+        }
+        if (!confirm("이 옵션 컬럼을 삭제할까요? 해당 컬럼의 행 데이터도 같이 삭제됩니다.")) {
+          return;
+        }
+        index = Number(index);
+        optionHeaders.splice(index, 1);
+        rows.forEach(function (item) {
+          item.options.splice(index, 1);
+        });
+        renderAll();
+      });
+
+      byId("mappingTable").addEventListener("input", function (event) {
+        updateRowFromInput(event.target);
+      });
+
+      byId("mappingTable").addEventListener("change", function (event) {
+        updateRowFromInput(event.target);
+      });
+
+      byId("mappingTable").addEventListener("click", function (event) {
+        var index = event.target.getAttribute("data-remove-row");
+        if (index === null) {
+          return;
+        }
+        rows.splice(Number(index), 1);
+        renderAll();
+      });
+
+      function updateRowFromInput(target) {
+        var rowIndex = target.getAttribute("data-row");
+        if (rowIndex === null || !rows[Number(rowIndex)]) {
+          return;
+        }
+
+        var item = rows[Number(rowIndex)];
+        var optionIndex = target.getAttribute("data-option");
+        var field = target.getAttribute("data-field");
+
+        if (optionIndex !== null) {
+          item.options[Number(optionIndex)] = target.value;
+        } else if (field === "default") {
+          item.default = target.checked ? "Y" : "";
+        } else if (field) {
+          item[field] = target.value;
+        }
+
+        updateOutput();
+      }
+
+      byId("addOption").addEventListener("click", function () {
+        optionHeaders.push("새 옵션명");
+        rows.forEach(function (item) {
+          item.options.push("");
+        });
+        renderAll();
+      });
+
+      byId("addRow").addEventListener("click", function () {
+        rows.push(row("", "", "", "", optionHeaders.map(function () { return ""; })));
+        renderTable();
+        updateOutput();
+      });
+
+      byId("loadSample").addEventListener("click", function () {
+        if (rows.length && !confirm("현재 표를 샘플 데이터로 바꿀까요?")) {
+          return;
+        }
+        rows = sampleRows.map(cloneRow);
+        renderAll();
+      });
+
+      byId("clearRows").addEventListener("click", function () {
+        if (!confirm("전체 매핑 행을 비울까요?")) {
+          return;
+        }
+        rows = [];
+        renderAll();
+      });
+
+      byId("importCsv").addEventListener("change", function (event) {
+        var file = event.target.files && event.target.files[0];
+        if (!file) {
+          return;
+        }
+        var reader = new FileReader();
+        reader.onload = function () {
+          importCsvText(reader.result);
+          event.target.value = "";
+        };
+        reader.readAsText(file, "utf-8");
+      });
+
+      byId("downloadCsv").addEventListener("click", function () {
+        var messages = validate();
+        var hasError = messages.some(function (message) {
+          return message.type === "error";
+        });
+
+        if (hasError && !confirm("오류가 있는 상태입니다. 그래도 다운로드할까요?")) {
+          return;
+        }
+
+        var blob = new Blob(["\uFEFF" + makeCsv()], { type: "text/csv;charset=utf-8" });
+        var link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "simulator.csv";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+      });
+
+      renderAll();
+    }());
+  </script>
+</body>
+</html>

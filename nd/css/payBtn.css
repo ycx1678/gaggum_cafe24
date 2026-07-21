@@ -1,0 +1,33 @@
+.pay_intro{font-size:0;line-height:0;padding:0;margin:0;}
+.pay_intro .payBtn{display:none;width:50%;width:calc(50% - 5px);font-size:0;line-height:0;margin-top:10px}
+.pay_intro .payBtn a{display:block;height:38px;box-sizing:border-box}
+.pay_intro .payBtn.naver{margin-right:10px}
+.pay_intro .payBtn.naver a{background:#00de5a url(/nd/images/common/pay_img_naver.png) no-repeat center/auto 20px !important;/*border:2px solid #00de5a*/}
+.pay_intro .payBtn.kakao a{background:#ffeb00 url(/nd/images/common/pay_img_kakao.png) no-repeat center/auto 16px !important;/*border:2px solid #ffeb00*/}
+
+#NaverChk_Button{display:none !important}
+#NaverChk_Button [class*=npay_type]{width:100% !important;max-width:228px !important;height:auto !important;}
+#NaverChk_Button .npay_button_box,
+#NaverChk_Button .npay_button_box2{padding:0 !important;border:0 !important;}
+#NaverChk_Button .npay_button{padding:0 !important}
+#NaverChk_Button .npay_text,
+#NaverChk_Button .npay_btn_item.btn_width,
+#NaverChk_Button .npay_event{display:none !important}
+#NaverChk_Button .npay_btn_link{height:38px !important;border:0 !important;border-radius:0 !important;box-sizing:border-box;background:#00de5a url(/mmt/images/common/pay_img_naver.png) no-repeat center/auto 20px !important;/*border:2px solid #00de5a !important*/}
+
+#appPaymentButtonBox{float:none !important;width:50%;width:calc(50% - 5px);display:inline-block;font-size:0;line-height:0;margin:10px 0 0 0;vertical-align:top}
+#appPaymentButtonBox #checkoutContainer.__checkout_buy_container{width:100%;padding:0;border:0}
+#appPaymentButtonBox #checkoutContainer.__checkout_sdk_container .__checkout_buy_notice{display:none}
+#appPaymentButtonBox #checkoutContainer .__checkout_buy_container.__checkout_buy_channel .__checkout_buy_contents,
+#appPaymentButtonBox #checkoutContainer.__checkout_buy_container.__checkout_buy_channel .__checkout_buy_contents{padding:0}
+#appPaymentButtonBox #checkoutContainer .__checkout_buy_container .__checkout_buy_contents .__checkout_buy_title,
+#appPaymentButtonBox #checkoutContainer.__checkout_buy_container .__checkout_buy_contents .__checkout_buy_title,
+#appPaymentButtonBox #checkoutContainer .__checkout_buy_container .__checkout_buy_contents .__checkout_wrap_btn_channel,
+#appPaymentButtonBox #checkoutContainer.__checkout_buy_container .__checkout_buy_contents .__checkout_wrap_btn_channel,
+#appPaymentButtonBox #checkoutContainer .__checkout_buy_container .__checkout_buy_contents .__checkout_btn_wish,
+#appPaymentButtonBox #checkoutContainer.__checkout_buy_container .__checkout_buy_contents .__checkout_btn_wish{display:none}
+
+#appPaymentButtonBox #checkoutContainer .__checkout_sdk_container .__checkout_img_buy,
+#appPaymentButtonBox #checkoutContainer.__checkout_sdk_container .__checkout_img_buy{display:none}
+#appPaymentButtonBox #checkoutContainer .__checkout_buy_container .__checkout_buy_contents .__checkout_btn_buy,
+#appPaymentButtonBox #checkoutContainer.__checkout_buy_container .__checkout_buy_contents .__checkout_btn_buy{height:38px !important;border:0 !important;border-radius:0 !important;box-sizing:border-box;background:#ffde00 url(/mmt/images/common/pay_img_kakao.png) no-repeat center/auto 16px !important;/*border:2px solid #ffde00 !important*/}

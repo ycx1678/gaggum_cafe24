@@ -1,0 +1,11 @@
+#todayShipping_countdown{position:relative;margin-bottom:20px;padding:16px 20px 16px 120px;background:#f8f7f5;border-radius:12px;line-height:1.5}
+#todayShipping_countdown .shipping_tit{position:absolute;left:20px;top:50%;transform:translateY(-50%);height:28px;line-height:28px;padding:0 14px;background:#ff6600;font-size:13px;font-weight:600;color:#fff;border-radius:20px}
+#todayShipping_countdown .ment1{font-size:14px;font-weight:500;color:#222}
+#todayShipping_countdown .timer{font-size:14px;font-weight:600;color:#ff6600}
+#todayShipping_countdown .ment2{font-size:13px;color:#666}
+#todayShipping_countdown .date{font-weight:600;color:#1fb56c}
+
+/* [추가 2026-06-11] MUST HAVE 아이콘(icon_global_14.gif)은 '오늘발송' 타이머 트리거 전용 — 화면엔 비노출(가꿈 요청).
+   detail 페이지는 nd_common.css가 로드되지 않으므로 여기서 숨김. display:none 이어도 DOM엔 남아
+   todayShipping JS의 트리거 감지(getAttribute 기반)에는 영향 없음 — 아이콘만 가려지고 타이머는 정상 노출. */
+img[src*="icon_global_14"]{display:none !important}

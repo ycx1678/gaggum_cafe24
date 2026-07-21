@@ -1,0 +1,88 @@
+/* board_review.css */
+
+/* 상단 공통 */
+.review .review_tab{text-align:center;font-size:0;margin-bottom:80px}
+.review .review_tab > li{display:inline-block;vertical-align:middle;width:190px;font-size:14px;border-radius:3px;border:1px solid #d9d9d9;transition:all 0.5s;cursor: pointer;}
+.review .review_tab > li + li{margin-left:10px}
+.review .review_tab > li:hover{background:#f5f5f5}
+.review .review_tab > li > a{display:block;color:#999;line-height:45px}
+.review .review_tab > li > a > img{padding-right:8px;display:inline-block;vertical-align:middle}
+.review .review_tab > li > a > img.white{display:none}
+.review .review_tab > li.on{background:#222;color:#fff;border-color:#222}
+.review .review_tab > li.on > a{color:#fff}
+.review .review_tab > li.on > a > img.white{display:inline-block}
+.review .review_tab > li.on > a > img.gray{display:none}
+.review .review_tab > li.on:hover{background:#f5f5f5;border-color:#d9d9d9}
+.review .review_tab > li.on:hover > a{color:#999}
+.review .review_tab > li.on:hover > a > img.gray{display:inline-block}
+.review .review_tab > li.on:hover > a > img.white{display:none}
+
+/* 카테고리 */
+.review .boardSort{margin-bottom:30px}
+.review .boardSort select{min-width:100px;padding:0 5px}
+
+/* 포토리뷰 목록 */
+.review.photo ul.review_inner{display:flex;flex-wrap:wrap;margin-bottom:30px}
+.review.photo ul.review_inner > li{width:calc(25% - 24px);box-sizing:border-box;border:1px solid #e9e9e9;transition:all 0.5s;position:relative;top:0}
+.review.photo ul.review_inner > li:hover{top:-30px}
+.review.photo ul.review_inner > li + li{margin-left:32px}
+.review.photo ul.review_inner > li:nth-child(4n+1){margin-left:0}
+.review.photo ul.review_inner > li:nth-child(n+5){margin-top:60px}
+.review.photo ul.review_inner > li > .check{position:absolute;top:10px;left:10px}
+.review.photo ul.review_inner > li > .thumb > a{display:block;position:relative;padding-bottom:90%;overflow:hidden}
+.review.photo ul.review_inner > li > .thumb > a > img{width:100%;min-height:100%;height:auto;padding:0;position:absolute;left:0;top:50%;transform:translateY(-50%);-ms-transform:translateY(-50%)}
+.review.photo ul.review_inner > li > .description{padding:30px}
+.review.photo ul.review_inner > li > .description > .subject{font-size:15px;color:#000;margin-bottom:15px}
+.review.photo ul.review_inner > li > .description > .cont{font-size:13px;color:#999;line-height:1.4;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 4; -webkit-box-orient: vertical;}
+.review.photo ul.review_inner > li > .description > .info{margin:24px 0 20px;padding-bottom:20px;border-bottom:1px solid #e9e9e9;font-size:13px;color:#999}
+.review.photo ul.review_inner > li > .description > .info > span{position:relative}
+.review.photo ul.review_inner > li > .description > .info > span + span:before{position:absolute;content:'';width:1px;height:13px;background:#ccc;left:10px;top:4px}
+.review.photo ul.review_inner > li > .description > .info > span + span{padding-left:20px}
+.review.photo ul.review_inner > li > .description > .item_line{overflow:hidden;cursor:pointer}
+.review.photo ul.review_inner > li > .description > .item_line > .item_img{float:left;width:45px}
+.review.photo ul.review_inner > li > .description > .item_line > .item_img > img{max-width:45px;height:auto}
+.review.photo ul.review_inner > li > .description > .item_line > .item_box{float:left;width:calc(100% - 45px)}
+.review.photo ul.review_inner > li > .description > .item_line > .item_box > span{display:block;margin:5px 0 0 15px;line-height:1.2;overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2; -webkit-box-orient: vertical;}
+
+
+/* 리스트형리뷰 목록 */
+.review.list .ec-base-table table td.subject a{display:flex;flex-wrap:wrap}
+.review.list .ec-base-table table td.subject a div{width:100%}
+.review.list .ec-base-table td > a > .tit > img:first-child{margin-left:10px}
+.review.list .ec-base-table td > a > .cont{color:#999;font-size:13px;margin-top:5px}
+.review.list .ec-base-table td > img[alt^='답변']{margin-left:-8px}
+.review.list .ec-base-table.typeList table td.thumb{text-align:center}
+.review.list .ec-base-table.typeList table td.thumb img{width:65px}
+
+
+/* 모바일 버전 */
+@media screen and (max-width: 1024px){
+
+    /* 상단 공통 */
+    .review .review_tab{margin-bottom:30px}
+    .review .review_tab > li{width:calc(50% - 7px)}
+    .review .review_tab > li > a{line-height:40px;font-size:13px}
+    
+    /* 포토리뷰 목록 */
+    .review.photo ul.review_inner > li{width:calc(50% - 5px);margin-bottom:30px}
+    .review.photo ul.review_inner > li:hover{top:0}
+    .review.photo ul.review_inner > li + li{margin-left:10px}
+    .review.photo ul.review_inner > li:nth-child(2n+1){margin-left:0}
+    .review.photo ul.review_inner > li > .description{padding:15px}
+    .review.photo ul.review_inner > li > .description > .subject{font-size:14px;margin-bottom:10px}
+    .review.photo ul.review_inner > li > .description > .cont{font-size:12px}
+    .review.photo ul.review_inner > li > .description > .info{font-size:12px;margin:15px 0 17px;padding-bottom:15px}
+    .review.photo ul.review_inner > li > .description > .info > span{line-height:1.5}
+    .review.photo ul.review_inner > li > .description > .item_line > .item_box > span{font-size:12px;margin-left:10px}
+    
+    /* 리스트형리뷰 목록 */
+    .nd .review.list .ec-base-table.typeList td{padding:6px 4px 0 4px;font-size:12px}
+    .review.list .ec-base-table.typeList td:nth-child(2){padding-left:0}
+    .review.list .ec-base-table.typeList td.chk .boardChk{position:absolute;right:0;margin:0 4px 0 0}
+    .review.list .ec-base-table.typeList td.subject{padding-right:30px}
+	.review.list .ec-base-table.typeList table td.thumb{padding:0 10px 0 0}
+    .review.list .ec-base-table.typeList table td.thumb img{width:50px}
+	.review.list .ec-base-table table td.subject a{padding-left:5px}
+    .review.list .ec-base-table td > a > .cont{font-size:12px}
+    
+}

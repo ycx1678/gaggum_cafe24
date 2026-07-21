@@ -1,0 +1,43 @@
+<!--@css(/nd/css/coupon_set.css)-->
+<!--@js(/nd/js/coupon_set.js)-->
+<div class="coupon_set">
+
+    <div module="coupon_productdetailajax" class="section">
+        <!--
+            $coupon_down_result_url = /coupon/coupon_down_result.html
+        -->
+        <!--@css(/css/module/coupon/productDetailAjax.css)-->
+        
+        <a class="btn_coupon" href="#n">쿠폰 받기 <i class="xi-download"></i></a>
+        <div class="coupon_popupbg"></div>
+        <div class="coupon_layer" style="display:none">            
+            <div class="layer_head">
+            	<h4>쿠폰 다운로드</h4><a class="btn_close_layer" href="#n"><i class="xi-close"></i></a>
+            </div>
+            <ul class="cp_list_con">
+                <li>
+                    <div class="coupon {$background_class}">
+                        <div class="detail" {$call_coupon_detail}>
+                            <p class="discount">{$coupon_content}</p>
+                            <p class="title">{$coupon_name}</p>
+                            <p class="period">{$coupon_period}</p>
+                        </div>
+                        <a class="button" href="{$coupon_issue_url}"><span><i class="xi-arrow-bottom"></i>쿠폰받기</span></a>
+                    </div>
+                </li>
+                <li>
+                    <div class="coupon {$background_class}">
+                        <div class="detail" {$call_coupon_detail}>
+                            <p class="discount">{$coupon_content}</p>
+                            <p class="title">{$coupon_name}</p>
+                            <p class="period">{$coupon_period}</p>
+                        </div>
+                        <a class="button" href="{$coupon_issue_url}"><span><i class="xi-arrow-bottom"></i>쿠폰받기</span></a>
+                    </div>
+                </li>
+            </ul>
+            <div class="get_all_cp"><a href="#none" id="btn_all_coupondown">전체쿠폰다운받기</a></div>
+        </div>
+    </div>
+
+</div><!--// coupon_set END -->

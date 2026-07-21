@@ -1,0 +1,29 @@
+<!--@css(/nd/css/main_video_bnn.css)-->
+<!--@js(/nd/js/main_video_bnn.js)-->
+
+<div class="main_video_bnn">
+    <div class="main_wrap">       
+        <!-- 비디오 영역 -->
+        <div class="video_box">
+            <div>
+                <iframe width="100%" height="660" src="https://www.youtube-nocookie.com/embed/9Q2h1TgomHI?playlist=9Q2h1TgomHI&autoplay=1&controls=0&enablejsapi=1&loop=1&mute=1&color=white&showinfo=0"frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- 상품 영역 / 메인진열 2번 -->
+        <div class="bnn_box">
+            <div module="product_listmain_2" class="ec-base-product">
+                <!--
+                    $count = 1
+                        ※ 상품진열갯수를 설정하는 변수입니다. 설정하지 않을 경우, 최대 200개의 상품이 진열 됩니다.
+                        ※ 진열된 상품이 많으면, 쇼핑몰에 부하가 발생할 수 있습니다.
+                    $basket_result = /product/add_basket.html
+                    $basket_option = /product/basket_option.html
+                -->
+                <ul class="prdList typ2">
+                    <!--@import(/nd/prd_list_type2.html)-->
+                </ul>
+            </div>
+        </div>
+	</div>
+</div>

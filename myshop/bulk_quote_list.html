@@ -1,0 +1,26 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@css(/nd/css/bulk_quote_list_v169.css)-->
+<!--@js(/nd/js/bulk_quote_list_v169.js)-->
+<div module="layout_logincheck">
+<!--
+    $url = /member/login.html
+-->
+</div>
+<div class="section path">
+    <span>현재 위치</span>
+    <ol>
+        <li><a href="/">홈</a></li>
+        <li><a href="/myshop/index.html">마이쇼핑</a></li>
+        <li title="현재 위치"><strong>견적 요청 목록</strong></li>
+    </ol>
+</div>
+<div class="myshopArea ndQuoteListArea">
+    <div class="titleArea titleArea--myshop">
+        <h2>견적 요청 목록</h2>
+    </div>
+    <p class="ndQuoteListDesc">이 브라우저에서 접수한 대량견적의 처리 상태를 확인할 수 있습니다.</p>
+    <div id="ndQuoteRequestList" class="ndQuoteRequestList" aria-live="polite">
+        <p class="ndQuoteListEmpty">견적 요청 목록을 불러오고 있습니다.</p>
+    </div>
+    <!--@import(/myshop/myshop_main.html)-->
+</div>

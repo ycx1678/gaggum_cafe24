@@ -1,0 +1,521 @@
+<!--@layout(/layout/basic/layout.html)-->
+<div class="section portfolioBoard" module="Board_ListPackage_8">
+    <!--@css(/css/module/board/listPackage_gallary.css)-->
+    <div module="board_title_8">
+        <div class="path">
+            <span>현재 위치</span>
+            <ol>
+                <li><a href="/">홈</a></li>
+                <li><a href="#">게시판</a></li>
+                <li title="현재 위치"><strong>포트폴리오</strong></li>
+            </ol>
+        </div>
+
+        <div class="titleArea">
+            <h2>Portfolio</h2>
+        </div>
+        <p class="imgArea">{$board_top_image}</p>
+    </div>
+
+	<div module="board_listheader_8" class="ec-base-tab gBlank7 {$list_type_display|display}">
+		<ul>
+			<li class="selected"><a href="/board/gallery/list.html{$param_list}"><!--@import(/svg/icon-sort-thumb.html)--> 이미지형</a></li>
+			<li><a href="/board/gallery/list2.html{$param_list}"><!--@import(/svg/icon-sort-list.html)--> 리스트형</a></li>
+		</ul>
+	</div>
+    
+    <!-- 게시판 카테고리 탭 -->
+	<!--@import(/nd/board_tab.html)-->
+
+	<div class="boardSort">
+        <span module="board_category_8">{$form.board_category}</span>
+    </div>
+	<div class="boardList">
+		<div module="board_notice_8">
+			<!--
+				$login_page_url = /member/login.html
+				$deny_access_url = /index.html
+			-->
+			<ul>
+
+				<li>
+					<a href="{$link_board_detail}">
+						<span class="thumbnail"><img src="{$img_src}" onerror="this.src='//img.echosting.cafe24.com/thumb/198x198.gif'" alt="" /></span><span class="summary">
+							<strong class="subject">{$checkbox}<em>{$notice_icon}</em>{$subject}{$icon_new}<span class="comment">{$comment_count}</span></strong>
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a href="{$link_board_detail}">
+						<span class="thumbnail"><img src="{$img_src}" onerror="this.src='//img.echosting.cafe24.com/thumb/198x198.gif'" alt="" /></span><span class="summary">
+							<strong class="subject">{$checkbox}<em>{$notice_icon}</em>{$subject}{$icon_new}<span class="comment">{$comment_count}</span></strong>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<div module="board_fixed_8">
+			<!--
+				$login_page_url = /member/login.html
+				$deny_access_url = /index.html
+			-->
+			<ul>
+				<li>
+					<a href="{$link_board_detail}">
+						<span class="thumbnail"><img src="{$img_src}" onerror="this.src='//img.echosting.cafe24.com/thumb/198x198.gif'" alt="" /></span><span class="summary">
+							<strong class="subject">{$checkbox}<em>{$fixed_icon}</em>{$subject}{$icon_new}<span class="comment">{$comment_count}</span></strong>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a href="{$link_board_detail}">
+						<span class="thumbnail"><img src="{$img_src}" onerror="this.src='//img.echosting.cafe24.com/thumb/198x198.gif'" alt="" /></span><span class="summary">
+							<strong class="subject">{$checkbox}<em>{$fixed_icon}</em>{$subject}{$icon_new}<span class="comment">{$comment_count}</span></strong>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<div module="board_list_8">
+			<!--
+				$count = 12
+				$login_page_url = /member/login.html
+				$deny_access_url = /index.html
+			-->
+			<ul>
+				<li>
+					<a href="{$link_board_detail}">
+						<span class="thumbnail"><img src="{$img_src}" onerror="this.src='//img.echosting.cafe24.com/thumb/198x198.gif'" alt="" /></span>
+							<span class="summary">
+								<strong class="subject">{$subject}<span class="comment">{$comment_count}</span></strong>
+								<span class="portfolio_cont">{$content|striptag}</span>
+								<span class="portfolioProduct" data-product-param="{$param_product}">
+									<span class="portfolioProduct__param">{$param_product}</span>
+									<span class="portfolioProduct__thumb">{$product_img}</span>
+								<span class="portfolioProduct__info"><span class="p_name">{$product_name}</span></span>
+								</span>
+							</span>
+					</a>
+					{$checkbox}
+				</li>
+				<li>
+					<a href="{$link_board_detail}">
+						<span class="thumbnail"><img src="{$img_src}" onerror="this.src='//img.echosting.cafe24.com/thumb/198x198.gif'" alt="" /></span>
+							<span class="summary">
+								<strong class="subject">{$subject}<span class="comment">{$comment_count}</span></strong>
+								<span class="portfolio_cont">{$content|striptag}</span>
+								<span class="portfolioProduct" data-product-param="{$param_product}">
+									<span class="portfolioProduct__param">{$param_product}</span>
+									<span class="portfolioProduct__thumb">{$product_img}</span>
+								<span class="portfolioProduct__info"><span class="p_name">{$product_name}</span></span>
+								</span>
+							</span>
+					</a>
+					{$checkbox}
+				</li>
+			</ul>
+		</div>
+		<div class="boardListEmpty {$empty_display|display}" module="board_empty_8">
+			<p>{$empty_message}</p>
+		</div>
+		<ul class="portfolioFallbackList">
+			<li>
+				<a href="/board/gallery/list.html?board_no=8">
+					<span class="thumbnail"><img src="/nd/images/main_bnn_visual01.jpg" alt=""></span>
+					<span class="summary">
+						<strong class="subject">이쁜 학원책걸상 시즌2_슬래시타입</strong>
+						<span class="portfolio_cont">상판컬러 : 하이그로시 화이트 / 라운드 상판<br>의자컬러 : WOO체어 오션네이비</span>
+						<span class="portfolioProduct">
+							<span class="portfolioProduct__thumb"><img src="/nd/images/main_bnn_right01.jpg" alt=""></span>
+							<span class="portfolioProduct__info">
+								<span class="p_name">이쁜 학원책걸상 시즌2_슬래시타입</span>
+								<span class="p_custom">48,700원</span>
+								<span class="p_price">48,700원</span>
+							</span>
+						</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="/board/gallery/list.html?board_no=8">
+					<span class="thumbnail"><img src="/nd/images/main_bnn_visual02.jpg" alt=""></span>
+					<span class="summary">
+						<strong class="subject">래더 스터디카페테이블 세트</strong>
+						<span class="portfolio_cont">상판컬러 : 메이플 / 화이트 책상<br>의자컬러 : WOO체어 베이지</span>
+						<span class="portfolioProduct">
+							<span class="portfolioProduct__thumb"><img src="/nd/images/main_bnn_right02.jpg" alt=""></span>
+							<span class="portfolioProduct__info">
+								<span class="p_name">이쁜 학원책걸상 시즌2_슬래시타입</span>
+								<span class="p_custom">48,700원</span>
+								<span class="p_price">48,700원</span>
+							</span>
+						</span>
+					</span>
+				</a>
+			</li>
+			<li>
+				<a href="/board/gallery/list.html?board_no=8">
+					<span class="thumbnail"><img src="/nd/images/main_bnn_visual03.jpg" alt=""></span>
+					<span class="summary">
+						<strong class="subject">독서대 학원책걸상</strong>
+						<span class="portfolio_cont">상판컬러 : 매트 화이트<br>의자컬러 : WOO체어 딥그린</span>
+						<span class="portfolioProduct">
+							<span class="portfolioProduct__thumb"><img src="/nd/images/001.jpg" alt=""></span>
+							<span class="portfolioProduct__info">
+								<span class="p_name">이쁜 학원책걸상 시즌2_슬래시타입</span>
+								<span class="p_custom">48,700원</span>
+								<span class="p_price">48,700원</span>
+							</span>
+						</span>
+					</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+</div>
+
+<script>
+    (function(){
+        var root = document.querySelector('.portfolioBoard');
+        if(!root){
+            return;
+        }
+
+        var title = root.querySelector('.titleArea h2');
+        var currentPath = root.querySelector('.path li[title="현재 위치"] strong');
+        var list = root.querySelector('.xans-board-list-8 ul');
+        var fallback = root.querySelector('.portfolioFallbackList');
+        var empty = root.querySelector('.boardListEmpty');
+        var realItems = list ? Array.prototype.filter.call(list.children, function(item){
+            return item.textContent.indexOf('{$') === -1;
+        }) : [];
+
+        if(title){
+            title.textContent = 'Portfolio';
+        }
+        if(currentPath){
+            currentPath.textContent = '포트폴리오';
+        }
+        if(!fallback){
+            return;
+        }
+
+        function routeUrl(url){
+            if(!url || url.indexOf('#') === 0 || url.indexOf('javascript:') === 0 || url.indexOf('//') === 0){
+                return url;
+            }
+            var previewPrefix = window.location.pathname.indexOf('/skin-skin16') === 0 ? '/skin-skin16' : '';
+            if(previewPrefix){
+                var origin = window.location.origin;
+                if(url.indexOf(origin + '/skin-skin') === 0){
+                    return origin + url.replace(origin, '').replace(/^\/skin-skin\d+/, previewPrefix);
+                }
+                if(url.indexOf(origin + '/') === 0){
+                    return origin + previewPrefix + url.replace(origin, '');
+                }
+                if(url.charAt(0) === '/' && url.indexOf(previewPrefix + '/') !== 0){
+                    return previewPrefix + url;
+                }
+            }
+            if(url.indexOf('http') === 0){
+                return url;
+            }
+            if(window.EC_ROUTE && typeof window.EC_ROUTE.getPrefixUrl === 'function'){
+                return window.EC_ROUTE.getPrefixUrl(url);
+            }
+            return url;
+        }
+
+        function cleanText(text){
+            return String(text || '').replace(/\s+/g, ' ').trim();
+        }
+
+        function getProductNo(value){
+            var text = String(value || '');
+            var match = text.match(/^\s*(\d+)\s*$/) ||
+                text.match(/[?&]product_no=(\d+)/) ||
+                text.match(/product_no[=\/](\d+)/) ||
+                text.match(/상품\s*번호\s*[:：]\s*(\d+)/) ||
+                text.match(/상품번호\s*[:：]\s*(\d+)/) ||
+                text.match(/\[상품번호\s*[:：]\s*(\d+)\]/);
+
+            return match ? match[1] : '';
+        }
+
+        function getProductImage(doc){
+            var image = doc.querySelector('.prd_img_wrap .viewer img, .keyImg img, .BigImage, .thumbnail img');
+            var meta = doc.querySelector('meta[property="og:image"]');
+
+            return (image && image.getAttribute('src')) || (meta && meta.getAttribute('content')) || '';
+        }
+
+        function getMetaContent(doc, selector){
+            var meta = doc.querySelector(selector);
+            return meta ? cleanText(meta.getAttribute('content')) : '';
+        }
+
+        function formatPrice(value){
+            var text = cleanText(value);
+            var number = text.replace(/[^\d]/g, '');
+
+            if(!number){
+                return text;
+            }
+
+            return number.replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원';
+        }
+
+        function findJsonProduct(doc){
+            var scripts = doc.querySelectorAll('script[type="application/ld+json"]');
+            var product = null;
+
+            function inspect(data){
+                var graph;
+
+                if(product || !data){
+                    return;
+                }
+                if(Object.prototype.toString.call(data) === '[object Array]'){
+                    data.forEach(inspect);
+                    return;
+                }
+                if(typeof data !== 'object'){
+                    return;
+                }
+                if(data['@type'] === 'Product' || data['@type'] === 'product'){
+                    product = data;
+                    return;
+                }
+                graph = data['@graph'];
+                if(graph){
+                    inspect(graph);
+                }
+            }
+
+            Array.prototype.forEach.call(scripts, function(script){
+                if(product){
+                    return;
+                }
+                try {
+                    inspect(JSON.parse(script.textContent));
+                } catch(error) {}
+            });
+
+            return product;
+        }
+
+        function getJsonImage(product){
+            var image = product && product.image;
+
+            if(Object.prototype.toString.call(image) === '[object Array]'){
+                return image[0] || '';
+            }
+
+            return image || '';
+        }
+
+        function getJsonOfferPrice(product){
+            var offers = product && product.offers;
+            var offer = Object.prototype.toString.call(offers) === '[object Array]' ? offers[0] : offers;
+
+            return offer && offer.price ? formatPrice(offer.price) : '';
+        }
+
+        function findText(doc, selector){
+            var item = doc.querySelector(selector);
+            return item ? cleanText(item.textContent) : '';
+        }
+
+        function ensureProductField(box, className){
+            var item = box.querySelector('.' + className);
+            if(!item){
+                item = document.createElement('span');
+                item.className = className;
+                box.appendChild(item);
+            }
+            return item;
+        }
+
+        function fillProductInfo(box, html){
+            var doc = new DOMParser().parseFromString(html, 'text/html');
+            var jsonProduct = findJsonProduct(doc);
+            var image = getProductImage(doc) || getJsonImage(jsonProduct);
+            var name = findText(doc, '.xans-product-detail .headingArea h1') || (jsonProduct && cleanText(jsonProduct.name));
+            var custom = findText(doc, '#span_product_price_custom');
+            var priceInfo = doc.querySelector('#ec-product-price-info');
+            var price = findText(doc, '#span_product_price_text') || (priceInfo ? formatPrice(priceInfo.getAttribute('ec-data-price')) : '') || getJsonOfferPrice(jsonProduct);
+            var saleNode = doc.querySelector('#span_product_price_sale');
+            var sale = '';
+            var thumb = box.querySelector('.portfolioProduct__thumb');
+            var info = box.querySelector('.portfolioProduct__info');
+
+            if(saleNode){
+                sale = cleanText(saleNode.childNodes[0] ? saleNode.childNodes[0].nodeValue : saleNode.textContent);
+            }
+            if(!info){
+                info = document.createElement('span');
+                info.className = 'portfolioProduct__info';
+                box.appendChild(info);
+            }
+            if(!thumb){
+                thumb = document.createElement('span');
+                thumb.className = 'portfolioProduct__thumb';
+                box.insertBefore(thumb, info);
+            }
+            if(image && image.indexOf('{$') === -1 && !thumb.querySelector('img')){
+                thumb.innerHTML = '<img src="' + routeUrl(image) + '" alt="">';
+            }
+            if(name && name.indexOf('{$') === -1){
+                ensureProductField(info, 'p_name').textContent = name;
+            }
+            Array.prototype.forEach.call(info.querySelectorAll('.p_desc'), function(item){
+                item.parentNode.removeChild(item);
+            });
+            if(custom && custom !== price && custom.indexOf('{$') === -1){
+                ensureProductField(info, 'p_custom').textContent = custom;
+            }
+            if(sale && sale.indexOf('{$') === -1){
+                ensureProductField(info, 'p_price').textContent = sale;
+            }else if(price && price.indexOf('{$') === -1){
+                ensureProductField(info, 'p_price').textContent = price;
+            }
+            if(box.querySelector('img') || cleanText(info.textContent)){
+                box.classList.add('is-active');
+            }
+            box.setAttribute('data-nd-product-loaded', 'true');
+        }
+
+        function activateProductBox(box){
+            var hasImage = !!box.querySelector('.portfolioProduct__thumb img');
+            var hasText = cleanText(box.querySelector('.portfolioProduct__info') ? box.querySelector('.portfolioProduct__info').textContent : '').indexOf('{$') === -1 &&
+                !!cleanText(box.querySelector('.portfolioProduct__info') ? box.querySelector('.portfolioProduct__info').textContent : '');
+
+            if(hasImage || hasText){
+                box.classList.add('is-active');
+            }
+        }
+
+        function setProductLink(box, productNo){
+            if(!box || !productNo){
+                return '';
+            }
+
+            var productUrl = routeUrl('/product/detail.html?product_no=' + productNo);
+            box.setAttribute('data-product-url', productUrl);
+            box.setAttribute('role', 'link');
+            box.setAttribute('tabindex', '0');
+            box.classList.add('is-active');
+
+            return productUrl;
+        }
+
+        Array.prototype.forEach.call(root.querySelectorAll('.portfolio_cont'), function(item){
+            var productNo = getProductNo(item.textContent);
+            var row = item.closest ? item.closest('li') : null;
+            var productBox = row ? row.querySelector('.portfolioProduct') : (item.parentNode ? item.parentNode.querySelector('.portfolioProduct') : null);
+
+            if(productNo && productBox){
+                productBox.setAttribute('data-nd-product-no', productNo);
+            }
+            item.textContent = item.textContent
+                .replace(/\[?\s*상품\s*번호\s*[:：]\s*\d+\s*\]?/g, '')
+                .replace(/\[?\s*상품번호\s*[:：]\s*\d+\s*\]?/g, '')
+                .replace(/\s+/g, ' ')
+                .trim();
+        });
+
+        Array.prototype.forEach.call(root.querySelectorAll('.xans-board-list-8 .portfolioProduct'), function(box){
+            var productNo = getProductNo(box.getAttribute('data-product-param')) ||
+                getProductNo(box.getAttribute('data-nd-product-no')) ||
+                getProductNo(box.querySelector('.portfolioProduct__param') ? box.querySelector('.portfolioProduct__param').textContent : '');
+
+            activateProductBox(box);
+            if(!productNo){
+                return;
+            }
+
+            var productUrl = setProductLink(box, productNo);
+            var info = box.querySelector('.portfolioProduct__info');
+            if(info && !cleanText(info.textContent)){
+                ensureProductField(info, 'p_name').textContent = '상품 정보를 불러오는 중입니다.';
+            }
+            box.addEventListener('click', function(event){
+                var url = box.getAttribute('data-product-url');
+
+                if(!url){
+                    return;
+                }
+
+                event.preventDefault();
+                event.stopPropagation();
+                window.location.href = url;
+            }, true);
+            box.addEventListener('keydown', function(event){
+                var url = box.getAttribute('data-product-url');
+
+                if(!url || (event.key !== 'Enter' && event.key !== ' ')){
+                    return;
+                }
+
+                event.preventDefault();
+                window.location.href = url;
+            });
+            if(box.getAttribute('data-nd-product-loaded') === 'true'){
+                return;
+            }
+
+            if(window.fetch){
+                fetch(productUrl, { credentials: 'same-origin' })
+                    .then(function(response){
+                        return response.ok ? response.text() : '';
+                    })
+                    .then(function(html){
+                        if(html){
+                            fillProductInfo(box, html);
+                        }
+                    })
+                    .catch(function(){});
+                return;
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', productUrl, true);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 400){
+                    fillProductInfo(box, xhr.responseText);
+                }
+            };
+            xhr.send();
+        });
+
+        if(realItems.length > 0){
+            fallback.style.display = 'none';
+            return;
+        }
+
+        fallback.style.display = 'grid';
+        if(empty){
+            empty.style.display = 'none';
+        }
+    })();
+</script>
+
+<!-- [복원 2026-06-11] 포트폴리오 글쓰기 버튼 — 커스텀 포트폴리오 list.html 작업 시 누락됨(가꿈 피드백).
+     board_no=8, 글쓰기 권한 있을 때만 노출({$write_display}). list2.html과 동일 마크업. -->
+<div module="board_ButtonList_8" class="ec-base-button gBottom {$write_display|display}">
+    <span class="gRight">
+        <a href="/board/gallery/write.html{$param_write}" class="btnSubmitFix sizeM {$write_display|display}">글쓰기</a>
+    </span>
+</div>
+
+<div module="board_paging_8" class="section ec-base-paginate typeList">
+    <a href="{$param_prev}">이전 페이지</a>
+    <ol>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+    </ol>
+    <a href="{$param_next}">다음 페이지</a>
+</div>

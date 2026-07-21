@@ -1,0 +1,27 @@
+<!-- 기본 타입 -->
+<div module="product_listmain_1" class="ec-base-product main_prd">
+    <!--
+        $count = 12
+            ※ 상품진열갯수를 설정하는 변수입니다. 설정하지 않을 경우, 최대 200개의 상품이 진열 됩니다.
+            ※ 진열된 상품이 많으면, 쇼핑몰에 부하가 발생할 수 있습니다.
+        $basket_result = /product/add_basket.html
+        $basket_option = /product/basket_option.html
+		$moreview = yes
+        $cache = yes
+    -->
+    <div class="tit_common">
+        <h2 class="tit fade fade_left">
+        	<span style="display: {$category_title_text_display};">{$category_title_text}</span>
+            <span style="display: {$category_title_img_display};"><img src="{$category_title_img}" alt="{$category_title_text}" /></span>
+        </h2>
+    </div>
+    <ul class="prdList grid4" id="m_grid2">
+        <!--@import(/nd/prd_list_normal.html)-->
+    </ul>
+</div>
+<div module="product_listmore_1" class="typeMoreview">
+    <a href="#none" onclick="{$more_action}" class="btnMore">
+        MORE (<span id="more_current_page_{$display_group}">{$current_page}</span>/<span id="more_total_page_{$display_group}">{$total_page}</span>)
+        <i class="xi-angle-down-min"></i>
+    </a>
+</div>

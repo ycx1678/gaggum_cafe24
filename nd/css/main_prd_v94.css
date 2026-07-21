@@ -1,0 +1,78 @@
+.main_prd_wrap,
+.nd#main .main_prd_wrap{background:#fff}
+.main_prd_wrap .main_prd_slide,
+.nd#main .main_prd_wrap .main_prd_slide{max-width:none;display:block;width:100%;margin:0 auto;padding:0 70px 0 130px;position:relative;box-sizing:border-box;background:#fff}
+.main_prd_wrap .main_prd_slide:before{display:none}
+.main_prd_wrap .main_prd_slide .tit_left{width:100%;padding:0 0 30px;display:block;position:relative;z-index:10;background:#fff}
+.main_prd_wrap .main_prd_slide .tit_left .inner{width:100%;padding-right:0;background:#fff}
+.main_prd_wrap .main_prd_slide .tit_left .inner .tit{font-size:42px;font-weight:600;letter-spacing:-0.5px;margin:20px 0;line-height:1}
+.main_prd_wrap .main_prd_slide .tit_left .inner .txt{font-size:18px;color:#777;line-height:1.5}
+.main_prd_wrap .main_prd_slide .tit_left .circle_txt{display:none}
+.main_prd_wrap .main_prd_slide .tit_left .circle_txt svg{fill:currentColor;height:auto;max-width:66vmin;transform-origin:center;width:50%;animation:rotate_txt 10s linear infinite;transform-origin:50% 50%}
+.main_prd_wrap .main_prd_slide .tit_left text{color:#aaa}
+.main_prd_wrap .main_prd_slide .tit_left .btn_link{margin-top:60px}
+.main_prd_wrap .main_prd_slide .prdList,
+#fullpage .main_prd_wrap .main_prd_slide .prdList{width:100% !important;max-width:none !important;margin:0 !important;overflow:hidden}
+/* #15 BEST 호버 시 이미지 박스 흔들림 방지 — 비율 고정 + cover */
+.main_prd_wrap .main_prd_slide .prdImg{position:relative;aspect-ratio:3/4;overflow:hidden}
+.main_prd_wrap .main_prd_slide .prdImg > a{display:block;position:relative;width:100%;height:100%}
+.main_prd_wrap .main_prd_slide .prdImg > a > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s ease}
+.main_prd_wrap .main_prd_slide .prdImg > a > img.on{opacity:0}
+.main_prd_wrap .main_prd_slide .prdImg > a.nd-has-hover-image:hover > img.on{opacity:1}
+.main_prd_wrap .main_prd_slide .prdImg > a.nd-has-hover-image:hover > img:not(.on){opacity:0}
+.main_prd_wrap div[class*="swiper-button"]{display:none !important}
+.nd#main .main_prd_wrap.active .main_prd_slide .tit_left .circle_txt{top:0;opacity:1}
+.nd#main .main_prd_wrap.active .main_prd_slide .tit_left .tit,
+.nd#main .main_prd_wrap.active .main_prd_slide .tit_left .txt{left:0;opacity:1}
+
+@keyframes rotate_txt{
+	100% {
+    	transform:rotate(360deg);
+    }
+}
+
+@media all and (max-width:1450px) {
+	.main_prd_wrap .main_prd_slide .tit_left .inner .tit{font-size:36px}
+ 	.main_prd_wrap .main_prd_slide .tit_left .inner .txt{font-size:15px}   
+}
+
+@media all and (min-width:1025px) {
+    .main_prd_wrap .main_prd_slide .tit_left .inner .txt{white-space:nowrap;max-width:none}
+}
+
+/* 모바일 ver */
+@media all and (max-width:1024px) {
+
+    .main_prd_wrap .main_prd_slide,
+    .nd#main .main_prd_wrap .main_prd_slide{min-height:calc(100vh - 56px);display:flex;flex-direction:column;justify-content:center;padding:72px 24px 64px}
+    .main_prd_wrap .main_prd_slide:before{display:none}
+    .main_prd_wrap .main_prd_slide .tit_left{width:100%;text-align:center;padding:0 0 22px}
+    .main_prd_wrap .main_prd_slide .tit_left .inner{padding:0}
+    .main_prd_wrap .main_prd_slide .tit_left .inner .tit{font-size:34px;margin:0 0 14px;line-height:1;font-weight:700}
+    .main_prd_wrap .main_prd_slide .tit_left .inner .txt{max-width:280px;margin:0 auto;font-size:16px;line-height:1.45;word-break:keep-all}
+    .main_prd_wrap .main_prd_slide .tit_left .circle_txt svg{width:30%}
+    .main_prd_wrap .main_prd_slide .prdList,
+    #fullpage .main_prd_wrap .main_prd_slide .prdList{overflow:hidden;width:100% !important;max-width:342px !important;margin:0 auto !important;padding:0 !important}
+    .main_prd_wrap .main_prd_slide .prdList .swiper-wrapper > li{margin-bottom:0;padding-bottom:16px;box-sizing:border-box}
+    .main_prd_wrap .main_prd_slide .prdList .thumbnail{margin-bottom:10px}
+    .main_prd_wrap .main_prd_slide .prdList .prdImg{aspect-ratio:1/1.04}
+    .main_prd_wrap .main_prd_slide .prdList .description{margin:14px 0 0 !important;line-height:1.45}
+    .main_prd_wrap .main_prd_slide .prdList .description .name{margin:0 0 10px}
+    .main_prd_wrap .main_prd_slide .prdList .description .name a{display:block;font-size:20px !important;line-height:1.28 !important;font-weight:600;letter-spacing:0;word-break:keep-all;overflow-wrap:anywhere}
+    .main_prd_wrap .main_prd_slide .prdList .spec{margin:12px 0 0}
+    .main_prd_wrap .main_prd_slide .prdList .spec > li{margin:0 0 8px;line-height:1.4;font-size:15px}
+    .main_prd_wrap .main_prd_slide .prdList .icon{margin-top:10px}
+    .main_prd_wrap .main_prd_slide .prdList .icon img{max-height:20px}
+    .nd#main .main_prd_wrap.active .main_prd_slide .tit_left .circle_txt{display:none}
+    .nd#main .main_prd_wrap .swiper-scrollbar{position:relative;left:auto;width:100%;max-width:342px;height:4px;margin:12px auto 0}
+    
+}
+
+@media all and (max-width:420px) {
+    .main_prd_wrap .main_prd_slide,
+    .nd#main .main_prd_wrap .main_prd_slide{padding-left:22px;padding-right:22px}
+    .main_prd_wrap .main_prd_slide .prdList,
+    #fullpage .main_prd_wrap .main_prd_slide .prdList,
+    .nd#main .main_prd_wrap .swiper-scrollbar{max-width:320px !important}
+    .main_prd_wrap .main_prd_slide .prdList .description .name a{font-size:19px !important}
+}

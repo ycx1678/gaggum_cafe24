@@ -1,0 +1,95 @@
+/* reset.css */
+
+@font-face {
+	font-family: 'Pretendard';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('/skin-skin16/nd/font/PretendardVariable.woff2') format('woff2'),
+		url('/nd/font/PretendardVariable.woff2') format('woff2'),
+		url('../font/PretendardVariable.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'SUIT Variable';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('/skin-skin16/nd/font/SUIT-Variable.woff2') format('woff2'),
+		url('/nd/font/SUIT-Variable.woff2') format('woff2'),
+		url('../font/SUIT-Variable.woff2') format('woff2'),
+		url('/skin-skin16/nd/font/SUIT-Variable.ttf') format('truetype'),
+		url('/nd/font/SUIT-Variable.ttf') format('truetype'),
+		url('../font/SUIT-Variable.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Noto Sans KR';
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url('/skin-skin16/nd/font/PretendardVariable.woff2') format('woff2'),
+		url('/nd/font/PretendardVariable.woff2') format('woff2'),
+		url('../font/PretendardVariable.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 600;
+  src: url('/skin-skin16/nd/font/Rubik-Bold.ttf') format('truetype'),
+    url('/nd/font/Rubik-Bold.ttf') format('truetype'),
+    url('../font/Rubik-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 500;
+  src: url('/skin-skin16/nd/font/Rubik-Medium.ttf') format('truetype'),
+    url('/nd/font/Rubik-Medium.ttf') format('truetype'),
+    url('../font/Rubik-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/skin-skin16/nd/font/Rubik-Regular.ttf') format('truetype'),
+    url('/nd/font/Rubik-Regular.ttf') format('truetype'),
+    url('../font/Rubik-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 200;
+  src: url('/skin-skin16/nd/font/Rubik-Light.ttf') format('truetype'),
+    url('/nd/font/Rubik-Light.ttf') format('truetype'),
+    url('../font/Rubik-Light.ttf') format('truetype');
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, 
+a, abbr, acronym, address, button, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong,
+sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, 
+article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, 
+audio, video {margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display:block}
+body.nd{font-family:'Pretendard', 'Rubik', 'Noto Sans KR', sans-serif !important;font-size:13px;line-height:1;min-width:280px;color:#000;background:#fdfcf8}
+body.nd .ndPromoPopup,
+body.nd .ndPromoPopup * {
+    font-family:'Pretendard','Rubik','Noto Sans KR',sans-serif;
+}
+body.nd *{border-color:#e5e5e5}
+ol, ul {list-style:none}
+blockquote, q {quotes:none}
+blockquote:before, blockquote:after, q:before, q:after{content:'';content:none}
+table {border-collapse:collapse;border-spacing:0;width:100%}
+hr{display:block;width:100%;height:0;font-size:0;line-height:0;clear:both;border:0;overflow:hidden}
+select{background:#fff url("/nd/images/common/select.png") no-repeat right 10px center !important}
+.nd a,
+.nd a:link,
+.nd a:visited,
+.nd a:hover,
+.nd a:active{text-decoration:none}
+.nd input[type=text],
+.nd input[type=password]{box-sizing:border-box;font-family:inherit}
+.nd select{font-family:inherit}

@@ -1,0 +1,6 @@
+#todayShipping_countdown{position:relative;margin-bottom:20px;padding:16px 20px 16px 120px;background:#f8f7f5;border-radius:12px;line-height:1.5}
+#todayShipping_countdown .shipping_tit{position:absolute;left:20px;top:50%;transform:translateY(-50%);height:28px;line-height:28px;padding:0 14px;background:#ff6600;font-size:13px;font-weight:600;color:#fff;border-radius:20px}
+#todayShipping_countdown .ment1{font-size:14px;font-weight:500;color:#222}
+#todayShipping_countdown .timer{font-size:14px;font-weight:600;color:#ff6600}
+#todayShipping_countdown .ment2{font-size:13px;color:#666}
+#todayShipping_countdown .date{font-weight:600;color:#1fb56c}

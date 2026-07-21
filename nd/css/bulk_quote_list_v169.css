@@ -1,0 +1,22 @@
+.ndQuoteListArea { max-width: 900px; margin: 0 auto; }
+.ndQuoteListDesc { margin: 0 0 24px; color: #666; font-size: 14px; }
+.ndQuoteRequestList { border-top: 1px solid #222; }
+.ndQuoteListEmpty { padding: 48px 16px; border-bottom: 1px solid #ddd; color: #777; text-align: center; }
+.ndQuoteCard { padding: 20px 4px; border-bottom: 1px solid #ddd; }
+.ndQuoteCardHead { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.ndQuoteCardTitle { min-width: 0; font-size: 16px; line-height: 1.5; }
+.ndQuoteCardStatus { flex: 0 0 auto; color: #c1122f; font-size: 13px; font-weight: 600; }
+.ndQuoteCardDate,.ndQuoteCardMeta { margin-top: 6px; color: #777; font-size: 13px; }
+.ndQuoteCardAmount { margin-top: 10px; font-size: 17px; font-weight: 700; }
+.ndQuoteCardToggle { margin-top: 14px; padding: 8px 12px; border: 1px solid #999; background: #fff; color: #222; font-size: 13px; cursor: pointer; }
+.ndQuoteCardDetails { margin-top: 12px; border-top: 1px solid #e5e5e5; }
+.ndQuoteCardItem { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid #eee; color: #333; font-size: 13px; line-height: 1.5; }
+.ndQuoteCardItem.is-additional { padding-left: 16px; color: #666; }
+.ndQuoteCardItemName { min-width: 0; overflow-wrap: anywhere; }
+.ndQuoteCardItemQty { flex: 0 0 auto; }
+.ndQuoteCardLink { display: inline-flex; align-items: center; justify-content: center; margin-top: 14px; }
+@media (max-width: 767px) {
+  .ndQuoteListArea { padding: 0 16px; }
+  .ndQuoteCardHead { gap: 10px; }
+  .ndQuoteCardLink { width: 100%; }
+}

@@ -1,0 +1,26 @@
+.txt_bnn .txt_bnn_wrap{display:flex;flex-wrap:wrap;align-items:center}
+.txt_bnn .img_area,
+.txt_bnn .txt_box{width:50%}
+.txt_bnn .img_area > a{display:block;height:100vh;background:#fff;background-repeat:no-repeat;background-position:center;background-size:cover}
+.txt_bnn .img_area > a > img{visibility:hidden}
+.txt_bnn .txt_box{padding:0 6%;box-sizing:border-box}
+.txt_bnn .txt_box .tit_sub{font-size:18px;color:#777;margin-bottom:24px}
+.txt_bnn .txt_box .tit{font-size:42px;font-weight:600;margin-bottom:24px;line-height:1.2}
+.txt_bnn .txt_box .txt{font-size:18px;color:#777;line-height:1.5}
+.nd#main .txt_bnn.active .txt_box{right:0;opacity:1}
+.txt_bnn .txt_box .btn_link{margin-top:50px}
+
+
+/* 모바일 ver */
+@media all and (max-width:1024px) {
+
+    .txt_bnn .img_area,
+    .txt_bnn .txt_box{width:100%}
+    .txt_bnn .img_area > a{height:50vh}
+    .txt_bnn .txt_box{padding-top:30px}
+    .txt_bnn .txt_box .tit_sub{font-size:14px;margin-bottom:15px}
+    .txt_bnn .txt_box .tit{font-size:36px;margin-bottom:15px}
+    .txt_bnn .txt_box .txt{font-size:12px}
+    .txt_bnn .txt_box .btn_link{margin-top:30px}
+
+}

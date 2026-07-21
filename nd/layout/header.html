@@ -1,0 +1,91 @@
+<!--@css(/nd/css/reset.css)-->
+<!--@css(/nd/css/swiper.min.css)-->
+<!--@css(/nd/css/bootstrap-icons.min.css)-->
+<!--@js(/nd/js/swiper.min.js)-->
+<!--@css(/nd/css/header.css)-->
+<!--@js(/nd/js/header.js)-->
+<!--@import(/nd/setting_banner.html)-->
+<style>
+@font-face{font-display:block;font-family:bootstrap-icons;src:url("/nd/font/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6") format("woff2"),url("/skin-skin16/nd/font/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6") format("woff2"),url("/nd/font/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("woff"),url("/skin-skin16/nd/font/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("woff")}
+@font-face{font-family:xeicon;src:url("/nd/font/xeicon.woff2") format("woff2"),url("/skin-skin16/nd/font/xeicon.woff2") format("woff2"),url("/nd/font/xeicon.woff") format("woff"),url("/skin-skin16/nd/font/xeicon.woff") format("woff"),url("/nd/font/xeicon.ttf") format("truetype"),url("/skin-skin16/nd/font/xeicon.ttf") format("truetype");font-weight:400;font-style:normal}
+@media all and (max-width:1024px){header .logo > a > img{transform:translateX(12px)!important}}
+</style>
+<header id="hd" class="left transparent">
+	<a class="fold_btn" href="javascript:;"><i class="bi bi-list"></i></a>
+    
+    <!-- 띠배너 -->
+    <!--@import(/nd/top_line_bnn.html)-->
+
+    <!----- 로고 ----->
+    <!-- 기본버전 --><h1 data-class="logoNormal" class="logo normal" module="Layout_LogoTop"><a href="/">{$mall_name}</a></h1>
+    <!-- 흰색버전 --><h1 data-class="logoWhite" class="logo white" module="Layout_LogoTop"><a href="/">{$mall_name}</a></h1>
+    
+    <div class="gnb_wrap" module="Layout_category">
+        <!--@js(/js/module/layout/category.js)-->
+        <!-- GNB -->
+        <ul class="gnb">
+            <li><a href="/shopinfo/company.html">브랜드 소개</a></li>
+            <li class="shop">
+                <a href="javascript:void(0)">제품보기</a>
+                <ul id="category_all" class="cateDep_1 sub">
+                    <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+                    <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+                    <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+                </ul>
+            </li>
+            <li><a href="/board/gallery/list.html?board_no=8">포트폴리오</a></li>
+            <li><a href="/shopinfo/contact.html">위치안내</a></li>
+        </ul>
+    </div>
+
+    <ul class="member_wrap" module="myshop_main">
+        <li class="my_menu">
+            <a href="javascript:;"><i class="bi bi-person"><span module="Layout_statelogoff" class="join_point">+3,000</span></i></a>
+            <ul>
+                <li module="Layout_statelogoff"><a href="/member/login.html">로그인</a></li>
+                <li module="Layout_statelogoff"><a href="/member/agreement.html">회원가입</a></li>
+                <li module="Layout_stateLogon"><a href="{$action_logout}">로그아웃</a></li>
+                <li module="Layout_stateLogon"><a href="/member/modify.html">정보수정</a></li>
+                <li><a href="/myshop/index.html"><span>마이페이지</span></a></li>
+                <li><a href="/myshop/order/list.html"><span>주문조회</span></a></li>
+                <li><a href="/myshop/wish_list.html">관심상품({$wish_count})</a></li>
+            </ul>
+        </li>
+        <li><a href="/order/basket.html"><i class="bi bi-bag">{$basket_count}</i></a></li>
+        <li class="search_btn"><a href="javascript:;"><i class="bi bi-search"></i></a></li>
+    </ul>
+    
+    <div class="search_wrap">
+        <div class="close_btn"><i class="xi-close-thin"></i></div>
+        <p class="search_tit cardo">상품 검색</p>
+        <div module="Layout_SearchHeader">
+            <!--
+                $product_page=/product/detail.html
+                $category_page=/product/list.html
+            -->
+            <div class="search_input">{$form.keyword}<i class="xi-search btn_search" onclick="{$action_search_submit}"></i></div>
+        </div>
+        <!-- 인기검색어 -->
+        <div module="search_hotkeyword">
+            <span>인기검색어</span>
+            <a href="{$hot_keyword_url}"><span class="num"></span><span>{$hot_keyword_name}</span></a>
+            <a href="{$hot_keyword_url}"><span class="num"></span><span>{$hot_keyword_name}</span></a>
+        </div><!--// 인기검색어 end -->
+        <!-- 최근검색어 -->
+        <div module="search_recentkeyword">
+            <ul class="{$recent_list_display|display}">
+                <li data-index="{$recent_keyword_index}">
+                    <a href="{$recent_keyword_url}">{$recent_keyword_name}</a><i class="xi-close-thin" onclick="{$recent_keyword_remove}" title="삭제"></i>
+                </li>
+                <li data-index="{$recent_keyword_index}">
+                    <a href="{$recent_keyword_url}">{$recent_keyword_name}</a><i class="xi-close-thin" onclick="{$recent_keyword_remove}" title="삭제"></i>
+                </li>
+            </ul>
+            <div class="button">
+                <button type="button" class="btnDeleteAll" onclick="{$recent_keyword_remove_all}">검색기록 전체삭제</button>
+            </div>
+        </div><!--// 최근검색어 END -->
+    </div>
+    
+</header>
+<!--// header end -->

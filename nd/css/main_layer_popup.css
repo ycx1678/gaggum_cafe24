@@ -1,0 +1,251 @@
+/* =====================
+   Layer Popup Base
+===================== */
+.ndLp_wrap {
+    position: fixed;
+    inset: 0;
+    z-index: 9999999999;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.ndLp_dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.84);
+}
+
+/* Close */
+.ndLp_close {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    font-size: 46px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10000000000;
+}
+
+/* Content */
+.ndLp_cont {
+    position: relative;
+    z-index: 1;
+    max-width: 922px;
+    margin: 70px auto;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+
+/* Title */
+.ndLp_title {
+    font-size: 40px;
+    margin-bottom: 14px;
+}
+.ndLp_title strong { font-weight: 800; }
+
+.ndLp_sub {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #fff;
+    margin-bottom: 36px;
+}
+
+/* =====================
+   Header Types
+===================== */
+.ndLp_type_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-bottom: 50px;
+}
+
+.ndLp_img_box {
+    position: relative;
+    width: 450px;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.15);
+}
+
+.ndLp_img_box img {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+}
+
+/* ✅ 이미지 하단 라벨 (01~04 전부 보이도록) */
+.ndLp_type_label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 7px 14px;
+    background: #750013;
+    color: #fff;
+    border-radius: 20px;
+    font-size: 15px;
+    white-space: nowrap;
+    z-index: 5;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.35);
+}
+
+/* =====================
+   Banner Section
+===================== */
+.ndLp_banner_title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.ndLp_banner_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 26px;
+}
+
+.ndLp_banner_preview {
+    position: relative;
+    height: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* =====================
+   01. 상하 롤링 띠배너
+===================== */
+.ndLp_rolling ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: rollNd 6s infinite;
+}
+
+.ndLp_rolling li {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+/* ✅ 배경색 확실히 지정 */
+.ndLp_rolling .bg1 { background:#111; }
+.ndLp_rolling .bg2 { background:#1f2937; }
+.ndLp_rolling .bg3 { background:#750013; }
+
+/* ✅ 배경이 같이 움직이도록 translateY 기준 */
+@keyframes rollNd {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(0); }
+
+    33%  { transform: translateY(-40px); }
+    63%  { transform: translateY(-40px); }
+
+    66%  { transform: translateY(-80px); }
+    96%  { transform: translateY(-80px); }
+
+    100% { transform: translateY(0); }
+}
+
+/* =====================
+   02. 흐르는 텍스트
+===================== */
+.ndLp_flow_track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: flowNd 12s linear infinite;
+}
+
+.ndLp_flow_track span {
+    padding-right: 40px;
+    line-height: 40px;
+    font-size: 13px;
+}
+
+@keyframes flowNd {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* Label */
+.ndLp_banner_label {
+    margin-top: 14px;
+    display: block;
+    font-size: 15px;
+    color: #fff;
+}
+
+.ndLp_banner_preview.ndLp_flow {
+    background: #000; 
+}
+
+/* =====================
+   Mobile (≤768px)
+===================== */
+@media (max-width: 768px) {
+
+    /* 타이틀 */
+    .ndLp_title {
+        font-size: 26px;
+    }
+    .ndLp_sub {
+        font-size: 14px;
+        margin-bottom: 26px;
+    }
+    .ndLp_banner_title {
+        font-size: 18px;
+    }
+
+    .ndLp_close {
+        top: 16px;
+        right: 16px;
+        font-size: 22px;
+    }
+
+    /* 헤더 타입 → 슬라이드 */
+    .ndLp_type_grid {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        overscroll-behavior-x: contain;
+        gap: 14px;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 10px;
+    }
+
+    .ndLp_type_item {
+        flex: 0 0 85%;
+        scroll-snap-align: center;
+    }
+
+    .ndLp_img_box {
+        width: 100%;
+    }
+
+    .ndLp_type_grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* 띠배너 → 세로 배치 */
+    .ndLp_banner_grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .ndLp_banner_label {
+        text-align: center;
+    }
+}

@@ -1,0 +1,117 @@
+.ndQuoteOrderPanel,
+.ndQuoteOrderBanner {
+    box-sizing: border-box;
+    font-family: inherit;
+    letter-spacing: 0;
+}
+.ndQuoteOrderPanel {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .55);
+}
+.ndQuoteOrderPanelInner {
+    width: min(100%, 420px);
+    padding: 24px;
+    border: 1px solid #d9d9d9;
+    border-radius: 6px;
+    background: #fff;
+    color: #111;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, .2);
+}
+.ndQuoteOrderPanel h2 {
+    margin: 0 0 10px;
+    font-size: 20px;
+    line-height: 1.4;
+}
+.ndQuoteOrderPanel p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+    line-height: 1.65;
+}
+.ndQuoteOrderActions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 20px;
+}
+.ndQuoteOrderActions button {
+    min-width: 0;
+    height: 46px;
+    border: 1px solid #111;
+    border-radius: 4px;
+    background: #fff;
+    color: #111;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+.ndQuoteOrderActions .is-primary {
+    background: #111;
+    color: #fff;
+}
+.ndQuoteOrderActions button:disabled {
+    cursor: default;
+    opacity: .5;
+}
+.ndQuoteOrderStatus {
+    min-height: 22px;
+    margin-top: 14px !important;
+    color: #555 !important;
+}
+.ndQuoteOrderStatus.is-error {
+    color: #c62828 !important;
+}
+.ndQuoteOrderBanner {
+    position: relative;
+    z-index: 1000;
+    width: min(calc(100% - 32px), 1180px);
+    margin: 16px auto;
+    padding: 14px 16px;
+    border: 1px solid #111;
+    border-radius: 4px;
+    background: #fff;
+    color: #111;
+    font-size: 14px;
+    line-height: 1.55;
+}
+.ndQuoteOrderBanner.is-error {
+    border-color: #c62828;
+    color: #a31515;
+}
+.ndQuoteOrderBanner.is-warning {
+    border-color: #ad6800;
+    background: #fffbe6;
+    color: #7a4300;
+}
+.ndQuoteOrderBanner button {
+    margin-top: 10px;
+    height: 38px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 4px;
+    background: #111;
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+.ndQuoteOrderPaymentBlocked {
+    display: none !important;
+}
+@media (max-width: 767px) {
+    .ndQuoteOrderPanel {
+        align-items: flex-end;
+        padding: 12px;
+    }
+    .ndQuoteOrderPanelInner {
+        padding: 20px;
+    }
+    .ndQuoteOrderActions {
+        grid-template-columns: 1fr;
+    }
+}

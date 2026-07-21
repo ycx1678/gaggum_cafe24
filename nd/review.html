@@ -1,0 +1,65 @@
+<!--@css(/nd/css/review.css)-->
+<!--@js(/nd/js/review.js)-->
+<div module="Board_ListPackage_4" class="main_review section section_8">
+    <div class="review_wrap">
+        <div class="tit_common">
+            <h2 class="main_tit fade left">Photo review</h2>
+            <p class="main_txt fade left">지금 이 시각, 실시간 포토리뷰를 만나보세요.</p>
+            <div class="btn_box fade right">
+                <div class="swiper-button-prev"><i class="xi-long-arrow-left"></i></div>
+                <div class="swiper-button-next"><i class="xi-long-arrow-right"></i></div>
+            </div>
+        </div>
+        <div class="review_list fade top">
+            <div class="swiper-container">
+                <ul module="board_list_4" class="swiper-wrapper">
+                    <!--
+                        $product_name_cut = 30
+                        $login_page_url = /member/login.html
+                        $deny_access_url = /index.html
+                        $count = 20
+                    -->
+                    <li class="list swiper-slide">
+                        <div class="thumb">
+                            <a href="/board/review/thumb/read.html{$param_read}"><span class="img_load"><img src="{$img_src}" /></span></a>
+                        </div>
+                        <div class="cont_wrap">
+                            <div class="cont_prd">
+                                <div class="img_box"><a href="/product/detail.html{$param_product}">{$product_img}</a></div>
+                                <div class="txt_box">
+                                    <p class="p_name">{$product_name}</p>
+                                    <p class="{$point_display|display} point"><img src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif" alt="{$point_count}점"></p>
+                                </div>
+                            </div>
+                            <div class="cont_info">
+                                <div class="subject">{$subject}</div>
+                                <div class="cont">{$content|striptag}</div>
+                                <a href="/board/review/thumb/read.html{$param_read}" class="link_more"><i class="xi-plus"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list swiper-slide">
+                        <div class="thumb">
+                            <a href="/board/review/thumb/read.html{$param_read}"><span class="img_load"><img src="{$img_src}" /></span></a>
+                        </div>
+                        <div class="cont_wrap">
+                            <div class="cont_prd">
+                                <div class="img_box"><a href="/product/detail.html{$param_product}">{$product_img}</a></div>
+                                <div class="txt_box">
+                                    <p class="p_name">{$product_name}</p>
+                                    <p class="{$point_display|display} point"><img src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif" alt="{$point_count}점"></p>
+                                </div>
+                            </div>
+                            <div class="cont_info">
+                                <div class="subject">{$subject}</div>
+                                <div class="cont">{$content|striptag}</div>
+                                <a href="/board/review/thumb/read.html{$param_read}" class="link_more"><i class="xi-plus"></i></a>
+                            </div>
+                        </div>
+                    </li>
+                </ul><!--// swiper-wrapper -->
+                <div class="swiper-scrollbar"></div>
+            </div><!--// swiper-container -->
+        </div>
+    </div><!--// review_wrap END -->
+</div><!--// main_review END -->

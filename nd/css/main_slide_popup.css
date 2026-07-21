@@ -1,0 +1,178 @@
+/* ======================================================
+   ND PROMO POPUP
+====================================================== */
+.ndPromoPopup{
+    position:fixed;
+    inset:0;
+    z-index:9000;
+    display:flex;
+    justify-content:center;   /* 가로 중앙 */
+    align-items:center;       /* 세로 중앙 */
+    pointer-events:none;
+}
+
+/* dim (미사용) */
+.ndPromoPopup__dim{
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:none;
+}
+
+/* popup box */
+.ndPromoPopup__wrap{
+    position:relative;
+    width:90%;
+    max-width:400px;
+    background:#fff;
+    border-radius:16px;
+    overflow:hidden;
+    z-index:1;
+    margin:0;
+    pointer-events:auto;
+}
+
+/* ======================================================
+   SLIDER (FADE + HEIGHT FIX)
+====================================================== */
+.ndPromoPopup__slider{
+    position:relative;
+}
+
+/* 슬라이드 기본 상태 */
+.ndPromoPopup__slide{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    opacity:0;
+    transition:opacity .5s ease;
+    pointer-events:none;
+}
+
+/* 활성 슬라이드 */
+.ndPromoPopup__slide.is-active{
+    position:relative;        /* ★ 높이 유지 핵심 */
+    opacity:1;
+    pointer-events:auto;
+    z-index:1;
+}
+
+/* 이미지 비율 그대로 */
+.ndPromoPopup__slide img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+
+/* ======================================================
+   DOTS (이미지 위)
+====================================================== */
+.ndPromoPopup__dots{
+    position:absolute;
+    bottom:16px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:10;
+    display:flex;
+    align-items:center;
+    padding:6px 10px;
+    border-radius:20px;
+    background:rgba(255,255,255,.6);
+    backdrop-filter:blur(4px);
+}
+
+.ndPromoPopup__dot{
+    display:inline-block;
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:rgba(0,0,0,.3);
+}
+
+.ndPromoPopup__dot + .ndPromoPopup__dot{
+    margin-left:8px;
+}
+
+.ndPromoPopup__dot.is-active{
+    background:#000;
+}
+
+/* ======================================================
+   BUTTONS
+====================================================== */
+.ndPromoPopup__btns{
+    display:flex;
+}
+
+.ndPromoPopup__btn{
+    flex:1;
+    height:52px;
+    font-size:14px;
+    background:#fff;
+    font-weight:700;
+    color:#111;
+    cursor:pointer;
+    transition:background .25s ease, color .25s ease;
+}
+
+.ndPromoPopup__btn:hover{
+    background:#e8e8e8;
+}
+
+/* 닫기 버튼 강조 */
+.ndPromoPopup__btn--close:hover{
+    background:#333;
+    color:#fff;
+}
+
+/* ======================================================
+   ARROW (얇은 선 / 크게)
+====================================================== */
+.ndPromoPopup__arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:none;
+    border:none;
+    padding:0;
+    color:#444;               /* 진한 그레이 */
+    font-size:52px;           /* 크기 크게 */
+    font-weight:300;          /* 두께 얇게 */
+    cursor:pointer;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease, color .25s ease;
+    z-index:11;
+    line-height:1;
+}
+
+.ndPromoPopup__arrow--prev{
+    left:14px;
+}
+
+.ndPromoPopup__arrow--next{
+    right:14px;
+}
+
+/* hover 시만 노출 */
+.ndPromoPopup__wrap:hover .ndPromoPopup__arrow{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/* hover 시 살짝 진하게 */
+.ndPromoPopup__arrow:hover{
+    color:#111;
+}
+
+/* BACKGROUND BLUR (카페24 안전 버전) */
+body.nd-blur #wrap{
+    filter:blur(6px);
+    transition:filter .3s ease;
+}
+
+body.nd-blur{
+    overflow:hidden;
+}

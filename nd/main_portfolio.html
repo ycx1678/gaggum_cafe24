@@ -1,0 +1,69 @@
+<!--@css(/nd/css/main_portfolio_v106.css)-->
+<!--@js(/nd/js/main_portfolio.js)-->
+<div module="Board_ListPackage_8" class="main_portfolio section section_4">
+    <div class="portfolio_wrap">
+        <div class="tit_common">
+            <h2 class="main_tit fade left">Portfolio</h2>
+            <p class="main_txt fade left">공간에 적용된 실제 포트폴리오를 확인해보세요.</p>
+        </div>
+        <div class="portfolio_list fade top">
+            <div class="btn_box">
+                <div class="swiper-button-prev"><i class="xi-angle-left-thin"></i></div>
+                <div class="swiper-button-next"><i class="xi-angle-right-thin"></i></div>
+            </div>
+            <div class="swiper-container">
+                <ul module="board_list_8" class="swiper-wrapper">
+                    <!--
+                        $product_name_cut = 30
+                        $login_page_url = /member/login.html
+                        $deny_access_url = /index.html
+                        $count = 20
+                    -->
+                    <li class="list swiper-slide">
+                        <div class="thumb">
+	                        <a href="/board/gallery/read.html{$param_read}"><span class="img_load"><img src="{$img_src}" alt=""></span></a>
+                        </div>
+                        <div class="cont_wrap">
+                            <div class="cont_info">
+                                <div class="subject">{$subject}</div>
+                                <div class="cont">{$content|striptag}</div>
+	                                <a href="/board/gallery/read.html{$param_read}" class="link_more"><i class="xi-plus"></i></a>
+                            </div>
+                            <div class="cont_prd" data-product-param="{$param_product}">
+                                <div class="img_box"><a href="/product/detail.html{$param_product}">{$product_img}</a></div>
+                                <div class="txt_box">
+                                    <p class="p_name">{$product_name}</p>
+                                    <p class="p_desc"></p>
+                                    <p class="p_custom"></p>
+                                    <p class="p_price"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list swiper-slide">
+                        <div class="thumb">
+	                        <a href="/board/gallery/read.html{$param_read}"><span class="img_load"><img src="{$img_src}" alt=""></span></a>
+                        </div>
+                        <div class="cont_wrap">
+                            <div class="cont_info">
+                                <div class="subject">{$subject}</div>
+                                <div class="cont">{$content|striptag}</div>
+	                                <a href="/board/gallery/read.html{$param_read}" class="link_more"><i class="xi-plus"></i></a>
+                            </div>
+                            <div class="cont_prd" data-product-param="{$param_product}">
+                                <div class="img_box"><a href="/product/detail.html{$param_product}">{$product_img}</a></div>
+                                <div class="txt_box">
+                                    <p class="p_name">{$product_name}</p>
+                                    <p class="p_desc"></p>
+                                    <p class="p_custom"></p>
+                                    <p class="p_price"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="swiper-scrollbar"></div>
+            </div>
+        </div>
+    </div>
+</div>

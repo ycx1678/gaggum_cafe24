@@ -1,0 +1,116 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--@css(/nd/css/board_review.css)-->
+<!--@js(/nd/js/board_review.js)-->   
+
+<div class="section review photo" module="Board_ListPackage_4">
+    <!--@css(/css/module/board/listPackage.css)-->
+    <div module="board_title_4">
+        <div class="path">
+            <span>현재 위치</span>
+            <ol>
+                <li><a href="/">홈</a></li>
+                <li><a href="#">게시판</a></li>
+                <li title="현재 위치"><strong>{$board_name}</strong></li>
+            </ol>
+        </div>
+
+        <div class="titleArea">
+            <h2>{$board_title} {$board_adult_icon}</h2>
+        </div>
+        <p class="imgArea">{$board_top_image}</p>
+    </div>
+    
+    <ul class="review_tab">
+        <li class="on"><a href="/board/review/thumb/list.html?board_no=4"><img class="gray" src="/nd/images/common/photo_ico_g.png" /><img class="white" src="/nd/images/common/photo_ico_w.png" />갤러리형 리뷰</a></li>
+        <li><a href="/board/review/list/list.html?board_no=4"><img class="gray" src="/nd/images/common/list_ico_g.png" /><img class="white" src="/nd/images/common/list_ico_w.png" />목록형 리뷰</a></li>
+    </ul>
+
+    <div class="boardSort">
+        <span module="board_category_4">{$form.board_category}</span>
+        <span module="board_ReplySort_4">{$reply_sort}</span>
+    </div>
+
+    <ul module="board_list_4" class="review_inner">
+        <!--
+		$count = 16
+        $product_name_cut = 30
+        $login_page_url = /member/login.html
+        $deny_access_url = /index.html
+        -->
+        <li>
+            <div class="check">{$checkbox}</div>
+        	<div class="thumb">
+                <a href="/board/review/thumb/read.html{$param_read}" name="/board/review/thumb/read.html{$param_read}"><img src="{$img_src|replace:/gallery,}" onerror="this.src='/nd/images/common/no_img.png'" alt="" /></a>
+            </div>
+            <div class="description">
+                <div class="subject">{$subject}</div>
+                <div class="cont">{$content}</div>
+                <div class="info"><span class="writer">{$writer}</span><span class="date">{$write_date}</span></div>
+                <div class="item_line" onclick="location.href='{$link_product_detail}';">
+                	<div class="item_img">{$product_img}</div>
+                    <div class="item_box"><span class="p_name">{$product_name}</span><span class="p_star {$point_display|display}"><img src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif" alt="{$point_count}점"></span></div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="check">{$checkbox}</div>
+        	<div class="thumb">
+                <a href="/board/review/thumb/read.html{$param_read}" name="/board/review/thumb/read.html{$param_read}"><img src="{$img_src|replace:/gallery,}" onerror="this.src='/nd/images/common/no_img.png'" alt="" /></a>
+            </div>
+            <div class="description">
+                <div class="subject">{$subject}</div>
+                <div class="cont">{$content}</div>
+                <div class="info"><span class="writer">{$writer}</span><span class="date">{$write_date}</span></div>
+                <div class="item_line" onclick="location.href='{$link_product_detail}';">
+                	<div class="item_img">{$product_img}</div>
+                    <div class="item_box"><span class="p_name">{$product_name}</span><span class="p_star {$point_display|display}"><img src="//img.echosting.cafe24.com/skin/base/board/ico_point{$point_count}.gif" alt="{$point_count}점"></span></div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    
+    <div module="board_ButtonList_4" class="{$write_display|display} ec-base-button gBottom">
+        <a href="/board/review/thumb/write.html{$param_write}" class="btnSubmitFix {$write_display|display}">글쓰기</a>
+    </div>
+    <div module="board_search_4">
+        <!--@css(/css/module/board/search.css)-->
+        <fieldset class="boardSearch">
+            <legend>게시물 검색</legend>
+            <p class="category {$form.product_category_selector_display|display}">{$form.product_category_selector}</p>
+            <div class="form">{$form.search_date} {$form.search_key} {$form.search} <a href="#none" class="btnNormal" onclick="{$action_search}">찾기</a></div>
+        </fieldset>
+    </div>
+</div>
+
+
+<div module="board_paging_4" class="section ec-base-paginate typeList">
+    <a href="{$param_first}" class="first">첫 페이지</a>
+    <a href="{$param_prev}">이전 페이지</a>
+    <ol>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+        <li><a href="{$param_num}" class="{$param_class}">{$page_num}</a></li>
+    </ol>
+    <a href="{$param_next}">다음 페이지</a>
+    <a href="{$param_last}" class="last">마지막 페이지</a>
+</div>
+
+<!-- Admin only -->
+<div class="section" module="board_catemove_4">
+    <!--@css(/css/module/board/catemove.css)-->
+    <span class="gColumn">{$board_catemove_selectbox}</span>
+    <span class="gColumn"><a href="#none" class="btnNormal sizeS" onclick="{$action_category_move}">{$category_move}</a></span>
+</div>
+
+<div class="section" module="board_function_4">
+    <!--@css(/css/module/board/function.css)-->
+    <span class="gColumn">{$board_function_selectbox}</span>
+    <span class="gColumn">
+        <a href="#none" class="btnNormal sizeS" onclick="{$action_article_move}">{$article_move}</a>
+        <a href="#none" class="btnNormal sizeS" onclick="{$action_article_copy}">{$article_copy}</a>
+    </span>
+    <span class="ec-base-help">{$board_function_help|replace:*,}</span>
+</div>
+<!-- // Admin only -->

@@ -1,0 +1,44 @@
+<!--@js(/nd/js/side.js)-->
+<!--@css(/nd/css/side.css)-->
+
+<div class="mask_side"></div>
+<aside id="side" module="layout_slidePackage">
+    <a class="btn_close_side"><i class="xi-close-thin"></i></a>
+    <div class="inner">
+        <ul class="sideTop">
+            <li module="Layout_statelogoff"><a href="/member/login.html"><i class="xi-lock-o"></i>로그인</a></li>
+            <li module="Layout_statelogon"><a href="{$action_logout}"><i class="xi-unlock-o"></i>로그아웃</a></li>
+            <li module="Layout_statelogoff"><a href="/member/agreement.html"><i class="xi-user-plus-o"></i>회원가입</a></li>
+            <li module="Layout_statelogon"><a href="/member/modify.html"><i class="xi-user-o"></i>개인정보수정</a></li>
+        </ul>
+        <div class="sideCate" id="slideCateList" module="Layout_category">
+            <ul id="category_all" class="cateDep_1">
+                <li><a href="/shopinfo/company.html">브랜드 소개</a></li>
+                <li>
+                    <a href="javascript:void(0)">제품보기</a>
+                    <ul>
+                        <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+                        <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+                        <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
+                    </ul>
+                </li>
+                <li><a href="/board/gallery/list.html?board_no=8">포트폴리오</a></li>
+                <li><a href="/shopinfo/contact.html">위치안내</a></li>
+                <li>
+                    <a href="javascript:void(0)">마이페이지</a>
+                    <ul>
+                        <li><a href="/myshop/index.html">마이페이지</a></li>
+                        <li><a href="/myshop/order/list.html">주문조회</a></li>
+                        <li module="myshop_main"><a href="/order/basket.html">장바구니({$basket_count})</a></li>
+                        <li module="myshop_main"><a href="/product/recent_view_product.html">최근본상품({$recent_count})</a></li>
+                        <li module="myshop_main"><a href="/myshop/wish_list.html">관심상품({$wish_count})</a></li>
+                    </ul>
+                </li>                
+            </ul>
+        </div><!--// sideCate END -->
+
+        <!-- 국가/언어 선택(태극기·성조기) 제거됨 -->
+
+	</div>
+</aside>
+<!--// aside end -->
