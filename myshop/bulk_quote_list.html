@@ -1,6 +1,6 @@
 <!--@layout(/layout/basic/layout.html)-->
 <!--@css(/nd/css/bulk_quote_list_v169.css)-->
-<!--@js(/nd/js/bulk_quote_list_v169.js)-->
+<!--@js(/nd/js/bulk_quote_list_v170.js)-->
 <div module="layout_logincheck">
 <!--
     $url = /member/login.html
@@ -18,7 +18,10 @@
     <div class="titleArea titleArea--myshop">
         <h2>견적 요청 목록</h2>
     </div>
-    <p class="ndQuoteListDesc">이 브라우저에서 접수한 대량견적의 처리 상태를 확인할 수 있습니다.</p>
+    <p class="ndQuoteListDesc">현재 로그인 회원의 장바구니 요청과 관리자가 발행한 견적을 확인할 수 있습니다.</p>
+    <span module="Layout_statelogon" class="displaynone" aria-hidden="true">
+        <i id="ndQuoteListMemberId">{$id}</i>
+    </span>
     <div id="ndQuoteRequestList" class="ndQuoteRequestList" aria-live="polite">
         <p class="ndQuoteListEmpty">견적 요청 목록을 불러오고 있습니다.</p>
     </div>

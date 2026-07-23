@@ -13,6 +13,11 @@
     <!-- // PG크로스브라우징필수내용 -->
 
     <title></title>
+    <script>
+        if (/^\/skin-skin17(?:\/|$)/.test(location.pathname)) {
+            window.ND_BULK_QUOTE_API_BASE = 'https://backoffice.gaggum.kr';
+        }
+    </script>
     <!--@css(/layout/basic/css/common.css)--><!-- 해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요. -->
     <!--@css(/layout/basic/css/layout.css)-->
     <!--@css(/layout/basic/css/ec-base-ui.css)-->
