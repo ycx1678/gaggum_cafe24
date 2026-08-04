@@ -1,0 +1,59 @@
+/* 대량견적 요청 모달 (교차①). 스킨 톤(중립 그레이, btnNormal 계열)과 맞춤. */
+.ndBq{position:fixed;inset:0;z-index:9999;display:none}
+.ndBq.ndBq-open{display:block}
+.ndBq_dim{position:absolute;inset:0;background:rgba(20,20,20,.45)}
+.ndBq_panel{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:calc(100% - 32px);max-width:480px;max-height:88vh;overflow-y:auto;
+  background:#fff;border-radius:8px;padding:24px 20px 28px;box-sizing:border-box}
+.ndBq_x{position:absolute;right:10px;top:8px;width:36px;height:36px;border:0;background:none;
+  font-size:24px;line-height:1;color:#888;cursor:pointer}
+.ndBq_title{margin:0 0 6px;font-size:18px;font-weight:600;color:#222}
+.ndBq_desc{margin:0 0 18px;font-size:13px;line-height:1.6;color:#777}
+.ndBq_field{margin-bottom:14px}
+.ndBq_field>label{display:block;margin-bottom:6px;font-size:12px;color:#888}
+.ndBq_field>label em{color:#c0392b;font-style:normal}
+.ndBq_form input[type=text],
+.ndBq_form input[type=tel],
+.ndBq_form input[type=email],
+.ndBq_form input[type=number],
+.ndBq_form textarea{width:100%;box-sizing:border-box;border:1px solid #ddd;border-radius:6px;
+  padding:10px 12px;font-size:14px;color:#222;background:#fff;font-family:inherit}
+.ndBq_form textarea{resize:vertical}
+.ndBq_memberNotice{margin:0 0 14px;padding:12px;border:1px solid #e8e8e8;border-radius:6px;background:#fafafa}
+.ndBq_memberNotice strong{display:block;margin-bottom:4px;font-size:13px;color:#222}
+.ndBq_memberNotice p{margin:0;font-size:12px;line-height:1.5;color:#777}
+.ndBq_cartPreview{margin-top:8px;font-size:12px;line-height:1.5;color:#555}
+.ndBq_cartPreview ul{margin:0;padding:0;list-style:none}
+.ndBq_cartPreview li{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ndBq_row2{display:flex;gap:12px}
+.ndBq_row2 .ndBq_field{flex:1;margin-bottom:14px}
+.ndBq_items{display:flex;flex-direction:column;gap:8px;margin-bottom:8px}
+.ndBq_item{display:flex;gap:8px;align-items:center}
+.ndBq_item .ndBq_itemName{flex:1 1 auto;min-width:0;width:auto}
+.ndBq_item .ndBq_itemQty{flex:0 0 64px;width:64px!important;min-width:64px;text-align:center}
+.ndBq_itemDel{flex:0 0 auto;border:1px solid #ddd;border-radius:6px;background:#fafafa;
+  padding:0 10px;height:38px;font-size:12px;color:#777;cursor:pointer}
+.ndBq_addItem{border:1px dashed #ccc;border-radius:6px;background:#fff;width:100%;
+  padding:9px;font-size:13px;color:#555;cursor:pointer}
+.ndBq_submit{width:100%;margin-top:18px;border:0;border-radius:6px;background:#222;color:#fff;
+  padding:14px;font-size:15px;font-weight:600;cursor:pointer}
+.ndBq_submit:disabled{opacity:.5;cursor:default}
+.ndBq_msg{margin:12px 0 0;min-height:18px;font-size:13px;line-height:1.5;color:#555;text-align:center}
+.ndBq_msg.is-error{color:#c0392b}
+.ndBq_msg.is-ok{color:#2e7d32}
+.ndBq_hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0}
+.ndBq_memberState,#ndBqStateOn{display:none!important;width:0!important;height:0!important;overflow:hidden!important}
+
+.ndBqCartBtn.ndBqCartBtn--eligible{
+  border-color:#111!important;background:#111!important;color:#fff!important
+}
+.ndBqCartBtn.ndBqCartBtn--attention{
+  animation:ndBqCartAttention 900ms steps(1,end) 1 both
+}
+@keyframes ndBqCartAttention{
+  0%,24%,50%,74%,100%{border-color:#111;background:#111;color:#fff}
+  25%,49%,75%,99%{border-color:#111;background:#fff;color:#111}
+}
+@media (prefers-reduced-motion:reduce){
+  .ndBqCartBtn.ndBqCartBtn--attention{animation:none}
+}
