@@ -10,6 +10,10 @@ The directory layout mirrors the Cafe24 skin spec exactly: `product/`, `member/`
 
 `gaggum_cafe24_operation_manual.md` documents the operator-facing CMS workflow (which boards back which sections, banner sizing, etc.) — read it before changing anything that touches admin-managed content.
 
+## Deployment boundary
+
+Read `DEPLOYMENT.md` before every live publish. This repository deploys only the Cafe24 storefront at `/sde_design/skin16` and `gaggum.co.kr`. The back-office and warranty service are a separate Docker deployment from `FlashStudio-KR/gaggum-cert` on the IWINV VPS; never mix the two deployment paths.
+
 ## Cafe24 templating directives
 
 Files use Cafe24's template syntax, not standard HTML. Key forms:
