@@ -1276,7 +1276,10 @@
         </div>
     </div>
 
-    <!-- 대량견적 진입점 (장바구니 300만원↑ + 회원 전용). 모달 + 조건부 버튼. -->
+    <!-- 대량견적 진입점: 장바구니 300만원 이상, 회원 전용. 운영 확인 전까지 버튼 임시 비노출. -->
+    <style id="ndBulkQuoteCartTemporaryHide">
+        .ndBqCartBtn { display:none !important; }
+    </style>
     <!--@import(/nd/bulk_quote.html)-->
     <!--@js(/nd/js/bulk_quote_cart_v170.js)-->
 
