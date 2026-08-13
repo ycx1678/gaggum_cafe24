@@ -1,4 +1,5 @@
 <!--@layout(/layout/basic/layout.html)-->
+<!--@css(/nd/css/event-board-read-v1.css)-->
 <div class="section" module="board_ReadPackage_8">
     <!--@css(/css/module/board/readPackage.css)-->
     <!--@js(/js/module/board/readPackage.js)-->
@@ -43,7 +44,7 @@
             <div class="{$delete_button_auth|display} {$config.use_password|display}">{$form.password}
                 <span class="ec-base-help txtInfo">삭제하려면 비밀번호를 입력하세요.</span>
             </div>
-            <div class="attach {$config.use_attach|display}">{$attach_file}</div>
+            <!--<div class="attach {$config.use_attach|display}">{$attach_file}</div> -->
             <div class="detail">
                 {$content_image}{$content}
             </div>
@@ -61,7 +62,7 @@
 	                <a href="/board/gallery/modify.html{$param_modify}" class="btnNormalFix sizeM {$modify_button_auth|display}">수정</a>
             </span>
             <span class="gRight gBreak">
-                <a href="{$link_board_list}" class="btnNormalFix sizeM">목록</a>
+                <a href="javascript:history.back();" class="btnNormalFix sizeM">목록</a>
 	                <a href="/board/gallery/reply.html{$param_reply}" class="btnSubmitFix sizeM {$reply_button_auth|display}">답변쓰기</a>
             </span>
         </div>
@@ -72,6 +73,13 @@
     (function(){
         var detail = document.querySelector('[module="board_read_8"] .detail, .xans-board-read-8 .detail');
         var markerPattern = /\[?\s*상품\s*번호\s*[:：]\s*\d+\s*\]?|\[?\s*상품번호\s*[:：]\s*\d+\s*\]?/g;
+
+        function isEventBoard(){
+            var queryMatch = window.location.search.match(/(?:^|[?&])board_no=(\d+)(?:&|$)/);
+            var articleMatch = window.location.pathname.match(/\/article\/[^/]+\/15\/\d+\/?$/);
+
+            return (queryMatch && queryMatch[1] === '15') || !!articleMatch;
+        }
 
         function cleanTextNode(node){
             if(!markerPattern.test(node.nodeValue)){
@@ -96,7 +104,7 @@
 
         function alignImages(root){
             var images = Array.prototype.filter.call(root.querySelectorAll('img'), function(img){
-                return img.src && img.src.indexOf('icon-star-rating') === -1 && !img.closest('.ndPortfolioReadImages');
+                return img.src && img.src.indexOf('icon-star-rating') === -1 && !img.closest('.ndPortfolioReadImages, .ndEventBoardReadImages');
             });
             var box;
 
@@ -105,7 +113,7 @@
             }
 
             box = document.createElement('div');
-            box.className = 'ndPortfolioReadImages';
+            box.className = isEventBoard() ? 'ndEventBoardReadImages' : 'ndPortfolioReadImages';
             images[0].parentNode.insertBefore(box, images[0]);
             images.forEach(function(img){
                 box.appendChild(img);
