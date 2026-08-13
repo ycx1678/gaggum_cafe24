@@ -1,0 +1,70 @@
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    width: 100% !important;
+    padding: 16px 0 !important;
+    box-sizing: border-box;
+}
+
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr::after {
+    display: none !important;
+}
+
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td {
+    display: block !important;
+    float: none !important;
+    min-width: 0;
+    padding: 0 !important;
+    text-align: left !important;
+    box-sizing: border-box;
+}
+
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td.chk,
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td:nth-child(n + 5) {
+    display: none !important;
+}
+
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td:nth-child(2):not(.displaynone) {
+    grid-row: 1;
+    margin: 0 0 4px;
+    color: #6d6d6d;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td.subject {
+    grid-row: 2;
+    margin: 0;
+    color: #111;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td.subject a {
+    display: inline;
+    margin: 0;
+    color: #111;
+    overflow-wrap: anywhere;
+}
+
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td:nth-child(3) {
+    grid-row: 3;
+    min-width: 0;
+    margin: 12px 0 0;
+}
+
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td:nth-child(3) > a,
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td:nth-child(3) .thumbnail {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+html.ndEventBoardMobileList .nd .xans-board-listpackage .ec-base-table.typeList > table > tbody.xans-board-list-1002 > tr > td:nth-child(3) img {
+    display: block;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 !important;
+}

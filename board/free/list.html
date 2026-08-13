@@ -1,5 +1,5 @@
 <!--@layout(/layout/basic/layout.html)-->
-<!--@css(/nd/css/event-board-list-mobile-v2.css)-->
+<!--@css(/nd/css/event-board-list-mobile-v3.css)-->
 <div class="section" module="Board_ListPackage_1002">
     <!--@css(/css/module/board/listPackage.css)-->
     <div module="board_title_1002">
@@ -170,8 +170,14 @@
 
 <script>
     (function(){
+        var compactViewport = window.matchMedia && window.matchMedia('(max-width: 1024px)').matches;
+        var mobileUserAgent = /(Android|iPhone|iPad|iPod|IEMobile|Opera Mini)/i.test(navigator.userAgent);
+
         if (/(?:[?&])board_no=15(?:&|$)/.test(window.location.search)) {
             document.documentElement.classList.add('ndEventBoardList');
+            if (compactViewport || mobileUserAgent) {
+                document.documentElement.classList.add('ndEventBoardMobileList');
+            }
         }
     }());
 </script>
