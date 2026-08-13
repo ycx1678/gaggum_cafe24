@@ -1,5 +1,5 @@
 <!--@layout(/layout/basic/layout.html)-->
-<!--@css(/nd/css/event-board-list-mobile-v1.css)-->
+<!--@css(/nd/css/event-board-list-mobile-v2.css)-->
 <div class="section" module="Board_ListPackage_1002">
     <!--@css(/css/module/board/listPackage.css)-->
     <div module="board_title_1002">
@@ -167,3 +167,11 @@
     <span class="ec-base-help">{$board_function_help|replace:*,}</span>
 </div>
 <!-- // Admin only -->
+
+<script>
+    (function(){
+        if (/(?:[?&])board_no=15(?:&|$)/.test(window.location.search)) {
+            document.documentElement.classList.add('ndEventBoardList');
+        }
+    }());
+</script>
