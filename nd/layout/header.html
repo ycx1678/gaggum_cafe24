@@ -4,6 +4,12 @@
 <!--@js(/nd/js/swiper.min.js)-->
 <!--@css(/nd/css/header.css)-->
 <!--@js(/nd/js/header.js)-->
+<!-- ND_SKIN17_MEGA_CATEGORY_ASSETS_START -->
+<!--@css(/nd/css/header_mega_v1.css)-->
+<!--@js(/nd/js/header_mega_v1.js)-->
+<!--@css(/nd/css/category_parent_list_v1.css)-->
+<!--@js(/nd/js/category_parent_list_v1.js)-->
+<!-- ND_SKIN17_MEGA_CATEGORY_ASSETS_END -->
 <!--@import(/nd/setting_banner.html)-->
 <style>
 @font-face{font-display:block;font-family:bootstrap-icons;src:url("/nd/font/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6") format("woff2"),url("/skin-skin16/nd/font/bootstrap-icons.woff2?dd67030699838ea613ee6dbda90effa6") format("woff2"),url("/nd/font/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("woff"),url("/skin-skin16/nd/font/bootstrap-icons.woff?dd67030699838ea613ee6dbda90effa6") format("woff")}
@@ -20,23 +26,22 @@
     <!-- 기본버전 --><h1 data-class="logoNormal" class="logo normal" module="Layout_LogoTop"><a href="/">{$mall_name}</a></h1>
     <!-- 흰색버전 --><h1 data-class="logoWhite" class="logo white" module="Layout_LogoTop"><a href="/">{$mall_name}</a></h1>
     
-    <div class="gnb_wrap" module="Layout_category">
-        <!--@js(/js/module/layout/category.js)-->
-        <!-- GNB -->
-        <ul class="gnb">
+    <!-- ND_SKIN17_MEGA_CATEGORY_START -->
+    <div class="gnb_wrap nd-mega-gnb">
+        <ul class="gnb nd-mega-gnb__list">
             <li><a href="/shopinfo/company.html">브랜드 소개</a></li>
-            <li class="shop">
-                <a href="javascript:void(0)">제품보기</a>
-                <ul id="category_all" class="cateDep_1 sub">
-                    <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
-                    <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
-                    <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
-                </ul>
-            </li>
+            <li class="nd-mega-gnb__item" data-nd-mega-parent="162"><a href="/product/list.html?cate_no=162" aria-expanded="false">강의실 가구</a></li>
+            <li class="nd-mega-gnb__item" data-nd-mega-parent="163"><a href="/product/list.html?cate_no=163" aria-expanded="false">자습실 / 독서실 가구</a></li>
+            <li class="nd-mega-gnb__item" data-nd-mega-parent="164"><a href="/product/list.html?cate_no=164" aria-expanded="false">학원 운영 공간</a></li>
+            <li><a href="/product/project.html?cate_no=152">기획전 / 이벤트</a></li>
             <li><a href="/board/gallery/list.html?board_no=8">포트폴리오</a></li>
             <li><a href="/shopinfo/contact.html">위치안내</a></li>
         </ul>
+        <div class="nd-mega-gnb__panel" aria-hidden="true">
+            <div class="nd-mega-gnb__panel-inner"></div>
+        </div>
     </div>
+    <!-- ND_SKIN17_MEGA_CATEGORY_END -->
 
     <ul class="member_wrap" module="myshop_main">
         <li class="my_menu">

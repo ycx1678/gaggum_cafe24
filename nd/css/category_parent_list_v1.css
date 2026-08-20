@@ -1,0 +1,15 @@
+.nd-parent-category-aggregate{margin:74px 0 110px;}
+.nd-parent-category-aggregate__title{margin:0 0 42px;font-size:34px;font-weight:700;line-height:1.2;text-align:center;}
+.nd-parent-category-aggregate__group + .nd-parent-category-aggregate__group{margin-top:86px;}
+.nd-parent-category-aggregate__heading{margin:0 0 24px;padding-bottom:14px;border-bottom:1px solid #111;font-size:24px;font-weight:700;line-height:1.3;}
+.nd-parent-category-aggregate__heading a{color:#111;}
+.nd-parent-category-aggregate__heading a:hover{color:#d60000;}
+.nd-parent-category-aggregate .prdList{margin:0;}
+.nd-parent-category-aggregate__loading{margin:40px 0;text-align:center;color:#666;font-size:15px;}
+
+@media all and (max-width:1024px){
+    .nd-parent-category-aggregate{margin:38px 0 60px;}
+    .nd-parent-category-aggregate__title{margin-bottom:26px;font-size:25px;}
+    .nd-parent-category-aggregate__group + .nd-parent-category-aggregate__group{margin-top:54px;}
+    .nd-parent-category-aggregate__heading{margin-bottom:16px;padding-bottom:10px;font-size:20px;}
+}
