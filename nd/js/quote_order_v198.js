@@ -782,7 +782,7 @@
             for (var i = 0; i < buttons.length; i += 1) {
                 if (buttons[i].offsetParent !== null) { button = buttons[i]; break; }
             }
-            if (button && window.Basket && typeof window.Basket.orderAll === "function") {
+            if (button && window.Basket && typeof window.Basket._callOrderAjax === "function") {
                 var context = readContext();
                 if (!context) {
                     banner("견적 주문 정보가 만료되었습니다. 견적서에서 다시 주문해주세요.", true);
@@ -790,7 +790,7 @@
                 }
                 try {
                     markOrderFormHandoff(context);
-                    window.Basket.orderAll(button);
+                    window.Basket._callOrderAjax({ basket_type: "all_buy" }, button);
                 } catch (error) {
                     actionableBanner(
                         error.message || "Cafe24 주문서 이동을 시작하지 못했습니다.",
