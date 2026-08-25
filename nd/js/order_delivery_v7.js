@@ -5,6 +5,9 @@
      *    안전: 선택값(localStorage) 없거나 주문서에 그 방법이 없으면 잠그지 않음(전부 노출 유지).
      *  - 화물 안내문(슬라이드4): 화물 선택 + 실제 착불일 때 주문서 하단 배송비/배송안내를 "착불(배송비 별도)"+해피콜 안내로 변경(render 내).
      *  - 전부 표시/선택만, 제출·청구 불변.
+     * order_delivery_v7 (2026-08-25) — 배송수단(화물)과 결제방식(선불/착불)을 분리
+     *  - 화물 라디오를 선택하더라도 견적에서 정한 선불/착불 표기와 배송비를 유지한다.
+     *  - 실제 form value/name은 변경하지 않고 표시와 라디오 선택만 제어한다.
      * order_delivery_v5 (2026-06-15) — 주문서 배송업체 라디오 자동선택/택배숨김 (가꿈 요청 2번)
      *  - 주문서 배송업체는 input[name=delivcompany](label은 형제) 구조 → 기존 자동선택 실패 원인이었음.
      *  - 상세에서 화물/방문을 명시 선택(localStorage)하고 온 경우: 그 라디오 자동선택 + 택배(선불) 라디오 숨김.
@@ -20,7 +23,7 @@
     function storageGet(key, fallback){
         try {
             return localStorage.getItem(key) || fallback;
-        } catch(e) {
+        } catch {
             return fallback;
         }
     }
@@ -31,7 +34,11 @@
         if(!name) return "";
         if(name.indexOf("택배") > -1) return "택배배송(선불)";
         if(name.indexOf("방문수령") > -1 || name.indexOf("픽업") > -1) return "방문수령";
-        if(name.indexOf("화물") > -1 || name.indexOf("착불") > -1) return "화물배송(착불)";
+        if(name.indexOf("화물") > -1){
+            if(name.indexOf("선불") > -1) return "화물배송(선불)";
+            return "화물배송(착불)";
+        }
+        if(name.indexOf("착불") > -1) return "화물배송(착불)";
         return "";
     }
 
@@ -50,7 +57,8 @@
             return { method: ndStored, fee: storageGet("ndDeliveryFee", "") };
         }
         var byText = normalizeMethod(
-            (text.match(/택배\s*배송\s*\(선불\)|택배\s*\(선불\)|선불\s*택배|택배\s*선불/) ||
+            (text.match(/화물\s*배송\s*\(선불\)|화물\s*\(선불\)|선불\s*화물|화물\s*선불/) ||
+             text.match(/택배\s*배송\s*\(선불\)|택배\s*\(선불\)|선불\s*택배|택배\s*선불/) ||
              text.match(/방문\s*수령|직접\s*픽업|스토어\s*픽업|매장\s*픽업/) ||
              text.match(/화물\s*배송\s*\(착불\)|화물\s*\(착불\)|착불\s*화물|화물\s*착불/) || [""])[0]
         );
@@ -121,8 +129,9 @@
      *  - 할인/적립/쿠폰 등 다른 0원에는 손대지 않도록 문맥 가드
      *  - 폼 요소(input/select/...)는 절대 건드리지 않음
      * --------------------------------------------------------------- */
-    function ndCleanZeroFee(rootEl, kind){
-        if(!rootEl || kind === "parcel") return; // 택배(선불)는 금액을 그대로 보여준다
+    function ndCleanZeroFee(rootEl, kind, method){
+        // 선불은 견적 서비스 상품으로 결제금액에 포함되므로 착불 문구로 바꾸지 않는다.
+        if(!rootEl || kind === "parcel" || method === "화물배송(선불)") return;
         var replacement = kind === "pickup" ? "방문수령" : "착불";
         var nodes = rootEl.querySelectorAll("span, strong, em, b, td, dd, p, li, div, a");
         Array.prototype.forEach.call(nodes, function(node){
@@ -213,7 +222,7 @@
                     }
                 }
             }
-            ndCleanZeroFee(item, kind);
+            ndCleanZeroFee(item, kind, detected.method);
         });
 
         packageEl.querySelectorAll(".totalSummary").forEach(function(summary){
@@ -238,6 +247,11 @@
                         row2.appendChild(el("div", "data", ndSum.toLocaleString("ko-KR") + "원"));
                         box.appendChild(row2);
                     }
+                } else if(detectedAll.method === "화물배송(선불)" && detectedAll.fee){
+                    var row3 = el("div", "item");
+                    row3.appendChild(el("h5", "title", "배송비(선불)"));
+                    row3.appendChild(el("div", "data", detectedAll.fee));
+                    box.appendChild(row3);
                 }
                 if(shippingItem && shippingItem.parentNode){
                     shippingItem.parentNode.insertBefore(box, shippingItem.nextSibling);
@@ -245,26 +259,31 @@
                     summary.appendChild(box);
                 }
             }
-            ndCleanZeroFee(summary, kindAll);
+            ndCleanZeroFee(summary, kindAll, detectedAll.method);
         });
 
-        ndCleanZeroFee(packageEl, kindAll);
+        ndCleanZeroFee(packageEl, kindAll, detectedAll.method);
         ndRenameCarrier(packageEl);
     }
 
     function selectedShippingFromForm(){
+        var storedMethod = normalizeMethod(storageGet("ndDeliveryMethod", ""));
+        var storedFee = storageGet("ndDeliveryFee", "");
         var fields = Array.prototype.slice.call(document.querySelectorAll("select, input[type='radio']:checked"));
         for(var i = 0; i < fields.length; i += 1){
             var field = fields[i];
-            var text = "";
+            var text;
             if(field.tagName === "SELECT"){
                 text = field.options[field.selectedIndex] ? field.options[field.selectedIndex].text : "";
             } else {
-                var label = field.closest("label");
+                var label = field.closest("label") || (field.id ? document.querySelector("label[for='" + field.id + "']") : null);
                 text = label ? label.textContent : field.value;
             }
             var normalized = normalizeMethod(text);
             if(normalized && textMatchesMethod(text, normalized)){
+                if(storedMethod && methodKind(storedMethod) === methodKind(normalized)){
+                    return { method: storedMethod, fee: storedFee };
+                }
                 return { method: normalized, fee: "" };
             }
         }
@@ -288,6 +307,7 @@
             return {
                 radio: r,
                 wrap: (r.closest && r.closest(".ec-base-label")) || r.parentNode,
+                label: lbl,
                 kind: methodKind(normalizeMethod(txt))   // parcel / freight / pickup
             };
         });
@@ -323,6 +343,8 @@
                     var ndBm = paymentText.match(/배송\s*:\s*([0-9,]+)\s*원/);
                     if(ndBm && parseInt(ndBm[1].replace(/,/g, ""), 10) > 0) fee = ndBm[1] + "원";
                 }
+            } else if(detected.method === "화물배송(선불)"){
+                fee = detected.fee || storageGet("ndDeliveryFee", "");
             }
             var sig = detected.method + "|" + fee;
             if(box.getAttribute("data-nd-sig") !== sig){
@@ -340,11 +362,11 @@
                     box.appendChild(row2);
                 }
             }
-            ndCleanZeroFee(order, kind);
+            ndCleanZeroFee(order, kind, detected.method);
             ndRenameCarrier(order);
             // [추가 2026-06-17 / PPT 슬라이드4] 화물배송 선택 시 주문서 하단 안내 텍스트 변경.
             //   단 "실제 착불"일 때만(선결제/착불로 금액 청구되는 경우는 '착불 별도' 문구가 오해를 주므로 제외). 표시 전용.
-            if(kind === "freight"){
+            if(detected.method === "화물배송(착불)"){
                 var ndFeeEl = order.querySelector("#deliv_company_price_custom_type");
                 var ndFeeTxt = ndFeeEl ? trimText(ndFeeEl.textContent) : "";
                 if(/착불/.test(ndFeeTxt) || /^0\s*원?$/.test(ndFeeTxt) || ndFeeTxt === ""){
@@ -421,6 +443,10 @@
             if(target && !target.radio.checked && ndAutoClicks < 5 && typeof target.radio.click === "function"){
                 target.radio.click();
                 ndAutoClicks += 1;
+            }
+            // 카페24의 화물 운송 라벨은 기본 착불이지만, 견적 결제방식에 맞춰 표시만 보정한다.
+            if(target && target.label && storedKind === "freight"){
+                target.label.textContent = rawStored;
             }
             // ② [v6 / PPT 규칙2] 선택한 배송방법만 남기고 나머지 전부 숨김 = 변경 불가.
             //    안전장치: 선택한 방법(target)이 주문서에 실제로 있을 때만 잠금 적용.

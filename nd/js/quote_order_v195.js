@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    // v194 also removes an orphaned quote-only shipping service from a normal cart.
+    // v195 also keeps every non-pickup quote on the freight-delivery path.
     // Cafe24's optimizer can evaluate the same skin asset more than once.
     // A second initializer would open a duplicate dialog and race an
     // emptyCart/addCart sequence, so the page owns exactly one instance.
@@ -424,9 +424,8 @@
 
     function quoteDeliveryMethod(shippingMethod, shippingPaymentMethod) {
         if (shippingMethod === "pickup") return "방문수령";
-        if (shippingPaymentMethod === "prepaid") return "택배배송(선불)";
+        if (shippingPaymentMethod === "prepaid") return "화물배송(선불)";
         if (shippingPaymentMethod === "cod") return "화물배송(착불)";
-        if (shippingMethod === "delivery_svc") return "택배배송(선불)";
         return "화물배송(착불)";
     }
 

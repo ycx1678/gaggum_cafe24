@@ -14,15 +14,15 @@
     <!--@js(/layout/basic/js/common.js)-->
     <!--@js(/js/module/order/ec_orderform/orders.js)-->
     <!--@js(/js/module/order/ec_orderform/orders_v2.js)-->
-    <!--@js(/nd/js/quote_order_v194.js)-->
-    <!--@js(/nd/js/order_delivery_v6.js)-->
+    <!--@js(/nd/js/quote_order_v195.js)-->
+    <!--@js(/nd/js/order_delivery_v7.js)-->
     <!--@js(/nd/js/order_period_v1.js)-->
     <script>
     (function(){
         if(document.getElementById('ndOrderDeliveryScript')) return;
         var script = document.createElement('script');
         script.id = 'ndOrderDeliveryScript';
-        script.src = (window.EC_ROUTE && EC_ROUTE.getPrefixUrl) ? EC_ROUTE.getPrefixUrl('/nd/js/order_delivery_v6.js') : '/nd/js/order_delivery_v6.js';
+        script.src = (window.EC_ROUTE && EC_ROUTE.getPrefixUrl) ? EC_ROUTE.getPrefixUrl('/nd/js/order_delivery_v7.js') : '/nd/js/order_delivery_v7.js';
         document.head.appendChild(script);
     })();
     </script>
