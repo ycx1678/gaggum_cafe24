@@ -1,8 +1,9 @@
 (function () {
     "use strict";
 
-    // v196 also recovers from Cafe24 member discounts that exceed the quote
-    // discount, and confirms service-item deletion before reloading the cart.
+    // v198 recovers from Cafe24 member discounts that exceed the quote
+    // discount, and deletes service items using Cafe24's required option_id
+    // rather than the distinct variant_code.
     // Cafe24's optimizer can evaluate the same skin asset more than once.
     // A second initializer would open a duplicate dialog and race an
     // emptyCart/addCart sequence, so the page owns exactly one instance.
@@ -201,18 +202,25 @@
             return;
         }
         apiCall("getCartList", []).then(function (response) {
-            var serviceItems = quoteServiceCartItems(response).map(function (item) {
+            var orphanedItems = quoteServiceCartItems(response);
+            if (!orphanedItems.length) {
+                normalCartCleanupPending = false;
+                return null;
+            }
+            var serviceItems = orphanedItems.map(function (item) {
                 return {
                     product_no: QUOTE_SERVICE_PRODUCT_NO,
-                    option_id: String(item.variant_code || item.option_id || ""),
+                    option_id: String(item.option_id || "").trim(),
                     basket_product_no: Number(item.basket_product_no || 0)
                 };
             }).filter(function (item) {
                 return item.option_id && item.basket_product_no > 0;
             });
-            if (!serviceItems.length) {
-                normalCartCleanupPending = false;
-                return null;
+            if (serviceItems.length !== orphanedItems.length) {
+                throw new QuoteOrderError(
+                    "이전 견적의 배송비 상품 식별 정보를 확인하지 못했습니다.",
+                    "QUOTE_SERVICE_ITEM_IDENTIFIER_MISSING"
+                );
             }
             return apiCall("deleteCartItems", ["A", serviceItems])
                 .then(function () { return confirmOrphanQuoteServiceItemsRemoved(0); })
