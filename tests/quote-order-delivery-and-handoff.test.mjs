@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const script = readFileSync(path.join(root, "nd/js/quote_order_v198.js"), "utf8");
-const directScript = /<script src="\/skin-skin16\/nd\/js\/quote_order_v198\.js\?v=20260826v201"><\/script>/;
+const directScript = /<script src="\/skin-skin16\/nd\/js\/quote_order_v198\.js\?v=20260826v202"><\/script>/;
 
 test("quote checkout runtime is directly loaded on every basket-to-result page", () => {
   for (const page of [
@@ -21,6 +21,15 @@ test("quote checkout runtime is directly loaded on every basket-to-result page",
 test("quote checkout hands verified carts to Cafe24 without the native all-cart confirmation", () => {
   assert.doesNotMatch(script, /window\.Basket\.orderAll\(button\)/);
   assert.match(script, /window\.Basket\._callOrderAjax\(\{ basket_type: "all_buy" \}, button\)/);
+});
+
+test("quote order form never changes Cafe24 payment selection programmatically", () => {
+  const forceBankDeposit = script.match(
+    /function forceBankDeposit\(\) \{[\s\S]*?\n    \}\n\n    function shippingPaymentLabel/,
+  )?.[0];
+
+  assert.ok(forceBankDeposit, "forceBankDeposit implementation is present");
+  assert.doesNotMatch(forceBankDeposit, /\.click\(\)/);
 });
 
 test("quote service item and Cafe24 native shipping fee are never charged together", () => {

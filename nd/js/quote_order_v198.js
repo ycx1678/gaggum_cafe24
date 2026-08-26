@@ -1091,7 +1091,6 @@
                 }
             }
         }
-        if (bankControl && !isSelectedPaymentControl(bankControl)) bankControl.click();
         for (var j = 0; j < roots.length; j += 1) roots[j].setAttribute("data-quote-bank-only", "true");
         controls = document.querySelectorAll(PAYMENT_METHOD_SELECTOR);
         for (var k = 0; k < controls.length; k += 1) {
@@ -1389,6 +1388,8 @@
                     "이 일치하지 않아 결제를 차단했습니다. 견적 기준: 할인 후 상품 " +
                     money(context.expected.itemAmount) + " + 견적 배송·서비스비 " +
                     money(context.expected.serviceFeeAmount) + ".", true);
+            } else if (state.total && !state.bank) {
+                setNotice("견적 주문은 무통장 입금 결제수단을 직접 선택한 뒤 진행해주세요.", false);
             } else if (state.total && state.bank) {
                 setNotice("견적 상품·최종금액 확인 완료. 결제수단은 무통장 입금만 가능합니다.", false);
             }
