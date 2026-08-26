@@ -486,21 +486,19 @@
                 expected && expected.shippingMethod,
                 expected && expected.shippingPaymentMethod
             );
-            var fee = Number(expected && expected.shippingAmount);
-            var displayFee = Number(expected && expected.displayShippingAmount);
-            if (!isFinite(fee)) {
-                fee = Number(expected && expected.totalAmount || 0) -
-                    Number(expected && expected.subtotal || 0) +
-                    Number(expected && expected.discountTotal || 0);
+            // 선불 화물/납품·조립비는 모두 견적 서비스 상품으로 담는다. 이 값을
+            // ndDeliveryFee에도 넣으면 Cafe24 배송비가 한 번 더 더해진다.
+            var checkoutShippingAmount = Number(expected && expected.checkoutShippingAmount);
+            if (!isFinite(checkoutShippingAmount) || checkoutShippingAmount < 0) {
+                checkoutShippingAmount = 0;
             }
-            if (!isFinite(displayFee)) displayFee = fee;
             state.applied = true;
             window.localStorage.setItem(DELIVERY_METHOD_KEY, method);
             window.localStorage.setItem(
                 DELIVERY_FEE_KEY,
                 method === "화물배송(착불)"
-                    ? (displayFee > 0 ? "착불 " + money(displayFee) : "착불")
-                    : (fee > 0 ? money(fee) : "")
+                    ? "착불"
+                    : (checkoutShippingAmount > 0 ? money(checkoutShippingAmount) : "")
             );
         } catch {
             restoreQuoteShipping({
@@ -1337,8 +1335,8 @@
                 setNotice("견적 최종금액 " + money(context.expected.totalAmount) +
                     "과 Cafe24 결제예정금액 " + money(amount) +
                     "이 일치하지 않아 결제를 차단했습니다. 견적 기준: 할인 후 상품 " +
-                    money(context.expected.itemAmount) + " + 결제 배송비 " +
-                    money(context.expected.shippingAmount) + ".", true);
+                    money(context.expected.itemAmount) + " + 견적 배송·서비스비 " +
+                    money(context.expected.serviceFeeAmount) + ".", true);
             } else if (state.total && state.bank) {
                 setNotice("견적 상품·최종금액 확인 완료. 결제수단은 무통장 입금만 가능합니다.", false);
             }
