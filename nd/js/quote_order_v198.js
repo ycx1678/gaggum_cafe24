@@ -878,6 +878,57 @@
         });
     }
 
+    function isOrderControl(target) {
+        var control = target && target.closest
+            ? target.closest("a, button, input[type='submit']")
+            : null;
+        if (!control) return false;
+        var action = String(control.getAttribute && control.getAttribute("onclick") || "");
+        var label = String(control.textContent || control.value || "");
+        return /Basket\.order|상품\s*주문|주문하기|결제하기/.test(action + " " + label);
+    }
+
+    function blockUnverifiedQuoteOrder(context, message) {
+        actionableBanner(
+            message || "견적 상품 구성을 확인하지 못해 결제를 진행할 수 없습니다.",
+            "견적서로 돌아가기",
+            function () { returnToQuote(context); },
+            true
+        );
+        document.addEventListener("click", function (event) {
+            if (!isOrderControl(event.target)) return;
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }, true);
+        document.addEventListener("submit", function (event) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+        }, true);
+    }
+
+    function verifyOrderFormCart(context) {
+        apiCall("getCartList", []).then(function (response) {
+            var carts = response && response.carts || [];
+            if (!sameItems(context.items, carts)) {
+                // A normal buy-now order may be opened while an old quote
+                // handoff is still in sessionStorage.  Never apply quote-only
+                // pricing or payment restrictions unless the actual cart is
+                // exactly the snapshot that was just verified for the quote.
+                clearContext();
+                return;
+            }
+            enforceOrderForm(context);
+        }).catch(function () {
+            // For an actual quote handoff it is safer to stop than to allow a
+            // payment whose cart composition cannot be proven.  A normal cart
+            // is released above when it does not match the quote snapshot.
+            blockUnverifiedQuoteOrder(
+                context,
+                "견적 장바구니 구성을 확인하지 못해 결제를 진행할 수 없습니다."
+            );
+        });
+    }
+
     function startBasketQuote(token, adjustmentContext) {
         var root = panel();
         var cancel = root.querySelector("[data-quote-cancel]");
@@ -1291,7 +1342,8 @@
                     window.location.replace(quoteAdjustmentBasketUrl(context.token));
                     return new Promise(function () {});
                 }
-                context.discountCode = body.data && body.data.discountCode || null;
+                var preparedDiscountCode = String(body.data && body.data.discountCode || "").trim();
+                if (preparedDiscountCode) context.discountCode = preparedDiscountCode;
                 context.preparedDiscountAmount = Number(body.data && body.data.discountAmount || 0);
                 try {
                     window.sessionStorage.setItem(CONTEXT_KEY, JSON.stringify(context));
@@ -1352,8 +1404,16 @@
             }, 50);
         });
         observer.observe(document.body, { childList: true, subtree: true, characterData: true });
-        prepareQuoteDiscount(context)
-            .then(function () { return applyQuoteDiscountCode(context); })
+        var preparePricing = context.discountCode
+            ? applyQuoteDiscountCode(context).catch(function () {
+                return prepareQuoteDiscount(context).then(function () {
+                    return applyQuoteDiscountCode(context);
+                });
+            })
+            : prepareQuoteDiscount(context).then(function () {
+                return applyQuoteDiscountCode(context);
+            });
+        preparePricing
             .then(function () {
                 state.pricingReady = true;
                 verify();
@@ -1489,7 +1549,7 @@
         } else if (/\/order\/orderform\.html$/.test(path)) {
             var orderContext = readContext();
             if (claimOrderFormContext(orderContext)) {
-                enforceOrderForm(orderContext);
+                verifyOrderFormCart(orderContext);
             } else if (orderContext) {
                 var previouslyEntered = Boolean(orderContext.orderFormEnteredAt);
                 clearContext();
