@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const script = readFileSync(path.join(root, "nd/js/quote_order_v198.js"), "utf8");
-const directScript = /<script src="\/skin-skin16\/nd\/js\/quote_order_v198\.js\?v=20260826v200"><\/script>/;
+const directScript = /<script src="\/skin-skin16\/nd\/js\/quote_order_v198\.js\?v=20260826v201"><\/script>/;
 
 test("quote checkout runtime is directly loaded on every basket-to-result page", () => {
   for (const page of [
