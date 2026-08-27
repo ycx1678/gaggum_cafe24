@@ -544,6 +544,7 @@
                 serviceAdjustmentProof: adjustmentContext && adjustmentContext.serviceAdjustmentProof || null,
                 adjustmentAttempts: Number(adjustmentContext && adjustmentContext.adjustmentAttempts || 0),
                 expected: payload.expected,
+                deliveryRequestMessage: String(payload.deliveryRequestMessage || "").trim(),
                 quoteDeliveryApplied: shippingState.applied,
                 previousDeliveryMethod: shippingState.previousMethod,
                 previousDeliveryFee: shippingState.previousFee,
@@ -1363,6 +1364,36 @@
             false
         );
         var state = { bank: false, total: false, amount: 0, pricingReady: false, pricingError: false };
+        var deliveryRequestApplied = false;
+        function applyDeliveryRequestMessage() {
+            if (deliveryRequestApplied || !context.deliveryRequestMessage) return;
+            var input = document.querySelector("#omessage, textarea[name='omessage'], textarea[name='rmessage'], textarea[name*='message']");
+            if (!input) return;
+            input.value = context.deliveryRequestMessage;
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+            input.dispatchEvent(new Event("change", { bubbles: true }));
+            deliveryRequestApplied = true;
+        }
+        function hideTaxInvoiceNoneOption() {
+            var controls = document.querySelectorAll("input[type='radio'], input[type='checkbox']");
+            for (var i = 0; i < controls.length; i += 1) {
+                var control = controls[i];
+                var label = control.id ? document.querySelector("label[for='" + control.id + "']") : null;
+                var holder = control.closest("label, li, .ec-base-label, tr, div");
+                var text = String((label && label.textContent) || (holder && holder.textContent) || "")
+                    .replace(/\s+/g, " ")
+                    .trim();
+                if (!/신청안함/.test(text)) continue;
+                if (!/세금계산서|증빙|영수증|tax|cash/i.test(
+                    [control.name, control.id, holder && holder.textContent].join(" ")
+                )) continue;
+                if (label) label.hidden = true;
+                else if (holder && holder !== document.body) holder.hidden = true;
+                control.hidden = true;
+                control.checked = false;
+                control.disabled = true;
+            }
+        }
         function setNotice(text, error) {
             var className = "ndQuoteOrderBanner" + (error ? " is-error" : "");
             if (notice.className !== className) notice.className = className;
@@ -1372,6 +1403,8 @@
         function verify() {
             hideRedundantNativeShippingRows();
             ensureShippingPaymentSummary(context);
+            applyDeliveryRequestMessage();
+            hideTaxInvoiceNoneOption();
             var bank = forceBankDeposit();
             var amount = visibleOrderTotal();
             state.bank = Boolean(bank);
