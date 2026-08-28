@@ -1365,8 +1365,34 @@
         );
         var state = { bank: false, total: false, amount: 0, pricingReady: false, pricingError: false };
         var deliveryRequestApplied = false;
+        function selectDirectDeliveryRequest() {
+            var selects = document.querySelectorAll(
+                "select#omessage, select[name='omessage'], select[name='rmessage'], select[id*='message'], select[name*='message']"
+            );
+            for (var i = 0; i < selects.length; i += 1) {
+                var select = selects[i];
+                var directOption = null;
+                for (var optionIndex = 0; optionIndex < select.options.length; optionIndex += 1) {
+                    var option = select.options[optionIndex];
+                    var optionText = String(option.textContent || option.label || option.value || "")
+                        .replace(/\s+/g, "");
+                    if (optionText === "직접입력") {
+                        directOption = option;
+                        break;
+                    }
+                }
+                if (!directOption) continue;
+                if (select.value !== directOption.value) {
+                    select.value = directOption.value;
+                    select.dispatchEvent(new Event("input", { bubbles: true }));
+                    select.dispatchEvent(new Event("change", { bubbles: true }));
+                }
+                return;
+            }
+        }
         function applyDeliveryRequestMessage() {
             if (deliveryRequestApplied || !context.deliveryRequestMessage) return;
+            selectDirectDeliveryRequest();
             var input = document.querySelector("#omessage, textarea[name='omessage'], textarea[name='rmessage'], textarea[name*='message']");
             if (!input) return;
             input.value = context.deliveryRequestMessage;
