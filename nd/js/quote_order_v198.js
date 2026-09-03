@@ -466,10 +466,21 @@
         return true;
     }
 
-    function quoteDeliveryMethod(shippingMethod, shippingPaymentMethod) {
-        if (shippingMethod === "pickup") return "방문수령";
-        if (shippingPaymentMethod === "prepaid") return "화물배송(선불)";
-        if (shippingPaymentMethod === "cod") return "화물배송(착불)";
+    function checkoutShippingAmount(expected) {
+        var amount = Number(expected && expected.checkoutShippingAmount);
+        if (!isFinite(amount) || amount < 0) return 0;
+        return amount;
+    }
+
+    function hasSeparateFreightShipping(expected) {
+        if (!expected || expected.shippingMethod === "pickup") return false;
+        return expected.shippingPaymentMethod === "cod";
+    }
+
+    function quoteDeliveryMethod(expected) {
+        if (expected && expected.shippingMethod === "pickup") return "방문수령";
+        if (hasSeparateFreightShipping(expected)) return "화물배송(착불)";
+        if (expected && expected.shippingPaymentMethod === "prepaid") return "화물배송(선불)";
         return "화물배송(착불)";
     }
 
@@ -482,23 +493,17 @@
         try {
             state.previousMethod = window.localStorage.getItem(DELIVERY_METHOD_KEY);
             state.previousFee = window.localStorage.getItem(DELIVERY_FEE_KEY);
-            var method = quoteDeliveryMethod(
-                expected && expected.shippingMethod,
-                expected && expected.shippingPaymentMethod
-            );
             // 선불 화물/납품·조립비는 모두 견적 서비스 상품으로 담는다. 이 값을
             // ndDeliveryFee에도 넣으면 Cafe24 배송비가 한 번 더 더해진다.
-            var checkoutShippingAmount = Number(expected && expected.checkoutShippingAmount);
-            if (!isFinite(checkoutShippingAmount) || checkoutShippingAmount < 0) {
-                checkoutShippingAmount = 0;
-            }
+            var shippingAmount = checkoutShippingAmount(expected);
+            var method = quoteDeliveryMethod(expected);
             state.applied = true;
             window.localStorage.setItem(DELIVERY_METHOD_KEY, method);
             window.localStorage.setItem(
                 DELIVERY_FEE_KEY,
                 method === "화물배송(착불)"
                     ? "착불"
-                    : (checkoutShippingAmount > 0 ? money(checkoutShippingAmount) : "")
+                    : (shippingAmount > 0 ? money(shippingAmount) : "")
             );
         } catch {
             restoreQuoteShipping({
@@ -615,7 +620,11 @@
         var urlNonce = params.get("gaggum_quote_handoff");
         var contextNonce = String(context.orderFormHandoffNonce || "");
         if (context.orderFormEnteredAt) {
-            return Boolean(urlNonce && contextNonce && urlNonce === contextNonce);
+            // Cafe24 can reload the same order form without preserving this
+            // client-only query value. Keep the active handoff context, then
+            // let verifyOrderFormCart release it unless the live cart still
+            // matches the quote snapshot.
+            return Boolean(contextNonce && (!urlNonce || urlNonce === contextNonce));
         }
         if (urlNonce && contextNonce && urlNonce !== contextNonce) return false;
 
@@ -1104,10 +1113,62 @@
 
     function shippingPaymentLabel(expected) {
         if (!expected || expected.shippingMethod === "pickup") return "방문수령";
-        return expected.shippingPaymentMethod === "cod" ? "착불" : "선결제";
+        return hasSeparateFreightShipping(expected) ? "착불 배송비 별도" : "선결제";
     }
 
-    function hideRedundantNativeShippingRows() {
+    function enforceNativeCollectShippingFeeLabel() {
+        var scheduled = null;
+
+        function selectedDeliveryLabel() {
+            var selected = document.querySelector("input[name='delivcompany']:checked");
+            if (!selected) return "";
+            var labels = document.getElementsByTagName("label");
+            for (var i = 0; i < labels.length; i += 1) {
+                if (labels[i].htmlFor === selected.id) return String(labels[i].textContent || "");
+            }
+            return String(selected.value || "");
+        }
+
+        function sync() {
+            var deliveryLabel = selectedDeliveryLabel().replace(/\s+/g, "");
+            var collect = /화물.*착불|착불.*화물/.test(deliveryLabel);
+            var candidates = document.querySelectorAll(
+                "tr, li, dl, [class*='shipping'], [class*='delivery'], [id*='shipping'], [id*='delivery'], div"
+            );
+            for (var i = 0; i < candidates.length; i += 1) {
+                var node = candidates[i];
+                var text = String(node.textContent || "").replace(/\s+/g, "");
+                if (collect && /^배송비0\(무료\)원$/.test(text)) {
+                    node.textContent = "배송비 0 (착불 배송비 별도)원";
+                } else if (!collect && /^배송비0\(착불배송비별도\)원$/.test(text)) {
+                    node.textContent = "배송비 0 (무료)원";
+                }
+            }
+        }
+
+        function scheduleSync() {
+            window.clearTimeout(scheduled);
+            scheduled = window.setTimeout(sync, 80);
+        }
+
+        sync();
+        document.addEventListener("change", function (event) {
+            var target = event.target;
+            if (target && target.matches && target.matches("input[name='delivcompany']")) {
+                scheduleSync();
+            }
+        });
+        if (window.MutationObserver && document.body) {
+            new MutationObserver(scheduleSync).observe(document.body, {
+                childList: true,
+                characterData: true,
+                subtree: true
+            });
+        }
+    }
+
+    function hideRedundantNativeShippingRows(expected) {
+        var collect = hasSeparateFreightShipping(expected);
         var candidates = document.querySelectorAll(
             "tr, li, dl, [class*='shipping'], [class*='delivery'], [id*='shipping'], [id*='delivery'], div"
         );
@@ -1115,6 +1176,12 @@
             var node = candidates[i];
             if (node.classList.contains("ndQuoteOrderShippingPayment")) continue;
             var text = String(node.textContent || "").replace(/\s+/g, "");
+            var productShippingFree = /^배송비0\(무료\)원$/.test(text);
+            if (collect && productShippingFree) {
+                node.textContent = "배송비 0 (착불 배송비 별도)원";
+                node.classList.add("ndQuoteOrderNativeShippingReplaced");
+                continue;
+            }
             var productShipping = /^배송비(?:0(?:원)?\(착불배송비별도\)원?|0원\(착불배송비별도\))$/.test(text);
             var paymentShipping = /^배송비\(착불상품포함\)0원$/.test(text);
             if (!productShipping && !paymentShipping) continue;
@@ -1136,7 +1203,7 @@
             current.className = "ndQuoteOrderShippingPayment";
             current.innerHTML =
                 '<legend>배송비 결제방법</legend>' +
-                '<label><input type="radio" name="ndQuoteShippingPayment" value="cod" disabled> 착불</label>' +
+                '<label><input type="radio" name="ndQuoteShippingPayment" value="cod" disabled> 착불 배송비 별도</label>' +
                 '<label><input type="radio" name="ndQuoteShippingPayment" value="prepaid" disabled> 선결제</label>' +
                 '<p class="ndQuoteOrderShippingPaymentNote"></p>';
             var anchor = document.querySelector("#ec-jigsaw-area-paymethod, [id*='paymethod']");
@@ -1145,7 +1212,7 @@
             else if (form) form.insertBefore(current, form.firstChild);
             else document.body.insertBefore(current, document.body.firstChild);
         }
-        var method = expected.shippingPaymentMethod === "cod" ? "cod" : "prepaid";
+        var method = hasSeparateFreightShipping(expected) ? "cod" : "prepaid";
         var radios = current.querySelectorAll("input[type='radio']");
         for (var i = 0; i < radios.length; i += 1) {
             radios[i].checked = radios[i].value === method;
@@ -1156,7 +1223,11 @@
             var assemblyAmount = Number(expected.assemblyFeeAmount || 0);
             var serviceFeeAmount = Number(expected.serviceFeeAmount || 0);
             var adjustmentAmount = Number(expected.serviceAdjustmentAmount || 0);
-            note.textContent = "견적서에서 선택한 " + shippingPaymentLabel(expected) +
+            var paymentLabel = shippingPaymentLabel(expected);
+            var paymentPrefix = paymentLabel === "착불 배송비 별도"
+                ? "Cafe24 주문서 배송 표기는 착불 배송비 별도이며, 견적서에 반영된"
+                : "견적서에서 선택한 " + paymentLabel;
+            note.textContent = paymentPrefix +
                 (amount > 0 ? " 배송비 " + money(amount) : " 배송비") +
                 (assemblyAmount > 0 ? " + 조립서비스 " + money(assemblyAmount) : "") +
                 (serviceFeeAmount > 0 ? " (서비스 품목 합계 " + money(serviceFeeAmount) + ")" : "") +
@@ -1174,6 +1245,7 @@
             "#total_order_sale_price_view",
             "#total_order_price_view",
             "#payment_total_order_price",
+            ".totalPay.paymentPrice .txtStrong",
             ".totalPay .price",
             ".paymentPrice .price"
         ];
@@ -1427,7 +1499,7 @@
             if (notice.textContent !== text) notice.textContent = text;
         }
         function verify() {
-            hideRedundantNativeShippingRows();
+            hideRedundantNativeShippingRows(context.expected);
             ensureShippingPaymentSummary(context);
             applyDeliveryRequestMessage();
             hideTaxInvoiceNoneOption();
@@ -1512,6 +1584,15 @@
                 }
             }
         }
+        document.addEventListener("click", function (event) {
+            var target = event.target && event.target.closest
+                ? event.target.closest("#ec-jigsaw-area-orderProduct .btnDelete, .xans-order-form .ec-base-prdInfo .btnDelete")
+                : null;
+            if (!target) return;
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            window.alert("견적구매상품은 변경이 불가능합니다");
+        }, true);
         document.addEventListener("click", function (event) {
             var target = event.target && event.target.closest ? event.target.closest("a, button, input[type='submit']") : null;
             if (!target || !/결제하기|주문하기/.test(target.textContent || target.value || "")) return;
@@ -1610,16 +1691,19 @@
             var orderContext = readContext();
             if (claimOrderFormContext(orderContext)) {
                 verifyOrderFormCart(orderContext);
-            } else if (orderContext) {
-                var previouslyEntered = Boolean(orderContext.orderFormEnteredAt);
-                clearContext();
-                if (!previouslyEntered) {
-                    actionableBanner(
-                        "견적 주문 정보가 만료되어 결제를 진행할 수 없습니다.",
-                        "견적서로 돌아가기",
-                        function () { returnToQuote(orderContext); },
-                        true
-                    );
+            } else {
+                enforceNativeCollectShippingFeeLabel();
+                if (orderContext) {
+                    var previouslyEntered = Boolean(orderContext.orderFormEnteredAt);
+                    clearContext();
+                    if (!previouslyEntered) {
+                        actionableBanner(
+                            "견적 주문 정보가 만료되어 결제를 진행할 수 없습니다.",
+                            "견적서로 돌아가기",
+                            function () { returnToQuote(orderContext); },
+                            true
+                        );
+                    }
                 }
             }
         } else if (/\/order\/order_result\.html$/.test(path)) {
