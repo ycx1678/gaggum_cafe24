@@ -5,8 +5,8 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const script = readFileSync(path.join(root, "nd/js/quote_order_v198.js"), "utf8");
-const directScript = /<script src="\/skin-skin16\/nd\/js\/quote_order_v198\.js\?v=20260826v202"><\/script>/;
+const script = readFileSync(path.join(root, "nd/js/quote_order_v199.js"), "utf8");
+const directScript = /<script src="\/skin-skin16\/nd\/js\/quote_order_v199\.js\?v=20260907v199"><\/script>/;
 
 test("quote checkout runtime is directly loaded on every basket-to-result page", () => {
   for (const page of [
@@ -35,11 +35,22 @@ test("quote order form never changes Cafe24 payment selection programmatically",
 test("quote service item and Cafe24 native shipping fee are never charged together", () => {
   assert.match(
     script,
-    /var checkoutShippingAmount = Number\(expected && expected\.checkoutShippingAmount\);/,
+    /function checkoutShippingAmount\(expected\) \{[\s\S]*?expected && expected\.checkoutShippingAmount/,
   );
   assert.match(
     script,
-    /checkoutShippingAmount > 0 \? money\(checkoutShippingAmount\) : ""/,
+    /shippingAmount > 0 \? money\(shippingAmount\) : ""/,
   );
   assert.match(script, /서비스 품목 합계/);
+});
+
+test("quote request delivery address is carried into Cafe24 direct-entry fields", () => {
+  assert.match(script, /deliveryAddress: payload\.deliveryAddress \|\| null/);
+  assert.match(script, /function applyDeliveryAddress\(\)/);
+  assert.match(script, /ec-jigsaw-tab-shippingInfo-newAddress/);
+  assert.match(script, /input\[name='rzipcode1'\]/);
+  assert.match(script, /input\[name='raddr1'\]/);
+  assert.match(script, /input\[name='raddr2'\]/);
+  assert.match(script, /state\.address = !deliveryAddressRequired \|\| deliveryAddressApplied/);
+  assert.match(script, /!state\.pricingReady \|\| !state\.address \|\| !state\.bank \|\| !state\.total/);
 });

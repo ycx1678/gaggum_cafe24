@@ -16,9 +16,21 @@
 .ndBq_form input[type=tel],
 .ndBq_form input[type=email],
 .ndBq_form input[type=number],
+.ndBq_form select,
 .ndBq_form textarea{width:100%;box-sizing:border-box;border:1px solid #ddd;border-radius:6px;
   padding:10px 12px;font-size:14px;color:#222;background:#fff;font-family:inherit}
+.ndBq_form select{height:40px;appearance:auto}
 .ndBq_form textarea{resize:vertical}
+.ndBq_addressSearch{display:flex;gap:8px;margin-bottom:8px}
+.ndBq_addressSearch input{flex:1 1 auto;min-width:0}
+.ndBq_addressSearch button{flex:0 0 92px;height:40px;border:1px solid #ccc;border-radius:6px;
+  background:#fafafa;color:#333;font-family:inherit;font-size:13px;cursor:pointer}
+.ndBq_addressLine{margin-top:8px}
+.ndBq_form input[readonly]{background:#fafafa;color:#555}
+.ndBq_addressSearch button:focus-visible,
+.ndBq_form select:focus-visible,
+.ndBq_form input:focus-visible,
+.ndBq_form textarea:focus-visible{outline:2px solid #555;outline-offset:2px}
 .ndBq_memberNotice{margin:0 0 14px;padding:12px;border:1px solid #e8e8e8;border-radius:6px;background:#fafafa}
 .ndBq_memberNotice strong{display:block;margin-bottom:4px;font-size:13px;color:#222}
 .ndBq_memberNotice p{margin:0;font-size:12px;line-height:1.5;color:#777}

@@ -1,7 +1,8 @@
 (function () {
     "use strict";
 
-    // v198 recovers from Cafe24 member discounts that exceed the quote
+    // v199 carries the quote-request delivery address into Cafe24 checkout.
+    // It also recovers from Cafe24 member discounts that exceed the quote
     // discount, and deletes service items using Cafe24's required option_id
     // rather than the distinct variant_code.
     // Cafe24's optimizer can evaluate the same skin asset more than once.
@@ -550,6 +551,7 @@
                 adjustmentAttempts: Number(adjustmentContext && adjustmentContext.adjustmentAttempts || 0),
                 expected: payload.expected,
                 deliveryRequestMessage: String(payload.deliveryRequestMessage || "").trim(),
+                deliveryAddress: payload.deliveryAddress || null,
                 quoteDeliveryApplied: shippingState.applied,
                 previousDeliveryMethod: shippingState.previousMethod,
                 previousDeliveryFee: shippingState.previousFee,
@@ -1435,8 +1437,103 @@
             "Cafe24 기본할인과 견적 최종금액을 확인하고 있습니다.",
             false
         );
-        var state = { bank: false, total: false, amount: 0, pricingReady: false, pricingError: false };
+        var deliveryAddressRequired = Boolean(
+            context.deliveryAddress &&
+            !(context.expected && context.expected.shippingMethod === "pickup")
+        );
+        var state = {
+            bank: false,
+            total: false,
+            address: !deliveryAddressRequired,
+            amount: 0,
+            pricingReady: false,
+            pricingError: false
+        };
         var deliveryRequestApplied = false;
+        var deliveryAddressApplied = false;
+        var directAddressTabRequested = false;
+        function findShippingField(selectors) {
+            var root = document.querySelector("#ec-jigsaw-area-shippingInfo") || document;
+            for (var i = 0; i < selectors.length; i += 1) {
+                var field = root.querySelector(selectors[i]);
+                if (field && !field.disabled) return field;
+            }
+            return null;
+        }
+        function setShippingField(field, value) {
+            if (!field) return;
+            field.value = value;
+            field.dispatchEvent(new Event("input", { bubbles: true }));
+            field.dispatchEvent(new Event("change", { bubbles: true }));
+        }
+        function applyDeliveryAddress() {
+            if (
+                !context.deliveryAddress ||
+                context.expected && context.expected.shippingMethod === "pickup"
+            ) return;
+
+            var directTab = document.getElementById("ec-jigsaw-tab-shippingInfo-newAddress");
+            if (
+                directTab &&
+                !directTab.classList.contains("selected") &&
+                directTab.offsetParent !== null
+            ) {
+                if (!directAddressTabRequested) {
+                    var directLink = directTab.querySelector("a, button");
+                    if (directLink) {
+                        directAddressTabRequested = true;
+                        directLink.click();
+                        window.setTimeout(function () {
+                            directAddressTabRequested = false;
+                            verify();
+                        }, 300);
+                    }
+                }
+                return;
+            }
+
+            var postcode = findShippingField([
+                "#rzipcode1",
+                "#rzipcode",
+                "input[name='rzipcode1']",
+                "input[name='rzipcode']",
+                "input[name='zipcode']",
+                "input[fw-label*='배송지 우편번호']",
+                "input[placeholder='우편번호']"
+            ]);
+            var address1 = findShippingField([
+                "#raddr1",
+                "input[name='raddr1']",
+                "input[name='r_addr1']",
+                "input[fw-label*='배송지 기본주소']",
+                "input[placeholder='기본주소']"
+            ]);
+            var address2 = findShippingField([
+                "#raddr2",
+                "input[name='raddr2']",
+                "input[name='r_addr2']",
+                "input[fw-label*='배송지 나머지 주소']",
+                "input[placeholder*='나머지 주소']"
+            ]);
+            if (!postcode || !address1) return;
+
+            var expectedPostcode = String(context.deliveryAddress.postcode || "");
+            var expectedAddress1 = String(context.deliveryAddress.address1 || "");
+            var expectedAddress2 = String(context.deliveryAddress.address2 || "");
+            if (postcode.value !== expectedPostcode) {
+                setShippingField(postcode, expectedPostcode);
+            }
+            if (address1.value !== expectedAddress1) {
+                setShippingField(address1, expectedAddress1);
+            }
+            if (address2 && address2.value !== expectedAddress2) {
+                setShippingField(address2, expectedAddress2);
+            }
+            deliveryAddressApplied =
+                postcode.value === expectedPostcode &&
+                address1.value === expectedAddress1 &&
+                (!address2 || address2.value === expectedAddress2);
+        }
         function selectDirectDeliveryRequest() {
             var selects = document.querySelectorAll(
                 "select#omessage, select[name='omessage'], select[name='rmessage'], select[id*='message'], select[name*='message']"
@@ -1501,16 +1598,22 @@
         function verify() {
             hideRedundantNativeShippingRows(context.expected);
             ensureShippingPaymentSummary(context);
+            applyDeliveryAddress();
             applyDeliveryRequestMessage();
             hideTaxInvoiceNoneOption();
             var bank = forceBankDeposit();
             var amount = visibleOrderTotal();
             state.bank = Boolean(bank);
+            state.address = !deliveryAddressRequired || deliveryAddressApplied;
             state.amount = amount;
             state.total = state.pricingReady && amount > 0 && amount === Number(context.expected.totalAmount || 0);
             if (state.pricingError) return;
             if (!state.pricingReady) {
                 setNotice("Cafe24 기본할인과 견적 최종금액을 확인하고 있습니다.", false);
+                return;
+            }
+            if (!state.address) {
+                setNotice("견적 요청 배송지를 주문서에 입력하고 있습니다. 잠시 후 다시 확인해주세요.", true);
                 return;
             }
             if (!state.total && amount > 0) {
@@ -1562,13 +1665,15 @@
             });
         function guardOrderAttempt(event) {
             verify();
-            if (!state.pricingReady || !state.bank || !state.total) {
+            if (!state.pricingReady || !state.address || !state.bank || !state.total) {
                 event.preventDefault();
                 event.stopImmediatePropagation();
                 window.alert(
                     !state.pricingReady
                         ? "견적 최종금액 확인을 완료하지 못했습니다."
-                        : (!state.bank
+                        : (!state.address
+                            ? "견적 요청 배송지를 주문서에 입력하지 못했습니다. 새로고침 후 다시 확인해주세요."
+                            : !state.bank
                             ? "무통장 입금 결제수단을 확인하지 못했습니다."
                             : "견적 금액과 Cafe24 결제금액이 일치하지 않습니다.")
                 );

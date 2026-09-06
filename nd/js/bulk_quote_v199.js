@@ -10,6 +10,28 @@
       ? "https://gaggum.flashstudio.kr"
       : "https://warranty.gaggum.kr");
   var PHONE_RE = /^010-\d{3,4}-\d{4}$/;
+  var POSTCODE_SCRIPT = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js";
+  var postcodeScriptRequest = null;
+
+  function loadPostcodeApi() {
+    if (window.daum && window.daum.Postcode) return Promise.resolve();
+    if (postcodeScriptRequest) return postcodeScriptRequest;
+    postcodeScriptRequest = new Promise(function (resolve, reject) {
+      var script = document.createElement("script");
+      script.src = POSTCODE_SCRIPT;
+      script.async = true;
+      script.onload = function () {
+        if (window.daum && window.daum.Postcode) resolve();
+        else reject(new Error("POSTCODE_API_UNAVAILABLE"));
+      };
+      script.onerror = function () {
+        postcodeScriptRequest = null;
+        reject(new Error("POSTCODE_API_LOAD_FAILED"));
+      };
+      document.head.appendChild(script);
+    });
+    return postcodeScriptRequest;
+  }
 
   function ready(fn) {
     var initialized = false;
@@ -526,8 +548,7 @@
         form.managerName.value = record.name;
       }
       if (form.phone && !form.phone.value.trim()) form.phone.value = record.phone;
-      if (form.address && !form.address.value.trim()) form.address.value = record.address;
-      setProfileStatus("Cafe24 기본 배송지 정보를 불러왔습니다. 내용을 확인해주세요.");
+      setProfileStatus("Cafe24 배송주소록에서 연락처를 불러왔습니다. 내용을 확인해주세요.");
       return true;
     }
 
@@ -545,17 +566,13 @@
       if (form.email && !form.email.value.trim() && profile.email) {
         form.email.value = profile.email;
       }
-      if (form.address && !form.address.value.trim() && profile.address) {
-        form.address.value = profile.address;
-      }
       return true;
     }
 
     function hasCompleteContact() {
       return !!(
         form.managerName && form.managerName.value.trim() &&
-        form.phone && PHONE_RE.test(normalizePhone(form.phone.value)) &&
-        form.address && form.address.value.trim()
+        form.phone && PHONE_RE.test(normalizePhone(form.phone.value))
       );
     }
 
@@ -569,7 +586,7 @@
         var skinMatch = window.location.pathname.match(/^\/skin-skin\d+/);
         var addressBookUrl =
           (skinMatch ? skinMatch[0] : "") + "/" + ["myshop", "addr", "list.html"].join("/");
-        setProfileStatus("Cafe24 배송주소록의 연락처와 주소를 불러오는 중입니다.");
+        setProfileStatus("Cafe24 배송주소록의 연락처를 불러오는 중입니다.");
         addressBookRequest = fetch(addressBookUrl, {
           method: "GET",
           credentials: "same-origin",
@@ -592,7 +609,7 @@
       }
       return addressBookRequest.then(function (record) {
         if (!applyAddressBookRecord(record)) {
-          setProfileStatus("저장된 배송지가 없어 연락처와 주소를 직접 입력해주세요.");
+          setProfileStatus("저장된 연락처가 없어 직접 입력해주세요.");
         }
         return record;
       });
@@ -620,7 +637,7 @@
         });
       if (!proofItems.length) return Promise.resolve(null);
 
-      setProfileStatus("백오피스에서 Cafe24 회원 연락처와 주소를 불러오는 중입니다.");
+      setProfileStatus("백오피스에서 Cafe24 회원 연락처를 불러오는 중입니다.");
       verifiedMemberProfileRequest = fetch(
         BACKEND + "/api/quote-requests/member-profile",
         {
@@ -656,12 +673,12 @@
       return verifiedMemberProfileRequest.then(function (profile) {
         if (applyMemberProfile(profile) && hasCompleteContact()) {
           setProfileStatus(
-            "백오피스에서 회원 연락처와 주소를 불러왔습니다. 내용을 확인해주세요.",
+            "백오피스에서 회원 연락처를 불러왔습니다. 내용을 확인해주세요.",
           );
           return profile;
         }
         setProfileStatus(
-          "회원정보를 자동으로 불러오지 못했습니다. 연락처와 주소를 직접 입력해주세요.",
+          "회원정보를 자동으로 불러오지 못했습니다. 연락처를 직접 입력해주세요.",
         );
         return null;
       });
@@ -677,7 +694,7 @@
         }
         return loadMemberAddressBook().then(function (addressRecord) {
           if (addressRecord) {
-            setProfileStatus("Cafe24 회원정보와 기본 배송지 정보를 불러왔습니다. 내용을 확인해주세요.");
+            setProfileStatus("Cafe24 회원정보와 배송주소록의 연락처를 불러왔습니다. 내용을 확인해주세요.");
           }
           if (hasCompleteContact()) return cachedMemberProfile;
           return loadVerifiedMemberProfile();
@@ -721,9 +738,9 @@
         }
         return loadMemberAddressBook().then(function (addressRecord) {
           if (profile && addressRecord) {
-            setProfileStatus("Cafe24 회원정보와 기본 배송지 정보를 불러왔습니다. 내용을 확인해주세요.");
+            setProfileStatus("Cafe24 회원정보와 배송주소록의 연락처를 불러왔습니다. 내용을 확인해주세요.");
           } else if (!profile && !addressRecord) {
-            setProfileStatus("회원정보를 자동으로 불러오지 못했습니다. 연락처와 주소를 직접 입력해주세요.");
+            setProfileStatus("회원정보를 자동으로 불러오지 못했습니다. 연락처를 직접 입력해주세요.");
           }
           if (hasCompleteContact()) return profile;
           return loadVerifiedMemberProfile();
@@ -768,7 +785,9 @@
       if (memberNotice) memberNotice.hidden = !isMember;
       if (form.managerName) form.managerName.required = true;
       if (form.phone) form.phone.required = true;
-      if (form.address) form.address.required = true;
+      if (form.elevatorAccess) form.elevatorAccess.required = true;
+      if (form.postcode) form.postcode.required = true;
+      if (form.address1) form.address1.required = true;
       if (isMember) renderCartPreview();
     }
 
@@ -864,6 +883,40 @@
       itemsWrap.appendChild(makeItemRow("", 1, null));
     });
 
+    if (form.memo) {
+      var memoPlaceholder = form.memo.getAttribute("placeholder") || "";
+      form.memo.addEventListener("focus", function () {
+        form.memo.setAttribute("placeholder", "");
+      });
+      form.memo.addEventListener("blur", function () {
+        if (!form.memo.value) form.memo.setAttribute("placeholder", memoPlaceholder);
+      });
+    }
+
+    var addressSearchButton = document.getElementById("ndBqFindAddress");
+    if (addressSearchButton) {
+      addressSearchButton.addEventListener("click", function () {
+        setMsg("");
+        loadPostcodeApi()
+          .then(function () {
+            new window.daum.Postcode({
+              oncomplete: function (data) {
+                var baseAddress = cleanText(data.roadAddress || data.jibunAddress || "");
+                form.postcode.value = cleanText(data.zonecode || "");
+                form.address1.value = baseAddress;
+                form.address2.value = "";
+                form.postcode.dispatchEvent(new Event("change", { bubbles: true }));
+                form.address1.dispatchEvent(new Event("change", { bubbles: true }));
+                form.address2.focus();
+              },
+            }).open();
+          })
+          .catch(function () {
+            setMsg("주소검색을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.", "error");
+          });
+      });
+    }
+
     // 회원/member_id: Cafe24 서버 렌더 신호(앱 SDK CAFE24API 미의존 — 스토어프론트엔 없음).
     //  - #ndBqStateOn(또는 .xans-layout-statelogon) 존재 = 로그인.
     //  - {$id}/{$name}은 Cafe24가 HTML 조각으로 렌더할 수 있어 textContent로 읽는다.
@@ -915,7 +968,13 @@
       var memberId = memberIdInput.value || null;
       var managerName = form.managerName.value.trim();
       var phone = normalizePhone(form.phone.value);
-      var address = form.address.value.trim();
+      var elevatorAccess = form.elevatorAccess.value;
+      var postcode = form.postcode.value.trim();
+      var address1 = form.address1.value.trim();
+      var address2 = form.address2.value.trim();
+      var address = ["(" + postcode + ")", address1, address2]
+        .filter(function (part) { return !!part; })
+        .join(" ");
       if (!managerName) {
         setMsg("담당자명을 입력해주세요.", "error");
         return;
@@ -924,8 +983,12 @@
         setMsg("연락처를 010-1234-5678 형식으로 입력해주세요.", "error");
         return;
       }
-      if (!address) {
-        setMsg("주소를 입력해주세요.", "error");
+      if (!elevatorAccess) {
+        setMsg("엘리베이터 사용 가능 여부를 선택해주세요.", "error");
+        return;
+      }
+      if (!postcode || !address1) {
+        setMsg("주소검색으로 배송지를 입력해주세요.", "error");
         return;
       }
       form.phone.value = phone;
@@ -942,6 +1005,10 @@
         phone: phone,
         email: form.email.value.trim() || null,
         address: address,
+        postcode: postcode,
+        address1: address1,
+        address2: address2 || null,
+        elevatorAccess: elevatorAccess,
         companyName: form.companyName.value.trim() || null,
         memo: form.memo.value.trim() || null,
         website: form.website.value,
