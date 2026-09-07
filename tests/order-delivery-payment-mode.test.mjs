@@ -8,6 +8,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const runtimePath = path.join(root, "nd/js/order_delivery_v9.js");
+const prepaidRuntimePath = path.join(root, "nd/js/order_delivery_prepaid_v1.js");
 const orderFormPath = path.join(root, "order/orderform.html");
 const basketPath = path.join(root, "order/basket.html");
 
@@ -16,6 +17,11 @@ test("skin16 order form loads the versioned payment-aware delivery runtime", () 
   assert.match(orderForm, /@js\(\/nd\/js\/order_delivery_v9\.js\?v=20260907v213\)/);
   assert.match(orderForm, /\/nd\/js\/order_delivery_v9\.js\?v=20260907v213/g);
   assert.doesNotMatch(orderForm, /order_delivery_v[78]\.js/);
+  assert.ok(
+    orderForm.indexOf("order_delivery_prepaid_v1.js?v=20260907v214") >
+      orderForm.indexOf("order_delivery_v9.js?v=20260907v213"),
+    "prepaid display cleanup loads after the delivery runtime",
+  );
 });
 
 test("skin16 basket loads the existing prepaid-aware delivery runtime", () => {
@@ -25,7 +31,7 @@ test("skin16 basket loads the existing prepaid-aware delivery runtime", () => {
   assert.doesNotMatch(basket, /order_delivery_v6\.js/);
 });
 
-function fixture(runtime, method, fee) {
+function fixture(runtime, prepaidRuntime, method, fee) {
   return `<!doctype html>
 <html lang="ko">
 <body>
@@ -49,6 +55,7 @@ function fixture(runtime, method, fee) {
     </div>
     <div id="deliv_company_price_custom_type">0원</div>
     <div id="deliv_company_shipping_info"></div>
+    <table class="ec-base-table"><tr><th>배송비 <span class="info">(착불 상품 포함)</span></th><td></td></tr></table>
   </div>
   <pre id="result"></pre>
   <script>
@@ -56,6 +63,7 @@ function fixture(runtime, method, fee) {
     localStorage.setItem("ndDeliveryFee", ${JSON.stringify(fee)});
   </script>
   <script>${runtime.replace(/<\/script/gi, "<\\/script")}</script>
+  <script>${prepaidRuntime.replace(/<\/script/gi, "<\\/script")}</script>
   <script>
     setTimeout(function () {
       var selected = document.querySelector("input[name='delivcompany']:checked");
@@ -66,7 +74,8 @@ function fixture(runtime, method, fee) {
         summaryRows: rows.map(function (row) { return row.textContent.replace(/\\s+/g, " ").trim(); }),
         serviceShipping: document.querySelector(".service-shipping").textContent,
         footerFee: document.getElementById("deliv_company_price_custom_type").textContent,
-        footerInfo: document.getElementById("deliv_company_shipping_info").textContent
+        footerInfo: document.getElementById("deliv_company_shipping_info").textContent,
+        collectInfoDisplay: getComputedStyle(document.querySelector("th .info")).display
       });
     }, 500);
   </script>
@@ -76,9 +85,10 @@ function fixture(runtime, method, fee) {
 
 async function runFixture(method, fee = "") {
   const runtime = readFileSync(runtimePath, "utf8");
+  const prepaidRuntime = readFileSync(prepaidRuntimePath, "utf8");
   const server = http.createServer((request, response) => {
     response.writeHead(200, { "content-type": "text/html; charset=utf-8" });
-    response.end(fixture(runtime, method, fee));
+    response.end(fixture(runtime, prepaidRuntime, method, fee));
   });
   await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
   const { port } = server.address();
@@ -120,6 +130,7 @@ test("prepaid freight stays prepaid throughout the Cafe24 order form", async () 
   assert.equal(result.serviceShipping, "배송비 0원");
   assert.doesNotMatch(result.footerFee, /착불/);
   assert.doesNotMatch(result.footerInfo, /별도 안내|결제금액에는 배송비가 포함되어 있지/);
+  assert.equal(result.collectInfoDisplay, "none");
 });
 
 test("collect freight keeps the collect label and separate-payment notice", async () => {
@@ -129,6 +140,7 @@ test("collect freight keeps the collect label and separate-payment notice", asyn
   assert.deepEqual(result.summaryRows, ["배송조건화물배송(착불)"]);
   assert.match(result.footerFee, /착불/);
   assert.match(result.footerInfo, /별도 안내/);
+  assert.equal(result.collectInfoDisplay, "inline");
 });
 
 test("pickup stays pickup without a collect-payment notice", async () => {
@@ -138,4 +150,5 @@ test("pickup stays pickup without a collect-payment notice", async () => {
   assert.deepEqual(result.summaryRows, ["배송조건방문수령"]);
   assert.doesNotMatch(result.footerFee, /착불/);
   assert.doesNotMatch(result.footerInfo, /별도 안내/);
+  assert.equal(result.collectInfoDisplay, "inline");
 });
