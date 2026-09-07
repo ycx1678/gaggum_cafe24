@@ -9,12 +9,12 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const basketPath = path.join(root, "order/basket.html");
 const deliveryRuntimePath = path.join(root, "nd/js/order_delivery_v7.js");
-const prepaidRuntimePath = path.join(root, "nd/js/order_delivery_prepaid_v1.js");
+const prepaidRuntimePath = path.join(root, "nd/js/order_delivery_prepaid_v2.js");
 
 test("skin16 basket loads the prepaid display cleanup after its delivery runtime", () => {
   const basket = readFileSync(basketPath, "utf8");
   const deliveryIndex = basket.indexOf("order_delivery_v7.js?v=20260907v213");
-  const cleanupIndex = basket.indexOf("order_delivery_prepaid_v1.js?v=20260907v214");
+  const cleanupIndex = basket.indexOf("order_delivery_prepaid_v2.js?v=20260907v215");
 
   assert.ok(deliveryIndex >= 0, "basket delivery runtime is present");
   assert.ok(cleanupIndex > deliveryIndex, "prepaid cleanup loads after the delivery runtime");
@@ -123,7 +123,7 @@ async function runFixture(method, fee = "") {
 test("prepaid quote basket hides Cafe24 collect-only shipping metadata", async () => {
   const result = await runFixture("화물배송(선불)", "175,000원");
 
-  assert.deepEqual(result.nativeDisplays, ["none", "none"]);
+  assert.deepEqual(result.nativeDisplays, ["list-item", "none"]);
   assert.equal(result.noticeDisplay, "none");
   assert.equal(result.nativeFee, "0원");
   assert.deepEqual(result.selectedMethods, [

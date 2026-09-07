@@ -6,7 +6,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const runtimePath = path.join(root, "nd/js/quote_order_v203.js");
+const runtimePath = path.join(root, "nd/js/quote_order_v204.js");
 
 test("a slow Cafe24 discount application is submitted only once", async () => {
   const source = readFileSync(runtimePath, "utf8");

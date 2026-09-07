@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const runtimePath = path.join(root, "nd/js/order_delivery_v9.js");
-const prepaidRuntimePath = path.join(root, "nd/js/order_delivery_prepaid_v1.js");
+const prepaidRuntimePath = path.join(root, "nd/js/order_delivery_prepaid_v2.js");
 const orderFormPath = path.join(root, "order/orderform.html");
 const basketPath = path.join(root, "order/basket.html");
 
@@ -18,7 +18,7 @@ test("skin16 order form loads the versioned payment-aware delivery runtime", () 
   assert.match(orderForm, /\/nd\/js\/order_delivery_v9\.js\?v=20260907v213/g);
   assert.doesNotMatch(orderForm, /order_delivery_v[78]\.js/);
   assert.ok(
-    orderForm.indexOf("order_delivery_prepaid_v1.js?v=20260907v214") >
+    orderForm.indexOf("order_delivery_prepaid_v2.js?v=20260907v215") >
       orderForm.indexOf("order_delivery_v9.js?v=20260907v213"),
     "prepaid display cleanup loads after the delivery runtime",
   );
