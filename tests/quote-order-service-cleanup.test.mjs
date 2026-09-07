@@ -6,7 +6,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const scriptPath = path.join(root, "nd/js/quote_order_v204.js");
+const scriptPath = path.join(root, "nd/js/quote_order_v205.js");
 
 function orderClickEvent() {
   return {
@@ -123,8 +123,8 @@ test("normal cart removes mixed ten-thousand and thousand-won quote service item
     },
     {
       basket_product_no: 79,
-      product_no: 1091,
-      variant_code: "P0000BPZ000A",
+      product_no: 1115,
+      variant_code: "P0000BQX000A",
       option_id: "000B",
       quantity: 5,
     },
@@ -145,7 +145,7 @@ test("normal cart removes mixed ten-thousand and thousand-won quote service item
         basket_product_no: 77,
       },
       {
-        product_no: 1091,
+        product_no: 1115,
         option_id: "000B",
         basket_product_no: 79,
       },
@@ -161,8 +161,8 @@ test("normal cart removes a thousand-won quote service item by itself", async ()
   const { deleted, orderEvent, reloaded } = await runNormalCart([
     {
       basket_product_no: 79,
-      product_no: 1091,
-      variant_code: "P0000BPZ000A",
+      product_no: 1115,
+      variant_code: "P0000BQX000A",
       option_id: "000B",
       quantity: 5,
     },
@@ -172,7 +172,7 @@ test("normal cart removes a thousand-won quote service item by itself", async ()
     shippingType: "A",
     items: [
       {
-        product_no: 1091,
+        product_no: 1115,
         option_id: "000B",
         basket_product_no: 79,
       },
@@ -185,6 +185,12 @@ test("normal cart removes a thousand-won quote service item by itself", async ()
 
 test("normal cart leaves ordinary products untouched", async () => {
   const { clickListener, deleted, reloaded } = await runNormalCart([
+    {
+      basket_product_no: 79,
+      product_no: 1091,
+      variant_code: "P0000BPZ000A",
+      quantity: 1,
+    },
     {
       basket_product_no: 78,
       product_no: 18,
@@ -205,8 +211,8 @@ test("normal cart blocks checkout when a thousand-won quote service item has no 
   const { clickListener, deleted, orderEvent, reloaded } = await runNormalCart([
     {
       basket_product_no: 77,
-      product_no: 1091,
-      variant_code: "P0000BPZ000A",
+      product_no: 1115,
+      variant_code: "P0000BQX000A",
       option_id: "",
       quantity: 142,
     },

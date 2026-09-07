@@ -5,8 +5,8 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const script = readFileSync(path.join(root, "nd/js/quote_order_v204.js"), "utf8");
-const directScript = /<script src="\/skin-skin16\/nd\/js\/quote_order_v204\.js\?v=20260907v204"><\/script>/;
+const script = readFileSync(path.join(root, "nd/js/quote_order_v205.js"), "utf8");
+const directScript = /<script src="\/skin-skin16\/nd\/js\/quote_order_v205\.js\?v=20260907v205"><\/script>/;
 
 test("quote checkout runtime is directly loaded on every basket-to-result page", () => {
   for (const page of [
@@ -16,8 +16,16 @@ test("quote checkout runtime is directly loaded on every basket-to-result page",
     "order/orderform.html",
     "order/order_result.html",
   ]) {
-    assert.match(readFileSync(path.join(root, page), "utf8"), directScript, page);
+    const source = readFileSync(path.join(root, page), "utf8");
+    assert.match(source, directScript, page);
+    assert.doesNotMatch(source, /quote_order_v204\.js/, page);
   }
+});
+
+test("skin16 layout loads the cart variant recovery runtime", () => {
+  const layout = readFileSync(path.join(root, "layout/basic/layout.html"), "utf8");
+  assert.match(layout, /quote_parent_v186\.js\?v=20260821v186/);
+  assert.doesNotMatch(layout, /quote_parent_v184\.js/);
 });
 
 test("quote checkout hands verified carts to Cafe24 without the native all-cart confirmation", () => {
