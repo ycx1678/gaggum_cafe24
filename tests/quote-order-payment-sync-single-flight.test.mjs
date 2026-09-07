@@ -10,9 +10,13 @@ const runtimePath = path.join(root, "nd/js/quote_order_v204.js");
 
 test("Cafe24 payment change storms schedule only one bank-policy sync", () => {
   const source = readFileSync(runtimePath, "utf8");
-  assert.match(
-    source,
-    /document\.addEventListener\("change",[\s\S]*?scheduleBankDepositSync\(\);[\s\S]*?\}, true\);/,
+  const paymentChangeHandler = source.match(
+    /document\.addEventListener\("change", function \(event\) \{\n {12}var target = event\.target;\n {12}if \(!target \|\| !target\.matches \|\| !target\.matches\(PAYMENT_METHOD_SELECTOR\)\) return;\n {12}([^\n]+)\n {8}\}, true\);/,
+  );
+  assert.ok(paymentChangeHandler, "the payment-specific change handler is present");
+  assert.equal(
+    paymentChangeHandler[1].trim(),
+    "scheduleBankDepositSync();",
     "payment change events use the coalescing scheduler",
   );
   assert.doesNotMatch(
