@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    // v199 carries the quote-request delivery address into Cafe24 checkout.
+    // v202 carries the quote-request delivery address into Cafe24 checkout.
     // It also recovers from Cafe24 member discounts that exceed the quote
     // discount, and deletes service items using Cafe24's required option_id
     // rather than the distinct variant_code.
@@ -1229,7 +1229,7 @@
             var paymentPrefix = paymentLabel === "착불 배송비 별도"
                 ? "Cafe24 주문서 배송 표기는 착불 배송비 별도이며, 견적서에 반영된"
                 : "견적서에서 선택한 " + paymentLabel;
-            note.textContent = paymentPrefix +
+            var noteText = paymentPrefix +
                 (amount > 0 ? " 배송비 " + money(amount) : " 배송비") +
                 (assemblyAmount > 0 ? " + 조립서비스 " + money(assemblyAmount) : "") +
                 (serviceFeeAmount > 0 ? " (서비스 품목 합계 " + money(serviceFeeAmount) + ")" : "") +
@@ -1238,6 +1238,8 @@
                     ? " Cafe24 기본할인 보정을 위해 임시 서비스 금액 " + money(adjustmentAmount) +
                         "이 함께 표시되지만, 할인코드로 같은 금액이 상쇄되어 최종 견적금액에는 추가되지 않습니다."
                     : "");
+            // Avoid retriggering the order-form MutationObserver with identical text.
+            if (note.textContent !== noteText) note.textContent = noteText;
         }
     }
 
