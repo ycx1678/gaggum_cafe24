@@ -6,7 +6,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const scriptPath = path.join(root, "nd/js/quote_order_v202.js");
+const scriptPath = path.join(root, "nd/js/quote_order_v203.js");
 
 function orderClickEvent() {
   return {
@@ -112,7 +112,7 @@ async function runNormalCart(carts) {
   return { alerts, clickListener: listeners.get("click"), deleted, orderEvent, reloaded };
 }
 
-test("normal cart removes only the orphaned quote shipping service item", async () => {
+test("normal cart removes mixed ten-thousand and thousand-won quote service items", async () => {
   const { alerts, deleted, orderEvent, reloaded } = await runNormalCart([
     {
       basket_product_no: 77,
@@ -120,6 +120,13 @@ test("normal cart removes only the orphaned quote shipping service item", async 
       variant_code: "P0000BPY000A",
       option_id: "000A",
       quantity: 40,
+    },
+    {
+      basket_product_no: 79,
+      product_no: 1091,
+      variant_code: "P0000BPZ000A",
+      option_id: "000B",
+      quantity: 5,
     },
     {
       basket_product_no: 78,
@@ -137,11 +144,42 @@ test("normal cart removes only the orphaned quote shipping service item", async 
         option_id: "000A",
         basket_product_no: 77,
       },
+      {
+        product_no: 1091,
+        option_id: "000B",
+        basket_product_no: 79,
+      },
     ],
   });
   assert.equal(orderEvent.prevented, true);
   assert.equal(orderEvent.stopped, true);
   assert.equal(alerts.length, 1);
+  assert.equal(reloaded, true);
+});
+
+test("normal cart removes a thousand-won quote service item by itself", async () => {
+  const { deleted, orderEvent, reloaded } = await runNormalCart([
+    {
+      basket_product_no: 79,
+      product_no: 1091,
+      variant_code: "P0000BPZ000A",
+      option_id: "000B",
+      quantity: 5,
+    },
+  ]);
+
+  assert.deepEqual(JSON.parse(JSON.stringify(deleted)), {
+    shippingType: "A",
+    items: [
+      {
+        product_no: 1091,
+        option_id: "000B",
+        basket_product_no: 79,
+      },
+    ],
+  });
+  assert.equal(orderEvent.prevented, true);
+  assert.equal(orderEvent.stopped, true);
   assert.equal(reloaded, true);
 });
 
@@ -163,12 +201,12 @@ test("normal cart leaves ordinary products untouched", async () => {
   assert.equal(eventAfterCheck.stopped, false);
 });
 
-test("normal cart blocks checkout when a quote service item has no Cafe24 option id", async () => {
+test("normal cart blocks checkout when a thousand-won quote service item has no Cafe24 option id", async () => {
   const { clickListener, deleted, orderEvent, reloaded } = await runNormalCart([
     {
       basket_product_no: 77,
-      product_no: 1090,
-      variant_code: "P0000BPY000A",
+      product_no: 1091,
+      variant_code: "P0000BPZ000A",
       option_id: "",
       quantity: 142,
     },

@@ -1,5 +1,6 @@
 <!--@layout(/layout/basic/layout.html)-->
-<!--@js(/nd/js/quote_order_v202.js)-->
+<!--@js(/nd/js/quote_order_v203.js?v=20260907v203)-->
+<script src="/skin-skin16/nd/js/quote_order_v203.js?v=20260907v203"></script>
 <div class="section path">
     <span>현재 위치</span>
     <ol>
@@ -1444,13 +1445,13 @@
         <a href="#none" class="btnClose" onclick="$('#ec-basketOptionModifyLayer').hide();">닫기</a>
     </div>
 </div>
-<!--@js(/nd/js/order_delivery_v7.js)-->
+<!--@js(/nd/js/order_delivery_v7.js?v=20260907v213)-->
 <script>
 (function(){
     if(document.getElementById('ndOrderDeliveryScript')) return;
     var script = document.createElement('script');
     script.id = 'ndOrderDeliveryScript';
-    script.src = (window.EC_ROUTE && EC_ROUTE.getPrefixUrl) ? EC_ROUTE.getPrefixUrl('/nd/js/order_delivery_v7.js') : '/nd/js/order_delivery_v7.js';
+    script.src = (window.EC_ROUTE && EC_ROUTE.getPrefixUrl) ? EC_ROUTE.getPrefixUrl('/nd/js/order_delivery_v7.js?v=20260907v213') : '/nd/js/order_delivery_v7.js?v=20260907v213';
     document.head.appendChild(script);
 })();
 </script>
