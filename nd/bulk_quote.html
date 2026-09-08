@@ -1,6 +1,6 @@
 <!-- 대량견적 요청 모달 (교차①). 백오피스 /api/quote-requests 로 구조화 전송.
      setting_banner.js 등 jQuery 1.12.4(noConflict) 비의존 — bulk_quote.js 는 vanilla IIFE. -->
-<!--@css(/nd/css/bulk_quote_v178.css)-->
+<!--@css(/nd/css/bulk_quote_v200.css)-->
 <div id="ndBulkQuote" class="ndBq" aria-hidden="true">
   <div class="ndBq_dim" data-bq-close></div>
   <div class="ndBq_panel" role="dialog" aria-modal="true" aria-labelledby="ndBqTitle">
@@ -33,14 +33,20 @@
           <label for="ndBqEmail">이메일</label>
           <input id="ndBqEmail" name="email" type="email" autocomplete="email">
         </div>
-        <div class="ndBq_field">
-          <label for="ndBqElevator">엘리베이터 사용가능 유/무 <em>*</em></label>
-          <select id="ndBqElevator" name="elevatorAccess" required aria-required="true">
-            <option value="">선택해주세요</option>
-            <option value="elevator">엘리베이터로 이동 가능</option>
-            <option value="stairs">계단으로만 이동 가능</option>
-            <option value="mixed">계단 + 엘리베이터</option>
-          </select>
+        <div class="ndBq_row2 ndBq_deliveryRow">
+          <div class="ndBq_field">
+            <label for="ndBqElevator">엘리베이터 사용가능 유/무 <em>*</em></label>
+            <select id="ndBqElevator" name="elevatorAccess" required aria-required="true">
+              <option value="">선택해주세요</option>
+              <option value="elevator">엘리베이터로 이동 가능</option>
+              <option value="stairs">계단으로만 이동 가능</option>
+              <option value="mixed">계단 + 엘리베이터</option>
+            </select>
+          </div>
+          <div class="ndBq_field">
+            <label for="ndBqPreferredDeliveryDate">배송 희망일 선택</label>
+            <input id="ndBqPreferredDeliveryDate" name="preferredDeliveryDate" type="date">
+          </div>
         </div>
         <div class="ndBq_field">
           <label for="ndBqPostcode">주소 <em>*</em></label>
@@ -82,4 +88,4 @@
   </div>
 </div>
 <!-- Cafe24 사용자 JS 합본의 선행 오류가 견적 초기화를 중단하지 않도록 독립 로드한다. -->
-<script src="/nd/js/bulk_quote_v199.js?v=20260907v199"></script>
+<script src="/nd/js/bulk_quote_v200.js?v=20260908v200"></script>

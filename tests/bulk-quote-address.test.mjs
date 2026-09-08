@@ -6,7 +6,8 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const markup = readFileSync(path.join(root, "nd/bulk_quote.html"), "utf8");
-const script = readFileSync(path.join(root, "nd/js/bulk_quote_v199.js"), "utf8");
+const scriptPath = markup.match(/<script src="([^?]+)\?/)[1];
+const script = readFileSync(path.join(root, scriptPath), "utf8");
 
 test("bulk quote always requires elevator access and postal-code address entry", () => {
   assert.match(markup, /name="elevatorAccess" required/);

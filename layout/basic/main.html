@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="ko">
     <head>
+        <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PL815JFD6Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PL815JFD6Y');
+</script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -12,11 +21,6 @@
 
         <title>기본 레이아웃</title>
         <link rel="preconnect" href="https://img.echosting.cafe24.com">
-        <script>
-            if (/^\/skin-skin17(?:\/|$)/.test(location.pathname)) {
-                window.ND_BULK_QUOTE_API_BASE = 'https://backoffice.gaggum.kr';
-            }
-        </script>
 
         <!--@css(/layout/basic/css/common.css)--><!-- 해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요. -->
         <!--@css(/layout/basic/css/layout.css)-->
@@ -42,7 +46,7 @@
             (function(){
                 var skinMatch = location.pathname.match(/^\/(skin-skin\d+)(?:\/|$)/);
                 var prefix = skinMatch ? '/' + skinMatch[1] : '';
-                var version = '20260721v177';
+                var version = '20260908v183';
                 var cssFiles = [
                     '/layout/basic/css/common.css',
                     '/layout/basic/css/layout.css',
@@ -132,6 +136,12 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Smartlog -->
+<script type="text/javascript">
+var hpt_info={'_account':'UHPT-36874', '_server': 'a30'};
+</script>
+<script language="javascript" src="//cdn.smlog.co.kr/core/smart.js" charset="utf-8"></script>
 
     </body>
 </html>
