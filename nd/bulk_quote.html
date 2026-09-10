@@ -1,6 +1,6 @@
 <!-- 대량견적 요청 모달 (교차①). 백오피스 /api/quote-requests 로 구조화 전송.
      setting_banner.js 등 jQuery 1.12.4(noConflict) 비의존 — bulk_quote.js 는 vanilla IIFE. -->
-<!--@css(/nd/css/bulk_quote_v177.css)-->
+<!--@css(/nd/css/bulk_quote_v200.css)-->
 <div id="ndBulkQuote" class="ndBq" aria-hidden="true">
   <div class="ndBq_dim" data-bq-close></div>
   <div class="ndBq_panel" role="dialog" aria-modal="true" aria-labelledby="ndBqTitle">
@@ -15,7 +15,7 @@
       </div>
       <div id="ndBqMemberNotice" class="ndBq_memberNotice" hidden>
         <strong>현재 로그인 회원 정보와 장바구니 기준으로 견적 요청됩니다.</strong>
-        <p id="ndBqProfileStatus">Cafe24 회원정보의 연락처와 주소를 불러오는 중입니다.</p>
+        <p id="ndBqProfileStatus">Cafe24 회원정보의 연락처를 불러오는 중입니다. 배송지는 직접 입력해주세요.</p>
         <div id="ndBqCartPreview" class="ndBq_cartPreview"></div>
       </div>
       <div id="ndBqGuestFields" class="ndBq_guestFields">
@@ -33,9 +33,29 @@
           <label for="ndBqEmail">이메일</label>
           <input id="ndBqEmail" name="email" type="email" autocomplete="email">
         </div>
+        <div class="ndBq_row2 ndBq_deliveryRow">
+          <div class="ndBq_field">
+            <label for="ndBqElevator">엘리베이터 사용가능 유/무 <em>*</em></label>
+            <select id="ndBqElevator" name="elevatorAccess" required aria-required="true">
+              <option value="">선택해주세요</option>
+              <option value="elevator">엘리베이터로 이동 가능</option>
+              <option value="stairs">계단으로만 이동 가능</option>
+              <option value="mixed">계단 + 엘리베이터</option>
+            </select>
+          </div>
+          <div class="ndBq_field">
+            <label for="ndBqPreferredDeliveryDate">배송 희망일 선택</label>
+            <input id="ndBqPreferredDeliveryDate" name="preferredDeliveryDate" type="date">
+          </div>
+        </div>
         <div class="ndBq_field">
-          <label for="ndBqAddress">주소 <em>*</em></label>
-          <input id="ndBqAddress" name="address" type="text" autocomplete="street-address" required>
+          <label for="ndBqPostcode">주소 <em>*</em></label>
+          <div class="ndBq_addressSearch">
+            <input id="ndBqPostcode" name="postcode" type="text" placeholder="우편번호" autocomplete="postal-code" readonly required aria-required="true">
+            <button type="button" id="ndBqFindAddress">주소검색</button>
+          </div>
+          <input id="ndBqAddress1" name="address1" type="text" placeholder="기본주소" autocomplete="address-line1" readonly required aria-required="true">
+          <input id="ndBqAddress2" class="ndBq_addressLine" name="address2" type="text" placeholder="나머지 주소(선택 입력 가능)" autocomplete="address-line2">
         </div>
       </div>
 
@@ -47,7 +67,7 @@
 
       <div class="ndBq_field">
         <label for="ndBqMemo">요청사항</label>
-        <textarea id="ndBqMemo" name="memo" rows="3"></textarea>
+        <textarea id="ndBqMemo" name="memo" rows="5" placeholder="견적요청 및 배송 시 특이사항에 대해 가능한 자세히 기재해주세요.&#10;- 엘리베이터 사용하고 한 층은 계단으로 올라가야 합니다.&#10;- 엘리베이터 사용 시 보양을 꼭 해야 해요.&#10;- 상품 조립도 함께 요청하고 싶어요.&#10;- 25년도 12월에 구매했던 가격과 동일하게 구매가 가능할까요?"></textarea>
       </div>
 
       <!-- honeypot: 사람은 비움. 채워지면 봇으로 보고 무시됨. -->
@@ -68,4 +88,4 @@
   </div>
 </div>
 <!-- Cafe24 사용자 JS 합본의 선행 오류가 견적 초기화를 중단하지 않도록 독립 로드한다. -->
-<script src="/nd/js/bulk_quote_v198.js?v=20260723v198"></script>
+<script src="/nd/js/bulk_quote_v200.js?v=20260908v200"></script>
