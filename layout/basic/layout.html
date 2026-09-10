@@ -13,8 +13,11 @@
     <!-- // PG크로스브라우징필수내용 -->
 
     <title></title>
-    <!-- skin16 운영 견적 연동 백엔드. 이 레이아웃을 쓰는 페이지에서만 적용된다. -->
-    <script>window.ND_BULK_QUOTE_API_BASE = "https://backoffice.gaggum.kr";</script>
+    <script>
+        if (/^\/skin-skin16(?:\/|$)/.test(location.pathname)) {
+            window.ND_BULK_QUOTE_API_BASE = 'https://gaggum.flashstudio.kr';
+        }
+    </script>
     <!--@css(/layout/basic/css/common.css)--><!-- 해당 CSS는 쇼핑몰 전체 페이지에 영향을 줍니다. 삭제와 수정에 주의해주세요. -->
     <!--@css(/layout/basic/css/layout.css)-->
     <!--@css(/layout/basic/css/ec-base-ui.css)-->
@@ -37,9 +40,9 @@
     <!--@js(/layout/basic/js/basic.js)-->
     <!--@js(/layout/basic/js/layout.js)-->
     <!--@js(/js/common.js)-->
+    <!--@css(/nd/css/quote_order_v184.css)-->
+<script src="/skin-skin16/nd/js/quote_parent_v186.js?v=20260821v186"></script>
     <!--@css(/nd/css/xeicon.min.css)-->
-    <!--@css(/nd/css/quote_order_v185.css)-->
-    <script src="/skin-skin16/nd/js/quote_parent_v186.js?v=20260821v186"></script>
 
 </head>
 <body class="nd">
@@ -107,10 +110,5 @@
 	<div class="layer_shadow" id="layer_shadow"></div>
 	<div id="layoutDimmed" class="dimmed"></div>
 
-    <!-- Smartlog -->
-<script type="text/javascript">
-var hpt_info={'_account':'UHPT-36874', '_server': 'a30'};
-</script>
-<script language="javascript" src="//cdn.smlog.co.kr/core/smart.js" charset="utf-8"></script>
 </body>
 </html>
