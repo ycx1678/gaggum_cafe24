@@ -23,3 +23,12 @@
 ## 배포 조건
 
 `nd/js/quote_parent_v188.js`, `layout/basic/layout.html`, `layout/basic/main.html` 세 파일만 배포한다. 원본과 해시를 대조하고 신규 자산 업로드 후 참조만 치환한다. 참조 교체 또는 공개 검증 실패 시 두 참조 파일을 원복한다. 백업은 14일 artifact로 보관하고 FTP secrets 삭제 및 runner archive를 재확인한다.
+
+## 배포 결과
+
+- 2026-09-10 16:32:29 KST [배포 실행 34450406079](https://github.com/ycx1678/gaggum-cafe24-emergency-20260804/actions/runs/34450406079) 성공. 고정 소스는 `9a6c3c5f69db6ad5347bb547a76f6948b56f0368`이다.
+- 세 파일의 FTP 재다운로드 검증, 일반/skin16 공개 JS 바이트 대조, 장바구니와 상품 138/1034 참조 검증을 통과했다. 새 스크립트 SHA256은 `b0881dd830fc4b6c70b88271fb18fba045337ef4f4509272cc6074e86a4c532e`다.
+- 내려받은 라이브 v188와 기존 v211 모달로 일반/skin16 × PC/모바일 4경로에서 실제 모달의 보내기 버튼을 눌러 POST를 가로챘다. 상품 1034/138/465의 옵션, 수량 62/3/3, 단가 53700/89900/2000, 추가품 부모 순서 1 모두 일치했다. 실제 운영 견적은 생성하지 않았다.
+- 별도 격리 로컬 DB에서 같은 옵션 코드의 접수 200과 관리자 API를 통한 수량·단가·부모 연결 저장 확인도 통과했다. 백엔드 운영 코드는 재배포하지 않았다.
+- FTP secrets 목록 `[]`, emergency runner `archived: true`를 재확인했다.
+- 백업: `/tmp/gaggum-quote-new-products-20260910.ztbWFi/deployed/skin16-quote-additional-34450406079/backup`. 원본 SHA manifest 통과. UI 재현 스크립트: 같은 임시 디렉터리의 `live-modal-check.mjs`.
