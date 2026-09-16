@@ -10,6 +10,8 @@ test("강의실 가구의 여섯 하위 카테고리는 데스크톱 메가메�
   const css = read("nd/css/header_mega_v11.css");
 
   assert.match(header, /<!--@css\(\/nd\/css\/header_mega_v11\.css\)-->/);
+  assert.match(header, /ND_SKIN16_MEGA_CATEGORY_START/);
+  assert.match(header, /ND_SKIN16_MEGA_CATEGORY_END/);
   assert.match(css, /\.nd-mega-gnb__columns\{display:grid;grid-template-columns:repeat\(6,minmax\(0,1fr\)\)/);
 });
 
