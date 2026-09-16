@@ -7,20 +7,33 @@ const read = (path) => readFileSync(path, "utf8");
 
 test("강의실 가구의 여섯 하위 카테고리는 데스크톱 메가메뉴 첫 줄에 모두 배치된다", () => {
   const header = read("nd/layout/header.html");
-  const css = read("nd/css/header_mega_v12.css");
+  const css = read("nd/css/header_mega_v13.css");
 
-  assert.match(header, /<!--@css\(\/nd\/css\/header_mega_v12\.css\)-->/);
+  assert.match(header, /<!--@css\(\/nd\/css\/header_mega_v13\.css\)-->/);
   assert.match(header, /ND_SKIN16_MEGA_CATEGORY_START/);
   assert.match(header, /ND_SKIN16_MEGA_CATEGORY_END/);
   assert.match(css, /\.nd-mega-gnb__columns\{display:grid;grid-template-columns:repeat\(6,minmax\(0,1fr\)\)/);
 });
 
 test("메가메뉴 활성 표시는 기본 스킨의 호버 표식과 분리되어 메뉴 위에서 유지된다", () => {
-  const css = read("nd/css/header_mega_v12.css");
+  const css = read("nd/css/header_mega_v13.css");
 
   assert.match(css, /header \.nd-mega-gnb \.nd-mega-gnb__item > a::before\{content:none;\}/);
   assert.match(css, /header \.nd-mega-gnb__item > a::after\{[^}]*opacity:0[^}]*transform:translate\(-50%,-10px\)/);
   assert.match(css, /header \.nd-mega-gnb__item > a\[aria-expanded="true"\]::after\{opacity:1;transform:translate\(-50%,0\);\}/);
+});
+
+test("자습실과 학원 운영 공간의 짧은 서브메뉴는 각 상위 메뉴 아래에서 시작한다", () => {
+  const header = read("nd/layout/header.html");
+  const css = read("nd/css/header_mega_v13.css");
+  const position = read("nd/js/header_mega_position_v4.js");
+
+  assert.match(header, /<!--@css\(\/nd\/css\/header_mega_v13\.css\)-->/);
+  assert.match(header, /<!--@js\(\/nd\/js\/header_mega_position_v4\.js\)-->/);
+  assert.match(css, /\.nd-mega-gnb__columns\{[^}]*transform:translateX\(var\(--nd-mega-gnb-columns-shift,0px\)\)/);
+  assert.match(position, /var desiredShift = activeLinkBox\.left - firstColumnBox\.left;/);
+  assert.match(position, /if \(columns\.children\.length >= 6\) return setColumnsShift\(columns, 0\);/);
+  assert.match(position, /setColumnsShift\(columns, Math\.round\(boundedShift\)\);/);
 });
 
 test("상단 브랜드 소개와 기획전 메뉴는 지정된 외부 경로를 사용한다", () => {
