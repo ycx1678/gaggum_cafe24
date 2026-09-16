@@ -21,6 +21,8 @@ test("모바일 사이드메뉴는 데스크톱과 같은 세 상위 가구 카�
   assert.match(side, /data-nd-mobile-mega-parent="163"/);
   assert.match(side, /data-nd-mobile-mega-parent="164"/);
   assert.match(side, /<!--@js\(\/nd\/js\/side_mega_v1\.js\)-->/);
+  assert.match(side, /ND_SKIN16_MOBILE_CATEGORY_START/);
+  assert.match(side, /ND_SKIN16_MOBILE_CATEGORY_END/);
   assert.match(script, /\[data-nd-mobile-mega-parent\]/);
 });
 
