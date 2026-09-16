@@ -23,6 +23,13 @@ test("메가메뉴 활성 표시는 기본 스킨의 호버 표식과 분리되�
   assert.match(css, /header \.nd-mega-gnb__item > a\[aria-expanded="true"\]::after\{opacity:1;transform:translate\(-50%,0\);\}/);
 });
 
+test("상단 브랜드 소개와 기획전 메뉴는 지정된 외부 경로를 사용한다", () => {
+  const header = read("nd/layout/header.html");
+
+  assert.match(header, /<a href="\/nd\/product\.html">브랜드 소개<\/a>/);
+  assert.match(header, /<a href="\/front\/php\/b\/board_list\.php\?board_no=15">기획전 \/ 이벤트<\/a>/);
+});
+
 test("모바일 사이드메뉴는 데스크톱과 같은 세 상위 가구 카테고리를 사용한다", () => {
   const side = read("nd/layout/side.html");
   const script = read("nd/js/side_mega_v1.js");
