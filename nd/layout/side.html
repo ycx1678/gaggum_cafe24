@@ -1,4 +1,5 @@
 <!--@js(/nd/js/side.js)-->
+<!--@js(/nd/js/side_mega_v1.js)-->
 <!--@css(/nd/css/side.css)-->
 
 <div class="mask_side"></div>
@@ -11,17 +12,13 @@
             <li module="Layout_statelogoff"><a href="/member/agreement.html"><i class="xi-user-plus-o"></i>회원가입</a></li>
             <li module="Layout_statelogon"><a href="/member/modify.html"><i class="xi-user-o"></i>개인정보수정</a></li>
         </ul>
-        <div class="sideCate" id="slideCateList" module="Layout_category">
+        <div class="sideCate" id="slideCateList">
             <ul id="category_all" class="cateDep_1">
                 <li><a href="/shopinfo/company.html">브랜드 소개</a></li>
-                <li>
-                    <a href="javascript:void(0)">제품보기</a>
-                    <ul>
-                        <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
-                        <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
-                        <li><a href="/product/list.html{$param}">{$name_or_img_tag}</a></li>
-                    </ul>
-                </li>
+                <li data-nd-mobile-mega-parent="162"><a href="/product/list.html?cate_no=162">강의실 가구</a><ul></ul></li>
+                <li data-nd-mobile-mega-parent="163"><a href="/product/list.html?cate_no=163">자습실 / 독서실 가구</a><ul></ul></li>
+                <li data-nd-mobile-mega-parent="164"><a href="/product/list.html?cate_no=164">학원 운영 공간</a><ul></ul></li>
+                <li><a href="/product/project.html?cate_no=152">기획전 / 이벤트</a></li>
                 <li><a href="/board/gallery/list.html?board_no=8">포트폴리오</a></li>
                 <li><a href="/shopinfo/contact.html">위치안내</a></li>
                 <li>

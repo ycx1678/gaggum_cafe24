@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const scriptPath = process.env.SKIN16_QUOTE_ORDER_SCRIPT
-  ?? path.join(root, "nd/js/quote_order_v194.js");
+  ?? path.join(root, "nd/js/quote_order_v195.js");
 
 function orderClickEvent() {
   return {
