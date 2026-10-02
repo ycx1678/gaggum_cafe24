@@ -1,0 +1,22 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>.ndQuoteOrderPaymentBlocked{display:none!important}#wrappingOriginal{display:none}.ec-base-label{display:block}input{margin:8px}</style></head><body>
+<form id="frm_order_act">
+<div id="ec-jigsaw-area-shippingInfo">
+<input id="rzipcode1" name="rzipcode1" placeholder="우편번호"><input id="raddr1" name="raddr1" placeholder="기본주소">
+<input id="raddr2" name="raddr2" placeholder="나머지 주소" fw-filter="isFill" fw-label="배송지 나머지 주소">
+</div>
+<!-- Cafe24's native method label and detail panel are siblings, captured 2026-10-02. -->
+<div id="ec-jigsaw-area-paymethod"><div class="contents"><div class="column"><div>
+<div><span class="ec-base-label"><input id="addr_paymethod0" name="addr_paymethod" value="card" type="radio" checked><label for="addr_paymethod0"><img pay_name="카드 결제" pay_code="card"></label></span>
+<div id="wrappingClone_card" class="inner"><div id="payment_input_direct_card" class="cardWrap"><h3>카드선택</h3><label><input name="directpay_card_code_select" value="card_12" type="radio">신한카드</label></div></div></div>
+<div><span class="ec-base-label"><input id="addr_paymethod1" name="addr_paymethod" value="cash" type="radio"><label for="addr_paymethod1">무통장 입금</label></span><div id="wrappingClone_cash" class="inner"></div></div>
+<div><span class="ec-base-label"><input id="addr_paymethod2" name="addr_paymethod" value="naverpay" type="radio"><label for="addr_paymethod2">네이버페이</label></span><div id="wrappingClone_naverpay" class="inner"></div></div>
+<div id="wrappingOriginal">
+<div class="cashWrap"><label>입금은행<select name="bankaccount"><option>국민은행</option></select></label></div>
+<div class="receiptWrap">
+<div id="cashreceipt_display_area"><input id="cashreceipt_regist0" name="cashreceipt_regist" value="1" type="radio"><label for="cashreceipt_regist0">현금영수증 신청</label><div id="cashreceipt_form_area"><input id="cashreceipt_user_mobile" name="cashreceipt_user_mobile" placeholder="현금영수증 전화번호"></div></div>
+<div id="tax_request_display_area"><input id="tax_request_regist0" name="tax_request_regist" value="1" type="radio"><label for="tax_request_regist0">세금계산서 신청</label><input id="tax_request_regist1" name="tax_request_regist" value="99" type="radio" checked><label for="tax_request_regist1">신청안함</label><div id="tax_request_form_area"><input name="tax_request_company_regno" placeholder="사업자 번호"></div></div>
+</div></div>
+</div></div></div></div>
+<strong id="payment_total_order_sale_price_view">100,000원</strong><button type="submit">결제하기</button></form>
+</body></html>
