@@ -27,3 +27,19 @@ Backups and staged/verified assets are retained at `/home/yhchoi/.local/share/ga
 Validation completed before deployment: 12 targeted desktop/mobile browser cases passed; all 66 broader quote flow cases passed with the mandatory receipt fixture addition. In the operator-provided customer account's real order form, the fix hid the previously visible card issuer panel, selected the cash receipt through Cafe24's handlers, preserved a subsequent tax invoice choice (including the native saved-information summary), and retained entered address detail after a DOM recalculation. No order or payment was submitted.
 
 Runtime v210 SHA-256: `a305b98a7a9a80a8f494f40bfcbb01ff156df59917621dea4041b79f9230c9c2`.
+
+## Completed live release
+
+Source runtime commit: `ffaf7753cdb2d319cfa863dbef197ed27d867883`. Cafe24's native file uploader was used with the previously authorized operator login because this workspace has no FTP deployment secrets.
+
+All three uploaded files were re-downloaded from Cafe24 and matched the staged bytes:
+
+| File | SHA-256 |
+| --- | --- |
+| `nd/js/quote_order_v210.js` | `a305b98a7a9a80a8f494f40bfcbb01ff156df59917621dea4041b79f9230c9c2` |
+| `order/orderform.html` | `9c776f457338d98d519a1e41985037736d7ac2a2d66bd153ebd57ec5b37b3802` |
+| `layout/basic/main.html` | `9a017d4cfdb76b39593b19a6a7b4e19ab4de331fc04933d297c404aeb9144421` |
+
+The public JS matched the same hash; the public order form referenced v210 exactly once with no v209 reference. The public main page contained `20261002v187`. The product/cart layout was also re-downloaded and matched its untouched backup, retaining quote parent v189.
+
+After release, the provided customer account's native checkout loaded the deployed public v210 asset and passed card hiding, cash receipt activation, subsequent tax invoice selection, and detail-address preservation again. This UI verification intercepts the quote pricing request and cart comparison; it does not issue a production discount code or submit an order. A read-only check confirmed quote #238 remains `sent` without a linked Cafe24 order.
